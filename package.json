@@ -1,0 +1,29 @@
+{
+  "name": "preclarka",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "cd server  && mongod --dbpath data/db/ --fork --logpath ./data/db_start.log",
+    "start": "cd server && npm start",
+    "stop": "cd server && mongo admin --eval 'db.shutdownServer()'  && killall mongod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rbed/preclarka.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rbed/preclarka/issues"
+  },
+  "homepage": "https://github.com/rbed/preclarka#readme",
+  "dependencies": {
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.4"
+  }
+}

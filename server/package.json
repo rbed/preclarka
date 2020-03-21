@@ -1,0 +1,38 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^2.4.2",
+    "cookie-parser": "^1.4.4",
+    "cores": "^0.8.5",
+    "crypto": "^1.0.1",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "errorhandler": "^1.5.1",
+    "express": "~4.16.0",
+    "express-session": "^1.17.0",
+    "figures": "^3.1.0",
+    "http-errors": "~1.6.2",
+    "http-status-codes": "^1.4.0",
+    "is-empty": "^1.2.0",
+    "jade": "^1.11.0",
+    "jsonwebtoken": "^8.5.1",
+    "log-symbols": "^3.0.0",
+    "mongodb": "^3.4.1",
+    "mongoose": "^5.8.3",
+    "mongoose-autopopulate": "^0.9.1",
+    "mongoose-unique-validator": "^2.0.3",
+    "morgan": "~1.9.0",
+    "nodemon": "^1.19.4",
+    "ora": "^3.4.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "validator": "^11.1.0"
+  }
+}

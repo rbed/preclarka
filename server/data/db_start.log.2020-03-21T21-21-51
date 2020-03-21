@@ -1,0 +1,130 @@
+2020-03-21T21:53:29.677+0100 I  CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'
+2020-03-21T21:53:29.682+0100 I  CONTROL  [initandlisten] MongoDB starting : pid=14234 port=27017 dbpath=/home/radnar/PROGRAMOWANIE/Preclarka/preclarka/server/data/db/ 64-bit host=radnarG
+2020-03-21T21:53:29.682+0100 I  CONTROL  [initandlisten] db version v4.2.3
+2020-03-21T21:53:29.682+0100 I  CONTROL  [initandlisten] git version: 6874650b362138df74be53d366bbefc321ea32d4
+2020-03-21T21:53:29.682+0100 I  CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+2020-03-21T21:53:29.682+0100 I  CONTROL  [initandlisten] allocator: tcmalloc
+2020-03-21T21:53:29.682+0100 I  CONTROL  [initandlisten] modules: none
+2020-03-21T21:53:29.682+0100 I  CONTROL  [initandlisten] build environment:
+2020-03-21T21:53:29.682+0100 I  CONTROL  [initandlisten]     distmod: ubuntu1604
+2020-03-21T21:53:29.682+0100 I  CONTROL  [initandlisten]     distarch: x86_64
+2020-03-21T21:53:29.682+0100 I  CONTROL  [initandlisten]     target_arch: x86_64
+2020-03-21T21:53:29.682+0100 I  CONTROL  [initandlisten] options: { processManagement: { fork: true }, storage: { dbPath: "data/db/" }, systemLog: { destination: "file", path: "./data/db_start.log" } }
+2020-03-21T21:53:29.682+0100 I  STORAGE  [initandlisten] Detected data files in /home/radnar/PROGRAMOWANIE/Preclarka/preclarka/server/data/db/ created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2020-03-21T21:53:29.682+0100 I  STORAGE  [initandlisten] 
+2020-03-21T21:53:29.682+0100 I  STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2020-03-21T21:53:29.683+0100 I  STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2020-03-21T21:53:29.683+0100 I  STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3388M,cache_overflow=(file_max=0M),session_max=33000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000,close_scan_interval=10,close_handle_minimum=250),statistics_log=(wait=0),verbose=[recovery_progress,checkpoint_progress],
+2020-03-21T21:53:30.267+0100 I  STORAGE  [initandlisten] WiredTiger message [1584824010:267695][14234:0x7f4719a6eb40], txn-recover: Recovering log 4 through 5
+2020-03-21T21:53:30.334+0100 I  STORAGE  [initandlisten] WiredTiger message [1584824010:334022][14234:0x7f4719a6eb40], txn-recover: Recovering log 5 through 5
+2020-03-21T21:53:30.423+0100 I  STORAGE  [initandlisten] WiredTiger message [1584824010:423187][14234:0x7f4719a6eb40], txn-recover: Main recovery loop: starting at 4/6144 to 5/256
+2020-03-21T21:53:30.560+0100 I  STORAGE  [initandlisten] WiredTiger message [1584824010:560273][14234:0x7f4719a6eb40], txn-recover: Recovering log 4 through 5
+2020-03-21T21:53:30.644+0100 I  STORAGE  [initandlisten] WiredTiger message [1584824010:644785][14234:0x7f4719a6eb40], txn-recover: Recovering log 5 through 5
+2020-03-21T21:53:30.707+0100 I  STORAGE  [initandlisten] WiredTiger message [1584824010:707415][14234:0x7f4719a6eb40], txn-recover: Set global recovery timestamp: (0, 0)
+2020-03-21T21:53:30.748+0100 I  RECOVERY [initandlisten] WiredTiger recoveryTimestamp. Ts: Timestamp(0, 0)
+2020-03-21T21:53:30.754+0100 I  STORAGE  [initandlisten] Timestamp monitor starting
+2020-03-21T21:53:30.756+0100 I  CONTROL  [initandlisten] 
+2020-03-21T21:53:30.756+0100 I  CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2020-03-21T21:53:30.756+0100 I  CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2020-03-21T21:53:30.756+0100 I  CONTROL  [initandlisten] 
+2020-03-21T21:53:30.756+0100 I  CONTROL  [initandlisten] ** WARNING: This server is bound to localhost.
+2020-03-21T21:53:30.756+0100 I  CONTROL  [initandlisten] **          Remote systems will be unable to connect to this server. 
+2020-03-21T21:53:30.756+0100 I  CONTROL  [initandlisten] **          Start the server with --bind_ip <address> to specify which IP 
+2020-03-21T21:53:30.756+0100 I  CONTROL  [initandlisten] **          addresses it should serve responses from, or with --bind_ip_all to
+2020-03-21T21:53:30.756+0100 I  CONTROL  [initandlisten] **          bind to all interfaces. If this behavior is desired, start the
+2020-03-21T21:53:30.756+0100 I  CONTROL  [initandlisten] **          server with --bind_ip 127.0.0.1 to disable this warning.
+2020-03-21T21:53:30.756+0100 I  CONTROL  [initandlisten] 
+2020-03-21T21:53:30.756+0100 I  CONTROL  [initandlisten] 
+2020-03-21T21:53:30.756+0100 I  CONTROL  [initandlisten] ** WARNING: soft rlimits too low. rlimits set to 30777 processes, 1048576 files. Number of processes should be at least 524288 : 0.5 times number of files.
+2020-03-21T21:53:30.760+0100 I  SHARDING [initandlisten] Marking collection local.system.replset as collection version: <unsharded>
+2020-03-21T21:53:30.762+0100 I  STORAGE  [initandlisten] Flow Control is enabled on this deployment.
+2020-03-21T21:53:30.762+0100 I  SHARDING [initandlisten] Marking collection admin.system.roles as collection version: <unsharded>
+2020-03-21T21:53:30.762+0100 I  SHARDING [initandlisten] Marking collection admin.system.version as collection version: <unsharded>
+2020-03-21T21:53:30.764+0100 I  SHARDING [initandlisten] Marking collection local.startup_log as collection version: <unsharded>
+2020-03-21T21:53:30.764+0100 I  FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/home/radnar/PROGRAMOWANIE/Preclarka/preclarka/server/data/db/diagnostic.data'
+2020-03-21T21:53:30.765+0100 I  SHARDING [LogicalSessionCacheRefresh] Marking collection config.system.sessions as collection version: <unsharded>
+2020-03-21T21:53:30.765+0100 I  SHARDING [LogicalSessionCacheReap] Marking collection config.transactions as collection version: <unsharded>
+2020-03-21T21:53:30.766+0100 I  NETWORK  [listener] Listening on /tmp/mongodb-27017.sock
+2020-03-21T21:53:30.766+0100 I  NETWORK  [listener] Listening on 127.0.0.1
+2020-03-21T21:53:30.766+0100 I  NETWORK  [listener] waiting for connections on port 27017
+2020-03-21T21:53:31.000+0100 I  SHARDING [ftdc] Marking collection local.oplog.rs as collection version: <unsharded>
+2020-03-21T21:53:31.642+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:45536 #1 (1 connection now open)
+2020-03-21T21:53:31.651+0100 I  NETWORK  [conn1] received client metadata from 127.0.0.1:45536 conn1: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T21:53:31.667+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:45538 #2 (2 connections now open)
+2020-03-21T21:53:31.669+0100 I  NETWORK  [conn2] received client metadata from 127.0.0.1:45538 conn2: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T21:53:55.518+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:45728 #3 (3 connections now open)
+2020-03-21T21:53:55.518+0100 I  NETWORK  [conn3] received client metadata from 127.0.0.1:45728 conn3: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "4.2.3" }, os: { type: "Linux", name: "Ubuntu", architecture: "x86_64", version: "16.04" } }
+2020-03-21T21:54:04.930+0100 I  NETWORK  [conn3] end connection 127.0.0.1:45728 (2 connections now open)
+2020-03-21T21:54:59.976+0100 I  NETWORK  [conn2] end connection 127.0.0.1:45538 (1 connection now open)
+2020-03-21T21:54:59.976+0100 I  NETWORK  [conn1] end connection 127.0.0.1:45536 (0 connections now open)
+2020-03-21T21:55:00.538+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:46262 #4 (1 connection now open)
+2020-03-21T21:55:00.546+0100 I  NETWORK  [conn4] received client metadata from 127.0.0.1:46262 conn4: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T21:55:00.569+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:46264 #5 (2 connections now open)
+2020-03-21T21:55:00.572+0100 I  NETWORK  [conn5] received client metadata from 127.0.0.1:46264 conn5: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T21:57:19.686+0100 I  NETWORK  [conn4] end connection 127.0.0.1:46262 (0 connections now open)
+2020-03-21T21:57:19.686+0100 I  NETWORK  [conn5] end connection 127.0.0.1:46264 (1 connection now open)
+2020-03-21T21:57:20.197+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:47424 #6 (1 connection now open)
+2020-03-21T21:57:20.213+0100 I  NETWORK  [conn6] received client metadata from 127.0.0.1:47424 conn6: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T21:57:20.230+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:47426 #7 (2 connections now open)
+2020-03-21T21:57:20.231+0100 I  NETWORK  [conn7] received client metadata from 127.0.0.1:47426 conn7: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T21:57:42.251+0100 I  NETWORK  [conn7] end connection 127.0.0.1:47426 (1 connection now open)
+2020-03-21T21:57:42.251+0100 I  NETWORK  [conn6] end connection 127.0.0.1:47424 (0 connections now open)
+2020-03-21T21:57:42.778+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:47612 #8 (1 connection now open)
+2020-03-21T21:57:42.788+0100 I  NETWORK  [conn8] received client metadata from 127.0.0.1:47612 conn8: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T21:57:42.802+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:47614 #9 (2 connections now open)
+2020-03-21T21:57:42.804+0100 I  NETWORK  [conn9] received client metadata from 127.0.0.1:47614 conn9: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T21:58:19.727+0100 I  NETWORK  [conn9] end connection 127.0.0.1:47614 (1 connection now open)
+2020-03-21T21:58:19.727+0100 I  NETWORK  [conn8] end connection 127.0.0.1:47612 (0 connections now open)
+2020-03-21T21:58:20.629+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:47924 #10 (1 connection now open)
+2020-03-21T21:58:20.639+0100 I  NETWORK  [conn10] received client metadata from 127.0.0.1:47924 conn10: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T21:58:20.654+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:47926 #11 (2 connections now open)
+2020-03-21T21:58:20.655+0100 I  NETWORK  [conn11] received client metadata from 127.0.0.1:47926 conn11: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T21:59:03.006+0100 I  NETWORK  [conn11] end connection 127.0.0.1:47926 (1 connection now open)
+2020-03-21T21:59:03.006+0100 I  NETWORK  [conn10] end connection 127.0.0.1:47924 (0 connections now open)
+2020-03-21T21:59:03.527+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:48276 #12 (1 connection now open)
+2020-03-21T21:59:03.540+0100 I  NETWORK  [conn12] received client metadata from 127.0.0.1:48276 conn12: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T21:59:03.565+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:48278 #13 (2 connections now open)
+2020-03-21T21:59:03.565+0100 I  NETWORK  [conn13] received client metadata from 127.0.0.1:48278 conn13: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T22:01:55.924+0100 I  NETWORK  [conn13] end connection 127.0.0.1:48278 (1 connection now open)
+2020-03-21T22:01:55.924+0100 I  NETWORK  [conn12] end connection 127.0.0.1:48276 (0 connections now open)
+2020-03-21T22:12:01.707+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:54622 #14 (1 connection now open)
+2020-03-21T22:12:01.707+0100 I  NETWORK  [conn14] received client metadata from 127.0.0.1:54622 conn14: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "4.2.3" }, os: { type: "Linux", name: "Ubuntu", architecture: "x86_64", version: "16.04" } }
+2020-03-21T22:12:31.256+0100 I  SHARDING [conn14] Marking collection preclarkadb.users as collection version: <unsharded>
+2020-03-21T22:18:40.739+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:57884 #15 (2 connections now open)
+2020-03-21T22:18:40.748+0100 I  NETWORK  [conn15] received client metadata from 127.0.0.1:57884 conn15: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T22:18:40.769+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:57886 #16 (3 connections now open)
+2020-03-21T22:18:40.772+0100 I  NETWORK  [conn16] received client metadata from 127.0.0.1:57886 conn16: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T22:18:53.642+0100 I  NETWORK  [conn16] end connection 127.0.0.1:57886 (2 connections now open)
+2020-03-21T22:18:53.642+0100 I  NETWORK  [conn15] end connection 127.0.0.1:57884 (1 connection now open)
+2020-03-21T22:20:54.397+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:58994 #17 (2 connections now open)
+2020-03-21T22:20:54.411+0100 I  NETWORK  [conn17] received client metadata from 127.0.0.1:58994 conn17: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T22:20:54.433+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:58996 #18 (3 connections now open)
+2020-03-21T22:20:54.434+0100 I  NETWORK  [conn18] received client metadata from 127.0.0.1:58996 conn18: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T22:21:28.232+0100 I  NETWORK  [conn18] end connection 127.0.0.1:58996 (2 connections now open)
+2020-03-21T22:21:28.232+0100 I  NETWORK  [conn17] end connection 127.0.0.1:58994 (1 connection now open)
+2020-03-21T22:21:28.674+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:59286 #19 (2 connections now open)
+2020-03-21T22:21:28.681+0100 I  NETWORK  [conn19] received client metadata from 127.0.0.1:59286 conn19: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T22:21:28.696+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:59288 #20 (3 connections now open)
+2020-03-21T22:21:28.698+0100 I  NETWORK  [conn20] received client metadata from 127.0.0.1:59288 conn20: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-21T22:21:43.560+0100 I  NETWORK  [conn19] end connection 127.0.0.1:59286 (1 connection now open)
+2020-03-21T22:21:43.560+0100 I  NETWORK  [conn20] end connection 127.0.0.1:59288 (2 connections now open)
+2020-03-21T22:21:49.080+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:59456 #21 (2 connections now open)
+2020-03-21T22:21:49.080+0100 I  NETWORK  [conn21] received client metadata from 127.0.0.1:59456 conn21: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "4.2.3" }, os: { type: "Linux", name: "Ubuntu", architecture: "x86_64", version: "16.04" } }
+2020-03-21T22:21:49.087+0100 I  COMMAND  [conn21] terminating, shutdown command received { shutdown: 1.0, lsid: { id: UUID("269efd2d-cd4d-4462-967b-b7ba259cd330") }, $db: "admin" }
+2020-03-21T22:21:49.088+0100 I  NETWORK  [conn21] shutdown: going to close listening sockets...
+2020-03-21T22:21:49.089+0100 I  NETWORK  [listener] removing socket file: /tmp/mongodb-27017.sock
+2020-03-21T22:21:49.090+0100 I  -        [conn21] Stopping further Flow Control ticket acquisitions.
+2020-03-21T22:21:49.092+0100 I  CONTROL  [conn21] Shutting down free monitoring
+2020-03-21T22:21:49.092+0100 I  FTDC     [conn21] Shutting down full-time diagnostic data capture
+2020-03-21T22:21:49.098+0100 I  STORAGE  [conn21] Deregistering all the collections
+2020-03-21T22:21:49.098+0100 I  STORAGE  [conn21] Timestamp monitor shutting down
+2020-03-21T22:21:49.098+0100 I  STORAGE  [conn21] WiredTigerKVEngine shutting down
+2020-03-21T22:21:49.098+0100 I  STORAGE  [conn21] Shutting down session sweeper thread
+2020-03-21T22:21:49.098+0100 I  STORAGE  [conn21] Finished shutting down session sweeper thread
+2020-03-21T22:21:49.098+0100 I  STORAGE  [conn21] Shutting down journal flusher thread
+2020-03-21T22:21:49.115+0100 I  STORAGE  [conn21] Finished shutting down journal flusher thread
+2020-03-21T22:21:49.115+0100 I  STORAGE  [conn21] Shutting down checkpoint thread
+2020-03-21T22:21:49.115+0100 I  STORAGE  [conn21] Finished shutting down checkpoint thread
+2020-03-21T22:21:49.139+0100 I  STORAGE  [conn21] shutdown: removing fs lock...
+2020-03-21T22:21:49.139+0100 I  CONTROL  [conn21] now exiting
+2020-03-21T22:21:49.139+0100 I  CONTROL  [conn21] shutting down with code:0
