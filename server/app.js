@@ -5,6 +5,7 @@ var chalk = require('chalk')
 var cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const logger = require('./modules/logger/logger');
+const config = require('./config/config')
 
 var app = express();
 
@@ -19,19 +20,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 /**
  *    Database access initiation
  */
+const dbPath = config.LOCAL_DB_PATH //'mongodb://localhost:27017/preclarkadb'
+
 mongoose
-   .connect('mongodb://localhost:27017/preclarkadb', {
+   .connect(dbPath, {
       useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true
    })
    .then(() => {
       logger.status('MongoDB connection', 'ok');
-      logger.success('Successfully connected to', chalk.underline('baza danych'));
+      logger.success('Successfully connected to', chalk.underline(dbPath));
    })
    .catch((err) => {
       logger.status('MongoDB connection', 'error');
-      logger.error('Connection error', 'brak polaczenia');
+      logger.error('Connection error', dbPath);
       console.log(err)
    });
    mongoose.set('debug', true);
