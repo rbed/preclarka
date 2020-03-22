@@ -78,3 +78,8 @@
 2020-03-21T22:29:29.988+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:35066 #10 (2 connections now open)
 2020-03-21T22:29:29.996+0100 I  NETWORK  [conn10] received client metadata from 127.0.0.1:35066 conn10: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
 2020-03-21T22:35:30.005+0100 I  NETWORK  [conn10] end connection 127.0.0.1:35066 (1 connection now open)
+2020-03-22T12:23:00.264+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:43070 #11 (2 connections now open)
+2020-03-22T12:23:00.273+0100 I  NETWORK  [conn11] received client metadata from 127.0.0.1:43070 conn11: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "4.2.3" }, os: { type: "Linux", name: "Ubuntu", architecture: "x86_64", version: "16.04" } }
+2020-03-22T13:07:04.439+0100 I  NETWORK  [listener] connection accepted from 127.0.0.1:36362 #12 (3 connections now open)
+2020-03-22T13:07:04.447+0100 I  NETWORK  [conn12] received client metadata from 127.0.0.1:36362 conn12: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-22T13:10:12.182+0100 I  NETWORK  [conn11] end connection 127.0.0.1:43070 (2 connections now open)
