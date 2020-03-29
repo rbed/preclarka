@@ -24,6 +24,7 @@
   "homepage": "https://github.com/rbed/preclarka#readme",
   "dependencies": {
     "concurrently": "^4.1.2",
+    "express-mongoose-generator": "^3.0.3",
     "nodemon": "^1.19.4"
   }
 }

@@ -7,12 +7,28 @@ const { TOKEN_SECRET_JWT } = require('../config/config');
 const {Schema} = mongoose
 
 const UsersSchema = new Schema({
-    name: {type: String, required: true},
-    lastname: {type: String, required: true},
+    name: {
+       type: String, 
+       required: true
+   },
+    lastname: {
+       type: String, 
+       required: true
+   },
     email: {
-       type: String, required: true, unique: true, lowercase: true, match:[/\S+@\S+.\S+/, "is invalid"]},
+       type: String, 
+       required: true, 
+       unique: true, 
+       lowercase: true, 
+       match:[/\S+@\S+.\S+/, "is invalid"]
+   },
     hash: String,
-    salt: String
+    salt: String,
+    created: {
+       type: Date, 
+       default: Date.now 
+   },
+   isAdmin: {type: Boolean, default: false}
 }) 
 
 UsersSchema.methods.setPassword = function(password) {

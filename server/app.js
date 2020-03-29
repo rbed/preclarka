@@ -42,12 +42,38 @@ mongoose
 
 // import modeli
 require('./models/Users')
+require('./models/Seos')
+require('./models/CopywritersContract')
+require('./models/CopywritersInvoice')
+require('./models/Addresses')
+require('./models/Orders')
+require('./models/Articles')
+require('./models/Contracts')
+require('./models/Invoices')
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var addressesRouter = require('./routes/addresses');
+var ordersRouter = require('./routes/orders');
+var articlesRouter = require('./routes/articles');
+var contractsRouter = require('./routes/contracts');
+var copywritersCRouter = require('./routes/copywritersContract');
+var copywritersIRouter = require('./routes/copywritersInvoice');
+var invoicesRouter = require('./routes/invoices');
+var seosRouter = require('./routes/seos');
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/addresses', addressesRouter);
+app.use('/orders', ordersRouter);
+app.use('/articles', articlesRouter);
+app.use('/contracts', contractsRouter);
+app.use('/copywriters-contract', copywritersCRouter);
+app.use('/copywriters-invoice', copywritersIRouter);
+app.use('/invoices', invoicesRouter);
+app.use('/seos', seosRouter);
 
 
 // catch 404 and forward to error handler
