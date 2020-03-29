@@ -1,6 +1,14 @@
 var express = require("express");
 var router = express.Router();
 
+/**
+* obsługa błędów HTTP zewnetrzna biblioteką
+*  -- pakiet opcjonalny ale moze będzie Ci łatwiej pracowac
+*  -- dokumentacja biblioteki
+*    -- https://www.npmjs.com/package/http-status-codes
+*/
+//var HttpStatus = require('http-status-codes');
+
 const mongoose = require("mongoose");
 const Contracts = mongoose.model("Contracts");
 
@@ -8,6 +16,8 @@ const Contracts = mongoose.model("Contracts");
 router.get("/", async function(req, res, next) {
   try {
     var result = await Contracts.find().exec();
+    // FIXME: res.status(200), 500 => InternalServerError
+    // return res.status(HttpStatus.OK ).json({ info: result });
     return res.status(500).json({ info: result });
   } catch (err) {
     return res.status(500).json({ info: err });
@@ -33,6 +43,8 @@ router.get("/:id", async function(req, res, next) {
     if (id) {
       try {
         var result = await Contracts.find({ _id: id }).exec();
+        // FIXME: res.status(200), 500 => InternalServerError
+        // return res.status(HttpStatus.OK ).json({ info: result });
         return res.status(500).json({ info: result });
       } catch (err) {
         return res.status(500).json({ info: err });
@@ -45,7 +57,7 @@ router.get("/:id", async function(req, res, next) {
 router.post("/", async function(req, res, next) {
   var contract = req.body.contract;
   if (!contract) {
-    return res.status(402).send("cokolwiek");
+    return res.status(400).send("cokolwiek");
   }
   try {
     var Contract = new Contracts(contract);
@@ -64,7 +76,7 @@ router.put("/", async function(req, res, next) {
   var contract = req.body.contract; // <<<<<<<<<<< params bo odbieram dane
 //   console.log(contract);
   if (!contract) {
-    return res.status(402).send("brak danych");
+    return res.status(400).send("brak danych");
   }
   try {
     var result = await Contracts.findByIdAndUpdate(contract._id, contract, doc => {
@@ -85,7 +97,7 @@ router.delete("/:id", async function(req, res, next) {
   // console.log(req);
   var id = req.params.id; // <<<<<<<<<<< params bo odbieram dane
   if (!id) {
-    return res.status(402).send("brak id");
+    return res.status(400).send("brak id");
   }
   try {
     var result = await Contracts.deleteOne({ _id: id }).exec();
