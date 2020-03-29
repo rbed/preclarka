@@ -1,6 +1,14 @@
 var express = require("express");
 var router = express.Router();
 
+/**
+* obsługa błędów HTTP zewnetrzna biblioteką
+*  -- pakiet opcjonalny ale moze będzie Ci łatwiej pracowac
+*  -- dokumentacja biblioteki
+*    -- https://www.npmjs.com/package/http-status-codes
+*/
+//var HttpStatus = require('http-status-codes');
+
 const mongoose = require("mongoose");
 const CopywritersContract = mongoose.model("CopywritersContract");
 
@@ -8,6 +16,8 @@ const CopywritersContract = mongoose.model("CopywritersContract");
 router.get("/", async function(req, res, next) {
   try {
     var result = await CopywritersContract.find().exec();
+    // FIXME: res.status(200), 500 => InternalServerError
+    // return res.status(HttpStatus.OK ).json({ info: result });
     return res.status(500).json({ info: result });
   } catch (err) {
     return res.status(500).json({ info: err });
@@ -19,15 +29,18 @@ router.get("/", async function(req, res, next) {
 // Get single copywriter 
 router.get("/:id", async function(req, res, next) {
   var id = req.params.id;
+  
   console.log(id);
+  
   if (id) {
-  try {
-    var result = await CopywritersContract.find({_id : id}).exec();
-    console.log(result);
-    return res.status(200).json({ info: result });
-  } catch (err) {
-    return res.status(500).json({ info: err });
-  }}
+    try {
+      var result = await CopywritersContract.find({_id : id}).exec();
+      console.log(result);
+      return res.status(200).json({ info: result });
+    } catch (err) {
+      return res.status(500).json({ info: err });
+    }
+  }
 
 });
 
@@ -35,9 +48,11 @@ router.get("/:id", async function(req, res, next) {
 // Dodawanie copywriterow
 router.post("/", async function(req, res, next) {
   var copywriter = req.body.copywriter;
+  
   if (!copywriter) {
-    return res.status(402).send("cokolwiek");
+    return res.status(400).send("cokolwiek");
   }
+  
   try {
     var Copywriter = new CopywritersContract(copywriter);
     console.log(copywriter);
@@ -54,8 +69,9 @@ router.post("/", async function(req, res, next) {
 router.put("/", async function(req, res, next) {
   // console.log(req);
   var copywriter = req.body.copywriter; // <<<<<<<<<<< params bo odbieram dane
+  
   if (!copywriter) {
-    return res.status(402).send("brak danych");
+    return res.status(400).send("brak danych");
   }
   try {
     var result = await CopywritersContract.findByIdAndUpdate(copywriter._id, copywriter, doc => {
@@ -75,9 +91,11 @@ router.put("/", async function(req, res, next) {
 router.delete("/:id", async function(req, res, next) {
   // console.log(req);
   var id = req.params.id; // <<<<<<<<<<< params bo odbieram dane
+  
   if (!id) {
     return res.status(402).send("brak id");
   }
+  
   try {
     var result = await CopywritersContract.deleteOne({ _id: id }).exec();
     console.log(res.status(200).json(result));
