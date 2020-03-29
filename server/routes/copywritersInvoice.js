@@ -39,6 +39,7 @@ router.get("/:id", async function(req, res, next) {
       return res.status(500).json({ info: err });
     }
   }
+  // FIXME: 
   // if not to co?
   //return res.status(500).send('cos poszło nie tak xD')
 
