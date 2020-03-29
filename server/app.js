@@ -53,6 +53,11 @@ require('./models/Invoices')
 
 
 var indexRouter = require('./routes/index');
+/*
+* Wszystkie sciezki ponizej powinny pojsc do ./routes/api/... 
+* Dla zachowania porządku w kodzieka obsługująca API powinna być zaimplementowana jako nadrzędna, obsługująca reszte funkcjonalności
+*/
+// app.use('/API', require('./routes/api/')) // tyle wystarczy, jeśli nic nie robimy ze zmiennymi Routingu to nie ma potrzeby ich pobierac do zmiennej ;)
 var usersRouter = require('./routes/users');
 var addressesRouter = require('./routes/addresses');
 var ordersRouter = require('./routes/orders');
