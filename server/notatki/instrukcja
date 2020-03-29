@@ -1,0 +1,183 @@
+STRUKTURA KATALOGÓW
+1. w kat / aplikacji npm init
+2. w /packages.js dodać 
+  "dependencies": {
+      "concurrently": "^4.1.2",
+      "nodemon": "^1.19.4"
+   }
+3. w / npm install
+4. stworzenie katalogów /serwer i /client
+5. w /server npm init
+6. w /server/packages.js dodanie
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^2.4.2",
+    "cookie-parser": "^1.4.4",
+    "cores": "^0.8.5",
+    "crypto": "^1.0.1",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "errorhandler": "^1.5.1",
+    "express": "~4.16.0",
+    "express-session": "^1.17.0",
+    "figures": "^3.1.0",
+    "http-errors": "~1.6.2",
+    "http-status-codes": "^1.4.0",
+    "is-empty": "^1.2.0",
+    "jade": "^1.11.0",
+    "jsonwebtoken": "^8.5.1",
+    "log-symbols": "^3.0.0",
+    "mongodb": "^3.4.1",
+    "mongoose": "^5.8.3",
+    "mongoose-autopopulate": "^0.9.1",
+    "mongoose-unique-validator": "^2.0.3",
+    "morgan": "~1.9.0",
+    "nodemon": "^1.19.4",
+    "ora": "^3.4.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "validator": "^11.1.0"
+  }
+7. w /server npm install
+8. stworzyć katalog dla bazy danych mk /server/data/bd ----------DB
+9. w /package.js zdefiniować start i stop
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "cd server  && mongod --dbpath data/db/ --fork --logpath ./data/db_start.log",
+    "start": "cd server && npm start",
+    "stop": "cd server && mongo admin --eval 'db.shutdownServer()'  && killall mongod"
+10. terminal: mongo
+11. > use nazwa-bazy-danych 
+12. db.new_collection.insert({ some_key: "some_value" })
+13. ustawienie bazy danych. W /server/app.js dodać
+  mongoose
+   .connect('mongodb://localhost:27017/preclarkadb'...
+14. w /server/models tworzymy plik Users.js (model usera)
+15. w Users.js tworzymy schemat danych "UsersSchema"
+16. na końcu Users.js rejestrujemy model 
+  module.exports = mongoose.model('Users', UsersSchema); 
+17. w app.js import modeli: require('./models/Users')
+  (wkleić nad: var indexRouter = require('./routes/index');)
+18. w /server/routes/users.js definiowanie odpowidzi na zapytania
+
+MODELE I mongo
+kończymy definiować reszte modeli (na razie pola, bez metod)
+w routes/users zmieniamy funkcje na asynchroniczne, zeby zwracał wyniki
+w routes/users dodajemy metody get, post, put, delete
+
+
+
+PYTANIA
+- czy moja baza danych ma jakiś login albo hasło? >> moe (mongodb atlas)
+- dlaczego nie są zwracane dane z bazy danych (users) kiedy korzystam z aplikacji a są zwracane kiedy sprawdzam bezpośrednio w bazie danych?
+>>> chodizł o o asynchronicznosc
+- próba usunięcia nazwy użytkownika z Seowca rzyga błędem
+- w aplikacji Rafał ma usera i employee i oni też mają np dwa adresy email
+
+TODO
+- rest api dla wszystkich modeli
+- wtyczka do todo
+
+
+
+
+ROBOCZE
+{ "copywriter" : {
+	"dataUrodzenia": "22-12-2020",
+    "imieMatki": "Genowefa",
+    "imieOjca": "Zenon",
+    "nrDowodu": "AEZ345678",
+    "pesel": "8745526743",
+    "nip": "32rewfwf",
+    "kwota1000": "120",
+    "user": "5e7e2242deecd11d85c76b79"
+    }
+    }
+
+  
+  {"address" : 
+{
+   "ulica": "ulica5",
+   "nrDomu": "5",
+   "nrLokalu": "5", 
+   "miasto": "Kraków", 
+   "kodPocz": "55-555",
+   "kraj" : "Poland"
+}}
+
+
+{"user" : 
+{
+   "name": "user5",
+   "lastname": "lastname5",
+   "email": "5@5.pl"
+}}
+
+
+{ "copywriter" : {
+	"dataUrodzenia": "2020-03-27T17:53:50.552Z",
+    "imieMatki": "Genowefa",
+    "imieOjca": "Zenon",
+    "nrDowodu": "AEZ345678",
+    "pesel": "8745526743",
+    "nip": "32rewfwf",
+    "kwota1000": "120",
+    "user": "5e7f67a17b5c4a7b63226de7",
+    "adres": "5e7e3d13dce3d8356433589f",
+    "adresKoresp": "5e7e3d13dce3d8356433589f"
+    }
+    }
+
+
+{ "order": {
+    "temat": "temat1",
+    "ileArt": 15,
+    "dlugoscArt": 5000,
+    "wartosc": 0,
+    "komentarzOdrzucenia": ""
+    }}
+
+przykladowy order
+{
+    "_id": "5e7e8898d257466d416b62e3",
+    "temat": "temat3",
+    "ileArt": 55,
+    "dlugoscArt": 10000,
+    "wartosc": 0,
+    "komentarzOdrzucenia": "",
+    "__v": 0
+}
+
+
+{
+  "article" : {
+    "tytul": "Tytuł artykułu 1",
+    "tresc": "testowy artykul",
+	"minDlugosc": 800,
+	"rzeczDlugosc": 1000,
+	"zamowienie": "5e7e8898d257466d416b62e3"
+  }}
+
+  przykładowy article
+  {
+    "_id": "5e7e8d696cd653718f61ca43",
+    "tytul": "tytuł artykułu 1",
+    "tresc": "testowy artykul",
+    "minDlugosc": 800,
+    "rzeczDlugosc": 1000,
+    "zamowienie": "5e7e8898d257466d416b62e3",
+    "__v": 0
+}
+
+
+
+{
+"contract":
+{
+"numer": "32ewf43",
+"path": "/sdfsdf/sagfsd/dsgsa",
+"fileName" : "umowa1.pdf",
+"user" :  "5e7e3daedce3d835643358a4"
+
+}}

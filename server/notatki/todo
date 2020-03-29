@@ -1,0 +1,19 @@
+pobieranie kazdego typu modelu w formie listy
+pobieranie kazdego typu modelu pojedynczo
+dodanie  kazdego typu modelu
+edycja każdego typu modelu
+usuwanie kazdego typu modelu
+
+Addresses x
+Articles x
+Contracts x
+CopywritersConstract x
+CopywritersInvoice x
+Invoices - x
+Orders - x
+Seos - x
+Users - x
+
+Pobieranie pojedynczego rozkminione na /routes/contracts
+
+zrobienie controlerra
