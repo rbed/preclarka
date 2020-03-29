@@ -32,6 +32,7 @@ router.get("/:id", async function(req, res, next) {
   
   console.log(id);
   
+  //pozytywny scenariusz
   if (id) {
     try {
       var result = await CopywritersContract.find({_id : id}).exec();
@@ -41,6 +42,8 @@ router.get("/:id", async function(req, res, next) {
       return res.status(500).json({ info: err });
     }
   }
+  // if not to co?
+  //return res.status(500).send('cos poszło nie tak xD')
 
 });
 
