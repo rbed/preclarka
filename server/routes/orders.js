@@ -1,6 +1,14 @@
 var express = require("express");
 var router = express.Router();
 
+/**
+* obsługa błędów HTTP zewnetrzna biblioteką
+*  -- pakiet opcjonalny ale moze będzie Ci łatwiej pracowac
+*  -- dokumentacja biblioteki
+*    -- https://www.npmjs.com/package/http-status-codes
+*/
+//var HttpStatus = require('http-status-codes');
+
 const mongoose = require("mongoose");
 const Orders = mongoose.model("Orders");
 
@@ -8,6 +16,8 @@ const Orders = mongoose.model("Orders");
 router.get("/", async function(req, res, next) {
   try {
     var result = await Orders.find().exec();
+    // FIXME: res.status(200), 500 => InternalServerError
+    // return res.status(HttpStatus.OK ).json({ info: result });
     return res.status(500).json({ info: result });
   } catch (err) {
     return res.status(500).json({ info: err });
@@ -32,8 +42,9 @@ router.get("/:id", async function(req, res, next) {
 router.post("/", async function(req, res, next) {
   // console.log(req);
   var order = req.body.order;
+  
   if (!order) {
-    return res.status(402).send("brak treści zamowienia");
+    return res.status(400).send("brak treści zamowienia");
   }
   try {
     var Order = new Orders(order);
@@ -51,8 +62,9 @@ router.post("/", async function(req, res, next) {
 router.put("/", async function(req, res, next) {
     // console.log(req);
     var order = req.body.order; // <<<<<<<<<<< params bo odbieram dane
+    
     if (!order) {
-      return res.status(402).send("brak danych");
+      return res.status(400).send("brak danych");
     }
     try {
       var result = await Orders.findByIdAndUpdate(order._id, order, doc => {
@@ -72,7 +84,7 @@ router.delete("/:id", async function(req, res, next) {
     // console.log(req);
     var id = req.params.id; // <<<<<<<<<<< params bo odbieram dane
     if (!id) {
-      return res.status(402).send("brak id");
+      return res.status(400).send("brak id");
     }
     try {
       var result = await Orders.deleteOne({ _id: id }).exec();
