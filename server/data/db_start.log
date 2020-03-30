@@ -133,3 +133,200 @@
 2020-03-30T20:12:23.933+0200 I  NETWORK  [conn28] received client metadata from 127.0.0.1:60158 conn28: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
 2020-03-30T20:12:23.935+0200 I  NETWORK  [conn29] received client metadata from 127.0.0.1:60160 conn29: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
 2020-03-30T20:12:23.937+0200 I  NETWORK  [conn30] received client metadata from 127.0.0.1:60162 conn30: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:18:23.983+0200 I  NETWORK  [conn28] end connection 127.0.0.1:60158 (4 connections now open)
+2020-03-30T20:18:23.987+0200 I  NETWORK  [conn30] end connection 127.0.0.1:60162 (3 connections now open)
+2020-03-30T20:18:23.990+0200 I  NETWORK  [conn27] end connection 127.0.0.1:60156 (2 connections now open)
+2020-03-30T20:18:23.992+0200 I  NETWORK  [conn29] end connection 127.0.0.1:60160 (1 connection now open)
+2020-03-30T20:21:24.720+0200 I  NETWORK  [conn26] end connection 127.0.0.1:60154 (0 connections now open)
+2020-03-30T20:21:26.285+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60370 #31 (1 connection now open)
+2020-03-30T20:21:26.305+0200 I  NETWORK  [conn31] received client metadata from 127.0.0.1:60370 conn31: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:21:26.354+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60372 #32 (2 connections now open)
+2020-03-30T20:21:26.354+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60374 #33 (3 connections now open)
+2020-03-30T20:21:26.355+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60376 #34 (4 connections now open)
+2020-03-30T20:21:26.355+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60378 #35 (5 connections now open)
+2020-03-30T20:21:26.356+0200 I  NETWORK  [conn32] received client metadata from 127.0.0.1:60372 conn32: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:21:26.357+0200 I  NETWORK  [conn33] received client metadata from 127.0.0.1:60374 conn33: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:21:26.358+0200 I  NETWORK  [conn34] received client metadata from 127.0.0.1:60376 conn34: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:21:26.360+0200 I  NETWORK  [conn35] received client metadata from 127.0.0.1:60378 conn35: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:25:22.785+0200 I  NETWORK  [conn34] end connection 127.0.0.1:60376 (3 connections now open)
+2020-03-30T20:25:22.785+0200 I  NETWORK  [conn33] end connection 127.0.0.1:60374 (1 connection now open)
+2020-03-30T20:25:22.786+0200 I  NETWORK  [conn32] end connection 127.0.0.1:60372 (0 connections now open)
+2020-03-30T20:25:22.785+0200 I  NETWORK  [conn35] end connection 127.0.0.1:60378 (4 connections now open)
+2020-03-30T20:25:22.785+0200 I  NETWORK  [conn31] end connection 127.0.0.1:60370 (2 connections now open)
+2020-03-30T20:25:23.334+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60432 #36 (1 connection now open)
+2020-03-30T20:25:23.344+0200 I  NETWORK  [conn36] received client metadata from 127.0.0.1:60432 conn36: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:25:23.370+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60434 #37 (2 connections now open)
+2020-03-30T20:25:23.370+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60436 #38 (3 connections now open)
+2020-03-30T20:25:23.370+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60438 #39 (4 connections now open)
+2020-03-30T20:25:23.370+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60440 #40 (5 connections now open)
+2020-03-30T20:25:23.371+0200 I  NETWORK  [conn37] received client metadata from 127.0.0.1:60434 conn37: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:25:23.372+0200 I  NETWORK  [conn38] received client metadata from 127.0.0.1:60436 conn38: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:25:23.372+0200 I  NETWORK  [conn39] received client metadata from 127.0.0.1:60438 conn39: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:25:23.373+0200 I  NETWORK  [conn40] received client metadata from 127.0.0.1:60440 conn40: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:25:29.610+0200 I  NETWORK  [conn38] end connection 127.0.0.1:60436 (4 connections now open)
+2020-03-30T20:25:29.610+0200 I  NETWORK  [conn37] end connection 127.0.0.1:60434 (2 connections now open)
+2020-03-30T20:25:29.610+0200 I  NETWORK  [conn39] end connection 127.0.0.1:60438 (1 connection now open)
+2020-03-30T20:25:29.610+0200 I  NETWORK  [conn40] end connection 127.0.0.1:60440 (0 connections now open)
+2020-03-30T20:25:29.610+0200 I  NETWORK  [conn36] end connection 127.0.0.1:60432 (3 connections now open)
+2020-03-30T20:25:30.215+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60442 #41 (1 connection now open)
+2020-03-30T20:25:30.225+0200 I  NETWORK  [conn41] received client metadata from 127.0.0.1:60442 conn41: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:25:30.249+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60444 #42 (2 connections now open)
+2020-03-30T20:25:30.249+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60446 #43 (3 connections now open)
+2020-03-30T20:25:30.250+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60448 #44 (4 connections now open)
+2020-03-30T20:25:30.250+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60450 #45 (5 connections now open)
+2020-03-30T20:25:30.251+0200 I  NETWORK  [conn42] received client metadata from 127.0.0.1:60444 conn42: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:25:30.252+0200 I  NETWORK  [conn43] received client metadata from 127.0.0.1:60446 conn43: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:25:30.253+0200 I  NETWORK  [conn44] received client metadata from 127.0.0.1:60448 conn44: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:25:30.254+0200 I  NETWORK  [conn45] received client metadata from 127.0.0.1:60450 conn45: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:26:25.629+0200 I  NETWORK  [conn45] end connection 127.0.0.1:60450 (4 connections now open)
+2020-03-30T20:26:25.629+0200 I  NETWORK  [conn44] end connection 127.0.0.1:60448 (3 connections now open)
+2020-03-30T20:26:25.629+0200 I  NETWORK  [conn41] end connection 127.0.0.1:60442 (2 connections now open)
+2020-03-30T20:26:25.629+0200 I  NETWORK  [conn43] end connection 127.0.0.1:60446 (1 connection now open)
+2020-03-30T20:26:25.629+0200 I  NETWORK  [conn42] end connection 127.0.0.1:60444 (0 connections now open)
+2020-03-30T20:26:26.501+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60464 #46 (1 connection now open)
+2020-03-30T20:26:26.525+0200 I  NETWORK  [conn46] received client metadata from 127.0.0.1:60464 conn46: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:26:26.594+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60466 #47 (2 connections now open)
+2020-03-30T20:26:26.595+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60468 #48 (3 connections now open)
+2020-03-30T20:26:26.599+0200 I  NETWORK  [conn47] received client metadata from 127.0.0.1:60466 conn47: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:26:26.600+0200 I  NETWORK  [conn48] received client metadata from 127.0.0.1:60468 conn48: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:26:26.603+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60470 #49 (4 connections now open)
+2020-03-30T20:26:26.603+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60472 #50 (5 connections now open)
+2020-03-30T20:26:26.603+0200 I  NETWORK  [conn49] received client metadata from 127.0.0.1:60470 conn49: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:26:26.604+0200 I  NETWORK  [conn50] received client metadata from 127.0.0.1:60472 conn50: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:27:05.412+0200 I  NETWORK  [conn50] end connection 127.0.0.1:60472 (3 connections now open)
+2020-03-30T20:27:05.412+0200 I  NETWORK  [conn49] end connection 127.0.0.1:60470 (4 connections now open)
+2020-03-30T20:27:05.412+0200 I  NETWORK  [conn48] end connection 127.0.0.1:60468 (2 connections now open)
+2020-03-30T20:27:05.412+0200 I  NETWORK  [conn47] end connection 127.0.0.1:60466 (1 connection now open)
+2020-03-30T20:27:05.413+0200 I  NETWORK  [conn46] end connection 127.0.0.1:60464 (0 connections now open)
+2020-03-30T20:27:06.118+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60482 #51 (1 connection now open)
+2020-03-30T20:27:06.131+0200 I  NETWORK  [conn51] received client metadata from 127.0.0.1:60482 conn51: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:27:06.153+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60484 #52 (2 connections now open)
+2020-03-30T20:27:06.153+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60486 #53 (3 connections now open)
+2020-03-30T20:27:06.153+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60488 #54 (4 connections now open)
+2020-03-30T20:27:06.153+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60490 #55 (5 connections now open)
+2020-03-30T20:27:06.154+0200 I  NETWORK  [conn52] received client metadata from 127.0.0.1:60484 conn52: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:27:06.155+0200 I  NETWORK  [conn53] received client metadata from 127.0.0.1:60486 conn53: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:27:06.156+0200 I  NETWORK  [conn54] received client metadata from 127.0.0.1:60488 conn54: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:27:06.156+0200 I  NETWORK  [conn55] received client metadata from 127.0.0.1:60490 conn55: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:27:33.013+0200 I  NETWORK  [conn55] end connection 127.0.0.1:60490 (4 connections now open)
+2020-03-30T20:27:33.013+0200 I  NETWORK  [conn54] end connection 127.0.0.1:60488 (2 connections now open)
+2020-03-30T20:27:33.013+0200 I  NETWORK  [conn53] end connection 127.0.0.1:60486 (1 connection now open)
+2020-03-30T20:27:33.013+0200 I  NETWORK  [conn52] end connection 127.0.0.1:60484 (0 connections now open)
+2020-03-30T20:27:33.013+0200 I  NETWORK  [conn51] end connection 127.0.0.1:60482 (3 connections now open)
+2020-03-30T20:28:12.464+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60508 #56 (1 connection now open)
+2020-03-30T20:28:12.489+0200 I  NETWORK  [conn56] received client metadata from 127.0.0.1:60508 conn56: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:28:12.543+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60510 #57 (2 connections now open)
+2020-03-30T20:28:12.543+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60512 #58 (3 connections now open)
+2020-03-30T20:28:12.543+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60514 #59 (4 connections now open)
+2020-03-30T20:28:12.543+0200 I  NETWORK  [conn57] received client metadata from 127.0.0.1:60510 conn57: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:28:12.543+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60516 #60 (5 connections now open)
+2020-03-30T20:28:12.543+0200 I  NETWORK  [conn58] received client metadata from 127.0.0.1:60512 conn58: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:28:12.544+0200 I  NETWORK  [conn59] received client metadata from 127.0.0.1:60514 conn59: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:28:12.545+0200 I  NETWORK  [conn60] received client metadata from 127.0.0.1:60516 conn60: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:30:03.646+0200 I  NETWORK  [conn60] end connection 127.0.0.1:60516 (4 connections now open)
+2020-03-30T20:30:03.646+0200 I  NETWORK  [conn59] end connection 127.0.0.1:60514 (3 connections now open)
+2020-03-30T20:30:03.647+0200 I  NETWORK  [conn58] end connection 127.0.0.1:60512 (2 connections now open)
+2020-03-30T20:30:03.647+0200 I  NETWORK  [conn57] end connection 127.0.0.1:60510 (1 connection now open)
+2020-03-30T20:30:03.647+0200 I  NETWORK  [conn56] end connection 127.0.0.1:60508 (0 connections now open)
+2020-03-30T20:30:04.276+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60534 #61 (1 connection now open)
+2020-03-30T20:30:04.287+0200 I  NETWORK  [conn61] received client metadata from 127.0.0.1:60534 conn61: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:30:04.312+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60536 #62 (2 connections now open)
+2020-03-30T20:30:04.312+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60538 #63 (3 connections now open)
+2020-03-30T20:30:04.312+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60540 #64 (4 connections now open)
+2020-03-30T20:30:04.312+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60542 #65 (5 connections now open)
+2020-03-30T20:30:04.313+0200 I  NETWORK  [conn62] received client metadata from 127.0.0.1:60536 conn62: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:30:04.314+0200 I  NETWORK  [conn63] received client metadata from 127.0.0.1:60538 conn63: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:30:04.315+0200 I  NETWORK  [conn64] received client metadata from 127.0.0.1:60540 conn64: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:30:04.317+0200 I  NETWORK  [conn65] received client metadata from 127.0.0.1:60542 conn65: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:31:00.790+0200 I  SHARDING [conn63] Marking collection preclarkadb.addresses as collection version: <unsharded>
+2020-03-30T20:31:00.906+0200 I  COMMAND  [conn63] command preclarkadb.addresses command: find { find: "addresses", filter: {}, projection: {}, returnKey: false, showRecordId: false, lsid: { id: UUID("ad35067d-c000-4a10-9692-dae5edde4ac4") }, $db: "preclarkadb" } planSummary: COLLSCAN keysExamined:0 docsExamined:6 cursorExhausted:1 numYields:1 nreturned:6 reslen:967 locks:{ ReplicationStateTransition: { acquireCount: { w: 2 } }, Global: { acquireCount: { r: 2 } }, Database: { acquireCount: { r: 2 } }, Collection: { acquireCount: { r: 2 } }, Mutex: { acquireCount: { r: 1 } } } storage:{ data: { bytesRead: 960, timeReadingMicros: 1046 }, timeWaitingMicros: { schemaLock: 1 } } protocol:op_msg 118ms
+2020-03-30T20:31:43.641+0200 I  NETWORK  [conn61] end connection 127.0.0.1:60534 (4 connections now open)
+2020-03-30T20:31:43.641+0200 I  NETWORK  [conn64] end connection 127.0.0.1:60540 (3 connections now open)
+2020-03-30T20:31:43.641+0200 I  NETWORK  [conn62] end connection 127.0.0.1:60536 (2 connections now open)
+2020-03-30T20:31:43.641+0200 I  NETWORK  [conn65] end connection 127.0.0.1:60542 (1 connection now open)
+2020-03-30T20:31:43.642+0200 I  NETWORK  [conn63] end connection 127.0.0.1:60538 (0 connections now open)
+2020-03-30T20:31:44.505+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60578 #66 (1 connection now open)
+2020-03-30T20:31:44.513+0200 I  NETWORK  [conn66] received client metadata from 127.0.0.1:60578 conn66: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:31:44.532+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60580 #67 (2 connections now open)
+2020-03-30T20:31:44.532+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60582 #68 (3 connections now open)
+2020-03-30T20:31:44.532+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60584 #69 (4 connections now open)
+2020-03-30T20:31:44.532+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60586 #70 (5 connections now open)
+2020-03-30T20:31:44.534+0200 I  NETWORK  [conn67] received client metadata from 127.0.0.1:60580 conn67: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:31:44.535+0200 I  NETWORK  [conn68] received client metadata from 127.0.0.1:60582 conn68: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:31:44.536+0200 I  NETWORK  [conn69] received client metadata from 127.0.0.1:60584 conn69: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:31:44.536+0200 I  NETWORK  [conn70] received client metadata from 127.0.0.1:60586 conn70: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:35:06.340+0200 I  NETWORK  [conn70] end connection 127.0.0.1:60586 (4 connections now open)
+2020-03-30T20:35:06.340+0200 I  NETWORK  [conn68] end connection 127.0.0.1:60582 (3 connections now open)
+2020-03-30T20:35:06.340+0200 I  NETWORK  [conn66] end connection 127.0.0.1:60578 (2 connections now open)
+2020-03-30T20:35:06.340+0200 I  NETWORK  [conn69] end connection 127.0.0.1:60584 (1 connection now open)
+2020-03-30T20:35:06.341+0200 I  NETWORK  [conn67] end connection 127.0.0.1:60580 (0 connections now open)
+2020-03-30T20:35:06.966+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60634 #71 (1 connection now open)
+2020-03-30T20:35:06.978+0200 I  NETWORK  [conn71] received client metadata from 127.0.0.1:60634 conn71: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:35:06.997+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60636 #72 (2 connections now open)
+2020-03-30T20:35:06.997+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60638 #73 (3 connections now open)
+2020-03-30T20:35:06.997+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60640 #74 (4 connections now open)
+2020-03-30T20:35:06.997+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60642 #75 (5 connections now open)
+2020-03-30T20:35:06.998+0200 I  NETWORK  [conn72] received client metadata from 127.0.0.1:60636 conn72: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:35:06.999+0200 I  NETWORK  [conn73] received client metadata from 127.0.0.1:60638 conn73: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:35:07.000+0200 I  NETWORK  [conn74] received client metadata from 127.0.0.1:60640 conn74: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:35:07.001+0200 I  NETWORK  [conn75] received client metadata from 127.0.0.1:60642 conn75: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:37:55.049+0200 I  NETWORK  [conn75] end connection 127.0.0.1:60642 (3 connections now open)
+2020-03-30T20:37:55.049+0200 I  NETWORK  [conn74] end connection 127.0.0.1:60640 (4 connections now open)
+2020-03-30T20:37:55.049+0200 I  NETWORK  [conn73] end connection 127.0.0.1:60638 (2 connections now open)
+2020-03-30T20:37:55.050+0200 I  NETWORK  [conn71] end connection 127.0.0.1:60634 (1 connection now open)
+2020-03-30T20:37:55.050+0200 I  NETWORK  [conn72] end connection 127.0.0.1:60636 (0 connections now open)
+2020-03-30T20:37:55.647+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60748 #76 (1 connection now open)
+2020-03-30T20:37:55.655+0200 I  NETWORK  [conn76] received client metadata from 127.0.0.1:60748 conn76: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:37:55.678+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60750 #77 (2 connections now open)
+2020-03-30T20:37:55.678+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60752 #78 (3 connections now open)
+2020-03-30T20:37:55.678+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60754 #79 (4 connections now open)
+2020-03-30T20:37:55.678+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60756 #80 (5 connections now open)
+2020-03-30T20:37:55.679+0200 I  NETWORK  [conn77] received client metadata from 127.0.0.1:60750 conn77: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:37:55.680+0200 I  NETWORK  [conn78] received client metadata from 127.0.0.1:60752 conn78: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:37:55.681+0200 I  NETWORK  [conn79] received client metadata from 127.0.0.1:60754 conn79: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:37:55.682+0200 I  NETWORK  [conn80] received client metadata from 127.0.0.1:60756 conn80: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:41:39.072+0200 I  NETWORK  [conn80] end connection 127.0.0.1:60756 (4 connections now open)
+2020-03-30T20:41:39.072+0200 I  NETWORK  [conn76] end connection 127.0.0.1:60748 (3 connections now open)
+2020-03-30T20:41:39.072+0200 I  NETWORK  [conn79] end connection 127.0.0.1:60754 (2 connections now open)
+2020-03-30T20:41:39.072+0200 I  NETWORK  [conn78] end connection 127.0.0.1:60752 (1 connection now open)
+2020-03-30T20:41:39.072+0200 I  NETWORK  [conn77] end connection 127.0.0.1:60750 (0 connections now open)
+2020-03-30T20:41:39.645+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60794 #81 (1 connection now open)
+2020-03-30T20:41:39.652+0200 I  NETWORK  [conn81] received client metadata from 127.0.0.1:60794 conn81: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:41:39.669+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60796 #82 (2 connections now open)
+2020-03-30T20:41:39.669+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60798 #83 (3 connections now open)
+2020-03-30T20:41:39.669+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60800 #84 (4 connections now open)
+2020-03-30T20:41:39.669+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60802 #85 (5 connections now open)
+2020-03-30T20:41:39.671+0200 I  NETWORK  [conn82] received client metadata from 127.0.0.1:60796 conn82: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:41:39.672+0200 I  NETWORK  [conn83] received client metadata from 127.0.0.1:60798 conn83: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:41:39.673+0200 I  NETWORK  [conn84] received client metadata from 127.0.0.1:60800 conn84: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:41:39.674+0200 I  NETWORK  [conn85] received client metadata from 127.0.0.1:60802 conn85: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:42:26.977+0200 I  NETWORK  [conn85] end connection 127.0.0.1:60802 (4 connections now open)
+2020-03-30T20:42:26.977+0200 I  NETWORK  [conn84] end connection 127.0.0.1:60800 (3 connections now open)
+2020-03-30T20:42:26.977+0200 I  NETWORK  [conn81] end connection 127.0.0.1:60794 (2 connections now open)
+2020-03-30T20:42:26.977+0200 I  NETWORK  [conn83] end connection 127.0.0.1:60798 (1 connection now open)
+2020-03-30T20:42:26.977+0200 I  NETWORK  [conn82] end connection 127.0.0.1:60796 (0 connections now open)
+2020-03-30T20:42:27.582+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60812 #86 (1 connection now open)
+2020-03-30T20:42:27.592+0200 I  NETWORK  [conn86] received client metadata from 127.0.0.1:60812 conn86: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:42:27.614+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60814 #87 (2 connections now open)
+2020-03-30T20:42:27.614+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60816 #88 (3 connections now open)
+2020-03-30T20:42:27.614+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60818 #89 (4 connections now open)
+2020-03-30T20:42:27.614+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60820 #90 (5 connections now open)
+2020-03-30T20:42:27.615+0200 I  NETWORK  [conn87] received client metadata from 127.0.0.1:60814 conn87: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:42:27.616+0200 I  NETWORK  [conn88] received client metadata from 127.0.0.1:60816 conn88: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:42:27.617+0200 I  NETWORK  [conn89] received client metadata from 127.0.0.1:60818 conn89: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:42:27.618+0200 I  NETWORK  [conn90] received client metadata from 127.0.0.1:60820 conn90: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:42:47.151+0200 I  NETWORK  [conn90] end connection 127.0.0.1:60820 (4 connections now open)
+2020-03-30T20:42:47.151+0200 I  NETWORK  [conn86] end connection 127.0.0.1:60812 (3 connections now open)
+2020-03-30T20:42:47.151+0200 I  NETWORK  [conn89] end connection 127.0.0.1:60818 (2 connections now open)
+2020-03-30T20:42:47.151+0200 I  NETWORK  [conn88] end connection 127.0.0.1:60816 (1 connection now open)
+2020-03-30T20:42:47.151+0200 I  NETWORK  [conn87] end connection 127.0.0.1:60814 (0 connections now open)
+2020-03-30T20:42:48.235+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60834 #91 (1 connection now open)
+2020-03-30T20:42:48.255+0200 I  NETWORK  [conn91] received client metadata from 127.0.0.1:60834 conn91: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:42:48.316+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60836 #92 (2 connections now open)
+2020-03-30T20:42:48.318+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60838 #93 (3 connections now open)
+2020-03-30T20:42:48.318+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60840 #94 (4 connections now open)
+2020-03-30T20:42:48.318+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:60842 #95 (5 connections now open)
+2020-03-30T20:42:48.322+0200 I  NETWORK  [conn92] received client metadata from 127.0.0.1:60836 conn92: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:42:48.325+0200 I  NETWORK  [conn93] received client metadata from 127.0.0.1:60838 conn93: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:42:48.329+0200 I  NETWORK  [conn94] received client metadata from 127.0.0.1:60840 conn94: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
+2020-03-30T20:42:48.331+0200 I  NETWORK  [conn95] received client metadata from 127.0.0.1:60842 conn95: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-176-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.5" }
