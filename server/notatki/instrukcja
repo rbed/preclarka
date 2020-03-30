@@ -123,9 +123,9 @@ ROBOCZE
     "pesel": "8745526743",
     "nip": "32rewfwf",
     "kwota1000": "120",
-    "user": "5e7f67a17b5c4a7b63226de7",
-    "adres": "5e7e3d13dce3d8356433589f",
-    "adresKoresp": "5e7e3d13dce3d8356433589f"
+    "user": "5e7f87172606c07c72434978",
+    "adres": "5e7f86c42606c07c72434977",
+    "adresKoresp": "5e7f86c42606c07c72434977"
     }
     }
 
@@ -180,4 +180,24 @@ przykladowy order
 "fileName" : "umowa1.pdf",
 "user" :  "5e7e3daedce3d835643358a4"
 
+}}
+
+
+{
+"copywriter":
+{
+"nazwaFirmy": "Firma1",
+"regon": "36392738324",
+"nip" : "23249229",
+"kwota1000" :  11,
+"stanKonta": 0,
+"adres": "5e7f87172606c07c72434978",
+"adresKoresp": "5e7f86c42606c07c72434977",
+"user": "5e7f86c42606c07c72434977",
+
+}}
+
+
+{"seo" : {
+  "user" : "5e80b6f9316dbe12359b7e24"
 }}

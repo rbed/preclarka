@@ -12,7 +12,7 @@ var router = express.Router();
 const mongoose = require("mongoose");
 const CopywritersInvoice = mongoose.model("CopywritersInvoice");
 
-/* GET CopywritersInvoice lsisting. - dziala*/
+/* GET CopywritersInvoice lsisting. - */
 router.get("/", async function(req, res, next) {
   try {
     var result = await CopywritersInvoice.find().exec();
@@ -24,7 +24,7 @@ router.get("/", async function(req, res, next) {
 });
 
 
-// Get single copywriter - dziala
+// Get single copywriter - 
 router.get("/:id", async function(req, res, next) {
  
   var id = req.params.id;
@@ -38,15 +38,13 @@ router.get("/:id", async function(req, res, next) {
     } catch (err) {
       return res.status(500).json({ info: err });
     }
+  } else {
+    return res.status(500).send("nie podałeś id");
   }
-  // FIXME: 
-  // if not to co?
-  //return res.status(500).send('cos poszło nie tak xD')
-
 });
 
 
-// Dodawanie copywriterow - dziala
+// Dodawanie copywriterow - 
 router.post("/", async function(req, res, next) {
   var copywriter = req.body.copywriter;
   
@@ -69,7 +67,7 @@ router.post("/", async function(req, res, next) {
 });
 
 
-// edycja copywritera - dziala
+// edycja copywritera - 
 router.put("/", async function(req, res, next) {
   // console.log(req);
   var copywriter = req.body.copywriter; // << params bo odbieram dane
@@ -93,7 +91,7 @@ router.put("/", async function(req, res, next) {
 
 
 
-//  usuwanie copywritera - dziala
+//  usuwanie copywritera - 
 router.delete("/:id", async function(req, res, next) {
   // console.log(req);
   var id = req.params.id; // <<<<<<<<<<< params bo odbieram dane

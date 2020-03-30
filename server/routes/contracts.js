@@ -12,15 +12,13 @@ var router = express.Router();
 const mongoose = require("mongoose");
 const Contracts = mongoose.model("Contracts");
 
-/* GET Contracts lsisting. - dziala */
+/* GET Contracts lsisting. -  */
 router.get("/", async function(req, res, next) {
   try {
     var result = await Contracts.find().exec();
-    // FIXME: res.status(200), 500 => InternalServerError
-    // return res.status(HttpStatus.OK ).json({ info: result });
-    return res.status(500).json({ info: result });
+    return res.status(200).json({ info: result });
   } catch (err) {
-    return res.status(500).json({ info: err });
+    return res.status(400).json({ info: err });
   }
 
   /*
@@ -36,24 +34,22 @@ router.get("/", async function(req, res, next) {
   */
 });
 
-//nie działa pobieranie pojedynczego adres
+//nie  pobieranie pojedynczego adres
 // Get single contract 
 router.get("/:id", async function(req, res, next) {
     var id = req.params.id;
     if (id) {
       try {
         var result = await Contracts.find({ _id: id }).exec();
-        // FIXME: res.status(200), 500 => InternalServerError
-        // return res.status(HttpStatus.OK ).json({ info: result });
-        return res.status(500).json({ info: result });
+        return res.status(200).json({ info: result });
       } catch (err) {
-        return res.status(500).json({ info: err });
+        return res.status(400).json({ info: err });
       }
     }
   });
 
 
-// Dodawanie contracts - działa
+// Dodawanie contracts - 
 router.post("/", async function(req, res, next) {
   var contract = req.body.contract;
   if (!contract) {
@@ -70,7 +66,7 @@ router.post("/", async function(req, res, next) {
 });
 
 
-// edycja contracts - dziala
+// edycja contracts - 
 router.put("/", async function(req, res, next) {
   // console.log(req);
   var contract = req.body.contract; // <<<<<<<<<<< params bo odbieram dane
@@ -92,7 +88,7 @@ router.put("/", async function(req, res, next) {
 
 
 
-//  usuwanie contracts - dziala
+//  usuwanie contracts - 
 router.delete("/:id", async function(req, res, next) {
   // console.log(req);
   var id = req.params.id; // <<<<<<<<<<< params bo odbieram dane
@@ -110,6 +106,6 @@ router.delete("/:id", async function(req, res, next) {
 
 
 
-// TODO: przykład todo
+// przykład todo
 
 module.exports = router;

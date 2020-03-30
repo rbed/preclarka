@@ -12,7 +12,7 @@ var router = express.Router();
 const mongoose = require("mongoose");
 const Invoices = mongoose.model("Invoices");
 
-/* GET Invoices lsisting.  - dziala*/
+/* GET Invoices lsisting.  - */
 router.get("/", async function(req, res, next) {
     try {
       var result = await Invoices.find().exec();
@@ -36,7 +36,7 @@ router.get("/", async function(req, res, next) {
     */
   });
 
-  // Get single invoice - dziala
+  // Get single invoice - 
   router.get("/:id", async function(req, res, next) {
     
     var id = req.params.id;
@@ -46,21 +46,18 @@ router.get("/", async function(req, res, next) {
         try {
           var result = await Invoices.find({_id : id}).exec();
           console.log(result);
-          // FIXME: res.status(200), 500 => InternalServerError
-          // return res.status(HttpStatus.OK ).json({ info: result });
-          return res.status(500).json({ info: result });
+          return res.status(200).json({ info: result });
         } catch (err) {
           return res.status(500).json({ info: err });
         }
+    } else {
+      return res.status(500).send("nie podałeś id");
     }
-    // FIXME:
-    // if not to co?
-    //return res.status(500).send('cos poszło nie tak xD')
   
   });
   
   
-  // Dodawanie invoice - dziala
+  // Dodawanie invoice - 
   router.post("/", async function(req, res, next) {
     
     var invoice = req.body.invoice;
@@ -81,7 +78,7 @@ router.get("/", async function(req, res, next) {
   });
   
   
-  // edycja invoice - dziala
+  // edycja invoice - 
   router.put("/", async function(req, res, next) {
     // console.log(req);
     var invoice = req.body.invoice; // <<<<<<<<<<< params bo odbieram dane
@@ -105,7 +102,7 @@ router.get("/", async function(req, res, next) {
   
   
   
-  //  usuwanie invoice - dziala
+  //  usuwanie invoice - 
   router.delete("/:id", async function(req, res, next) {
     // console.log(req);
     
@@ -125,7 +122,5 @@ router.get("/", async function(req, res, next) {
   });
 
 
-
-// TODO: przykład todo
 
 module.exports = router;

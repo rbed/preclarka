@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+const addressesController = require('../controllers/addressesController');
 
 /**
 * obsługa błędów HTTP zewnetrzna biblioteką
@@ -16,9 +17,7 @@ const Addresses = mongoose.model("Addresses");
 router.get("/", async function(req, res, next) {
   try {
     var result = await Addresses.find().exec();
-    // FIXME: res.status(200), 500 => InternalServerError
-    // return res.status(HttpStatus.OK ).json({ info: result });
-    return res.status(500).json({ info: result });
+    return res.status(200).json({ info: result });
   } catch (err) {
     // return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ info: result });
     return res.status(500).json({ info: err });
@@ -37,7 +36,7 @@ router.get("/", async function(req, res, next) {
   */
 });
 
-//nie działa pobieranie pojedynczego adres
+//nie  pobieranie pojedynczego adres
 // Get single address 
 router.get("/:id", async function(req, res, next) {
   var id = req.params.id;
@@ -45,9 +44,7 @@ router.get("/:id", async function(req, res, next) {
   try {
     var result = await Addresses.find({id : id}).exec();
     console.log(result);
-    // FIXME: res.status(200), 500 => InternalServerError
-    // return res.status(HttpStatus.OK ).json({ info: result });
-    return res.status(500).json({ info: result });
+    return res.status(200).json({ info: result });
   } catch (err) {
     return res.status(500).json({ info: err });
   }}
@@ -73,7 +70,7 @@ router.post("/", async function(req, res, next) {
 });
 
 
-// edycja adresu - dziala
+// edycja adresu - 
 router.put("/", async function(req, res, next) {
   // console.log(req);
   var address = req.body.address; // <<<<<<<<<<< params bo odbieram dane
@@ -95,7 +92,7 @@ router.put("/", async function(req, res, next) {
 
 
 
-//  usuwanie adresu - dziala
+//  usuwanie adresu - 
 router.delete("/:id", async function(req, res, next) {
   // console.log(req);
   var id = req.params.id; // <<<<<<<<<<< params bo odbieram dane

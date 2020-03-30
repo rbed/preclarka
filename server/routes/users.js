@@ -20,10 +20,7 @@ const CopywritersInvoice = mongoose.model("CopywritersInvoice");
 /* GET users lsisting. */
 router.get("/", async function(req, res, next) {
   try {
-    var result = await Users.find().exec();
-    // FIXME: res.status(200), 500 => InternalServerError
-    // return res.status(HttpStatus.OK ).json({ info: result });
-    return res.status(500).json({ info: result });
+    return res.status(200).json({ info: result });
   } catch (err) {
     return res.status(500).json({ info: err });
   }
@@ -52,28 +49,22 @@ router.get("/:id", async function(req, res, next) {
   if (id) {
     try {
       var result = await Users.find({ _id: id }).exec();
-      // FIXME: res.status(200), 500 => InternalServerError
-      // return res.status(HttpStatus.OK ).json({ info: result });
-      return res.status(500).json({ info: result });
+      return res.status(200).json({ info: result });
     } catch (err) {
       return res.status(500).json({ info: err });
     }
+  } else {
+    return res.status(500).send("nie podałeś id");
   }
-    // FIXME:
-    // if not to co?
-    //return res.status(500).send('cos poszło nie tak xD')
 });
 
 // TODO: tu funkcjonalność gryzie się z tą powyższą
 // Get list of users, depends of type
 router.get("/:type", async function(req, res, next) {
-  
-  //FIXME:
-  // -- zawsze pamietaj o obsludze braku danych / argumentu itd. itp.
-  //if (!req.params.type) {
-  //  return res.status(400).json({ info: result });
-  //}
-  
+  var type = req.params.type
+  if (!type) {
+    return res.status(200).send('nie podałes typu');
+  }  
   if (req.params.type === "seos") {
     var result = await Seos.find().exec();
     return res.status(200).json({ info: result });
@@ -95,7 +86,7 @@ router.get("/:type", async function(req, res, next) {
 });
 
 
-// Dodawanie uzytkownikow - dziala
+// Dodawanie uzytkownikow - 
 router.post("/", async function(req, res, next) {
   // console.log(req);
   var user = req.body.user;
@@ -114,7 +105,7 @@ router.post("/", async function(req, res, next) {
   }
 });
 
-//  usuwanie usera - dziala
+//  usuwanie usera - 
 router.delete("/:id", async function(req, res, next) {
   // console.log(req);
   var id = req.params.id; // 
@@ -132,7 +123,8 @@ router.delete("/:id", async function(req, res, next) {
   }
 });
 
-// edycja usera - dziala
+
+// edycja usera - 
 router.put("/", async function(req, res, next) {
   // console.log(req);
   var user = req.body.user; // <<<<<<<<<<< params bo odbieram dane

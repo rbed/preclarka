@@ -12,13 +12,11 @@ var router = express.Router();
 const mongoose = require("mongoose");
 const Orders = mongoose.model("Orders");
 
-/* GET orders lsisting - dziala */
+/* GET orders lsisting -  */
 router.get("/", async function(req, res, next) {
   try {
     var result = await Orders.find().exec();
-    // FIXME: res.status(200), 500 => InternalServerError
-    // return res.status(HttpStatus.OK ).json({ info: result });
-    return res.status(500).json({ info: result });
+    return res.status(200).json({ info: result });
   } catch (err) {
     return res.status(500).json({ info: err });
   }
@@ -26,19 +24,23 @@ router.get("/", async function(req, res, next) {
 });
 
 
-// get single order - dziala
+// get single order - 
 router.get("/:id", async function(req, res, next) {
   const id = req.params.id  
+  if (id) {
   try {
     var result = await Orders.findOne({_id : id}).exec();
     return res.status(200).json({ info: result });
   } catch (err) {
     return res.status(500).json({ info: err });
-  }
+  } 
+} else {
+  return res.status(500).send("nie podałeś id");
+}
 });
 
 
-// Dodawanie uzytkownikow - dziala
+// Dodawanie uzytkownikow - 
 router.post("/", async function(req, res, next) {
   // console.log(req);
   var order = req.body.order;
@@ -58,7 +60,7 @@ router.post("/", async function(req, res, next) {
 });
 
 
-// edycja zamowienia - dziala
+// edycja zamowienia - 
 router.put("/", async function(req, res, next) {
     // console.log(req);
     var order = req.body.order; // <<<<<<<<<<< params bo odbieram dane
@@ -79,7 +81,7 @@ router.put("/", async function(req, res, next) {
   });
 
 
-  //  usuwanie zamowienia - dziala
+  //  usuwanie zamowienia - 
 router.delete("/:id", async function(req, res, next) {
     // console.log(req);
     var id = req.params.id; // <<<<<<<<<<< params bo odbieram dane
@@ -92,10 +94,8 @@ router.delete("/:id", async function(req, res, next) {
       return res.status(200).json(result);
     } catch (err) {
       res.status(400).json(err);
-    }
+    } 
   });
 
-
-// TODO: przykład todo
 
 module.exports = router;

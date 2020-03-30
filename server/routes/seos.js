@@ -8,7 +8,7 @@ const CopywritersInvoice = mongoose.model("CopywritersInvoice");
 
 
 
-/* GET seos lsisting. dziala*/
+/* GET seos lsisting. */
 router.get("/", async function(req, res, next) {
   try {
     var result = await Seos.find().exec();
@@ -26,16 +26,18 @@ router.get("/:id", async function(req, res, next) {
   if (id) {
     try {
       var result = await Seos.find({ _id: id }).exec();
-      return res.status(500).json({ info: result });
+      return res.status(200).json({ info: result });
     } catch (err) {
       return res.status(500).json({ info: err });
     }
+  } else {
+    return res.status(500).send("nie podałeś id");
   }
 });
 
 
 
-// Dodawanie seos - dziala
+// Dodawanie seos - 
 router.post("/", async function(req, res, next) {
   // console.log(req);
   var seo = req.body.seo;
@@ -52,7 +54,7 @@ router.post("/", async function(req, res, next) {
   }
 });
 
-//  usuwanie seo - dziala
+//  usuwanie seo - 
 router.delete("/:id", async function(req, res, next) {
   // console.log(req);
   var id = req.params.id; // <<<<<<<<<<< params bo odbieram dane
@@ -68,7 +70,7 @@ router.delete("/:id", async function(req, res, next) {
   }
 });
 
-// edycja seo - dziala
+// edycja seo - 
 router.put("/", async function(req, res, next) {
   // console.log(req);
   var seo = req.body.seo; // <<<<<<<<<<< params bo odbieram dane
@@ -87,7 +89,5 @@ router.put("/", async function(req, res, next) {
   }
 });
 
-
-// TODO: przykład todo
 
 module.exports = router;

@@ -12,16 +12,14 @@ var router = express.Router();
 const mongoose = require("mongoose");
 const Articles = mongoose.model("Articles");
 
-/* GET Articles lsisting.  - dziala*/
+/* GET Articles lsisting.  - */
 router.get("/", async function(req, res, next) {
     try {
       var result = await Articles.find().exec();
-        // FIXME: res.status(200), 500 => InternalServerError
-        // return res.status(HttpStatus.OK ).json({ info: result });
-      return res.status(500).json({ info: result });
+      return res.status(200).json({ info: result });
     } catch (err) {
-        // FIXME: 500 - internal server error / 400 - BAD_REQUEST // kwestia wyboru
-      return res.status(500).json({ info: err });
+        // 500 - internal server error / 400 - BAD_REQUEST // kwestia wyboru
+      return res.status(400).json({ info: err });
     }
   
     /*
@@ -43,10 +41,7 @@ router.get("/", async function(req, res, next) {
     if (id) {
     try {
       var result = await Articles.find({_id : id}).exec();
-      //console.log(result);
-      // FIXME: res.status(200), 500 => InternalServerError
-      // return res.status(HttpStatus.OK ).json({ info: result });
-      return res.status(500).json({ info: result });
+      return res.status(200).json({ info: result });
     } catch (err) {
       return res.status(500).json({ info: err });
     }}
@@ -54,7 +49,7 @@ router.get("/", async function(req, res, next) {
   });
   
   
-  // Dodawanie artykułów - działa
+  // Dodawanie artykułów - 
   router.post("/", async function(req, res, next) {
     var article = req.body.article;
     if (!article) {
@@ -73,7 +68,7 @@ router.get("/", async function(req, res, next) {
   });
   
   
-  // edycja artykułu - dziala
+  // edycja artykułu - 
   router.put("/", async function(req, res, next) {
     // console.log(req);
     var article = req.body.article; // <<<<<<<<<<< params bo odbieram dane
@@ -95,7 +90,7 @@ router.get("/", async function(req, res, next) {
   
   
   
-  //  usuwanie artykułów - dziala
+  //  usuwanie artykułów - 
   router.delete("/:id", async function(req, res, next) {
     // console.log(req);
     var id = req.params.id; // <<<<<<<<<<< params bo odbieram dane
@@ -113,6 +108,5 @@ router.get("/", async function(req, res, next) {
 
 
 
-// TODO: przykład todo
 
 module.exports = router;
