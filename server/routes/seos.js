@@ -1,6 +1,14 @@
 var express = require("express");
 var router = express.Router();
 
+/**
+* obsługa błędów HTTP zewnetrzna biblioteką
+*  -- pakiet opcjonalny ale moze będzie Ci łatwiej pracowac
+*  -- dokumentacja biblioteki
+*    -- https://www.npmjs.com/package/http-status-codes
+*/
+//var HttpStatus = require('http-status-codes');
+
 const mongoose = require("mongoose");
 const Seos = mongoose.model("Seos");
 const CopywritersContract = mongoose.model("CopywritersContract");
@@ -12,6 +20,8 @@ const CopywritersInvoice = mongoose.model("CopywritersInvoice");
 router.get("/", async function(req, res, next) {
   try {
     var result = await Seos.find().exec();
+    // FIXME: res.status(200), 500 => InternalServerError
+    // return res.status(HttpStatus.OK ).json({ info: result });
     return res.status(500).json({ info: result });
   } catch (err) {
     return res.status(500).json({ info: err });
@@ -26,6 +36,8 @@ router.get("/:id", async function(req, res, next) {
   if (id) {
     try {
       var result = await Seos.find({ _id: id }).exec();
+      // FIXME: res.status(200), 500 => InternalServerError
+    // return res.status(HttpStatus.OK ).json({ info: result });
       return res.status(500).json({ info: result });
     } catch (err) {
       return res.status(500).json({ info: err });
@@ -39,9 +51,11 @@ router.get("/:id", async function(req, res, next) {
 router.post("/", async function(req, res, next) {
   // console.log(req);
   var seo = req.body.seo;
+  
   if (!seo) {
-    return res.status(402).send("nie moge dodać seowca");
+    return res.status(400).send("nie moge dodać seowca");
   }
+  
   try {
     var Seo = new Seos(seo);
     var result = await Seo.save();
@@ -57,7 +71,7 @@ router.delete("/:id", async function(req, res, next) {
   // console.log(req);
   var id = req.params.id; // <<<<<<<<<<< params bo odbieram dane
   if (!id) {
-    return res.status(402).send("brak id");
+    return res.status(400).send("brak id");
   }
   try {
     var result = await Seos.deleteOne({ _id: id }).exec();
@@ -71,10 +85,13 @@ router.delete("/:id", async function(req, res, next) {
 // edycja seo - dziala
 router.put("/", async function(req, res, next) {
   // console.log(req);
+  
   var seo = req.body.seo; // <<<<<<<<<<< params bo odbieram dane
+  
   if (!seo) {
-    return res.status(402).send("brak danych");
+    return res.status(400).send("brak danych");
   }
+  
   try {
     var result = await Seos.findByIdAndUpdate(seo._id, seo, doc => {
       return doc;
