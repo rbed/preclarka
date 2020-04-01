@@ -9,11 +9,12 @@ Articles x x
 Contracts x x
 CopywritersConstract x x
 CopywritersInvoice x x
-Invoices - x
-Orders - x
-Seos - x
-Users - x
+Invoices - x x x
+Orders - x x x
+Seos - x x x
+Users - x x x
 
 Pobieranie pojedynczego rozkminione na /routes/contracts
 
 zrobienie controlerra
+Nirvana12345^&*
