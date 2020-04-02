@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const seosController = require('../controllers/seosController');
+const seosController = require('../../controllers/seosController');
 
 //   Employees API info path
 router.get('/', seosController.getAll);

@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const ordersController = require('../controllers/ordersController');
+const ordersController = require('../../controllers/ordersController');
 
 //   Employees API info path
 router.get('/', ordersController.getAll);

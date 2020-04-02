@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const contractsController = require('../controllers/contractsController');
+const contractsController = require('../../controllers/contractsController');
 
 //   Employees API info path
 router.get('/', contractsController.getAll);

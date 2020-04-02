@@ -56,22 +56,24 @@ var indexRouter = require('./routes/index');
 /*
 * Wszystkie sciezki ponizej powinny pojsc do ./routes/api/... 
 * Dla zachowania porządku w kodzieka obsługująca API powinna być zaimplementowana jako nadrzędna, obsługująca reszte funkcjonalności
-*/
+
 var usersRouter = require('./routes/users');
-var addressesRouter = require('./routes/addresses');
-var ordersRouter = require('./routes/orders');
+var addressesRouter = require('./routes/API/addresses');
+var ordersRouter = require('./routes/API/orders');
 var articlesRouter = require('./routes/articles');
 var contractsRouter = require('./routes/contracts');
 var copywritersCRouter = require('./routes/copywritersContract');
 var copywritersIRouter = require('./routes/copywritersInvoice');
-var invoicesRouter = require('./routes/invoices');
+var invoicesRouter = require('./routes/API/invoices');
 var seosRouter = require('./routes/seos');
 // wszystkie scieżki poza główną '/' powinny byc pod API
+*/
 
 app.use('/', indexRouter);
 
-// app.use('/API', require('./routes/api/')) // tyle wystarczy, jeśli nic nie robimy ze zmiennymi Routingu to nie ma potrzeby ich pobierac do zmiennej ;)
+app.use('/api', require('./routes/api/api')) // tyle wystarczy, jeśli nic nie robimy ze zmiennymi Routingu to nie ma potrzeby ich pobierac do zmiennej ;)
 // wszystko ponizej powinno isc do API
+/**
 app.use('/users', usersRouter);
 app.use('/addresses', addressesRouter);
 app.use('/orders', ordersRouter);
@@ -82,7 +84,7 @@ app.use('/copywriters-invoice', copywritersIRouter);
 app.use('/invoices', invoicesRouter);
 app.use('/seos', seosRouter);
 // koniec eksportu do API
-
+ */
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
