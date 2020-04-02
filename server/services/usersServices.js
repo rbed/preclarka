@@ -90,21 +90,35 @@ class usersServices{
 
     }
 
+    /*
+     * @returns created user data
+     * @throws Error if user data not recieved || mongoDB othervise
+     */
+    static​ ​async​ ​createUser​(​user​){
 
-    static async createUser(user){
-        //save adres
-        console.log('to jest user' + user);
-        var User = new Users(user);
-        //return status
-        return await User.save()
-        .then(doc => {
-            res.status(200).json(doc);
-        })
-        .catch(err => {
-            res.status(422).json(err);
-        });
+        ​//​save adres​
+        ​console​.​log​(​'​to jest user​'​ ​+​ user);
 
-    }
+        ​var​ User ​=​ ​new​ ​Users​(user);
+
+        ​//​return status​
+        ​return​ ​await​ ​User​.​save​()
+        .​then​(​doc​ ​=>​ {
+            // serwis jest punktem styku pomiędzy kontrolerem i warstwa dostępu do danych
+            // serwis powinien zwracać dane lub sypać błędem a nie wysyłać odpowiedzi http, to zadanie kontrolera
+            ​//res​.​status​(​200​).​json​(doc);
+            
+            return doc
+        })
+        .​catch​(​err​ ​=>​ {
+           // jak coś pojdzie nie tak to ma wyrzucic błąd
+           // wyrzucony z tad błąd musi byc obsłużony w bloku try catch kontrolera
+           // ​res​.​status​(​422​).​json​(err);
+           
+           throw err
+        });
+
+    }
 
 }
 
