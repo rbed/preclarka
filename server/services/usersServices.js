@@ -13,7 +13,6 @@ class usersServices{
         if(!id){
             throw new Error('Nie ma ID')
         }
-        console.log('test getby id');
         return Users.findById({_id : id}).then(doc =>{
             return doc
         }).catch(err =>{
@@ -33,7 +32,6 @@ class usersServices{
         if(!name){
             throw new Error('Nie ma Name')
         }
-
         return await Users.find({name:name}).then(doc =>{
             return doc
         }).catch(err =>{
@@ -53,7 +51,6 @@ class usersServices{
         if(!lastName){
             throw new Error('Nie ma last name')
         }
-
         return await Users.find({lastname : lastName}).then(doc =>{
             return doc
         }).catch(err =>{
@@ -103,14 +100,14 @@ class usersServices{
             // serwis powinien zwracać dane lub sypać błędem a nie wysyłać odpowiedzi http, to zadanie kontrolera
             // res​.​status​(​200​).​json​(doc);
             return doc
-          })
-          .catch(err => {
-           // jak coś pojdzie nie tak to ma wyrzucic błąd
-            // wyrzucony z tad błąd musi byc obsłużony w bloku try catch kontrolera
-            // ​res​.​status​(​422​).​json​(err);
-           
-            throw err
-          });
+        })
+        .catch(err => {
+        // jak coś pojdzie nie tak to ma wyrzucic błąd
+        // wyrzucony z tad błąd musi byc obsłużony w bloku try catch kontrolera
+        // ​res​.​status​(​422​).​json​(err);
+        
+        throw err
+        });
     }
 
     static async updateUser(user) {

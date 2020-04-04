@@ -134,7 +134,6 @@ class usersController {
     if (req.query) {
       try {
         const {id} = req.query;
-        console.log(id);
         if (!id) {
           res.status(HTTP_STATUS.BAD_REQUEST).send('nie podałeś id')
         } else {
