@@ -90,37 +90,63 @@ class usersServices{
 
     }
 
-    /*
+    /** 
+     * @param {object} user 
      * @returns created user data
      * @throws Error if user data not recieved || mongoDB othervise
      */
-    static​ ​async​ ​createUser​(​user​){
-
-        ​//​save adres​
-        ​console​.​log​(​'​to jest user​'​ ​+​ user);
-
-        ​var​ User ​=​ ​new​ ​Users​(user);
-
-        ​//​return status​
-        ​return​ ​await​ ​User​.​save​()
-        .​then​(​doc​ ​=>​ {
+    static async createUser(user) {
+        const User = new Users(user);
+        return await User.save()
+        .then(doc => {
             // serwis jest punktem styku pomiędzy kontrolerem i warstwa dostępu do danych
             // serwis powinien zwracać dane lub sypać błędem a nie wysyłać odpowiedzi http, to zadanie kontrolera
-            ​//res​.​status​(​200​).​json​(doc);
-            
+            // res​.​status​(​200​).​json​(doc);
             return doc
-        })
-        .​catch​(​err​ ​=>​ {
+          })
+          .catch(err => {
            // jak coś pojdzie nie tak to ma wyrzucic błąd
-           // wyrzucony z tad błąd musi byc obsłużony w bloku try catch kontrolera
-           // ​res​.​status​(​422​).​json​(err);
+            // wyrzucony z tad błąd musi byc obsłużony w bloku try catch kontrolera
+            // ​res​.​status​(​422​).​json​(err);
            
-           throw err
-        });
+            throw err
+          });
+    }
 
-    }
+    static async updateUser(user) {
+        
+        Users.findOneAndUpdate(
+            { _id: user._id },
+            user,
+            (err, doc) => {
+              if (err) {
+                return err
+              }
+              return {
+                  user: doc,
+                  message: "Updated"
+              };
+            }
+          );
+    }
 
+    static async deleteUser(id) {
+    
+        try {
+            return await Users.findOneAndDelete({
+                _id: id
+              })
+        }
+        catch(err) {
+            return err
+        };
+    }
 }
 
 module.exports = usersServices
+
+
+
+
+
 

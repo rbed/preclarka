@@ -8,7 +8,7 @@ router.get('/', usersController.getAll);
 // router.get('/:id', usersController.getByID);
 router.post('/', usersController.create);
 router.put('/', usersController.update);
-router.delete('/:id', usersController.removeByID);
+router.delete('/', usersController.removeByID);
 
 
 module.exports = router;
