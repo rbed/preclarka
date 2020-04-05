@@ -105,19 +105,17 @@ class usersServices{
         // jak coś pojdzie nie tak to ma wyrzucic błąd
         // wyrzucony z tad błąd musi byc obsłużony w bloku try catch kontrolera
         // ​res​.​status​(​422​).​json​(err);
-        
         throw err
         });
     }
 
-    static async updateUser(user) {
-        
+    static async updateUser(user) {     
         Users.findOneAndUpdate(
             { _id: user._id },
             user,
             (err, doc) => {
               if (err) {
-                return err
+                throw err
               }
               return {
                   user: doc,
@@ -127,15 +125,22 @@ class usersServices{
           );
     }
 
+
     static async deleteUser(id) {
-    
+        const userExist = Users.findById({_id : id})
+        console.log(userExist._id);
+        if (!userExist._id) {
+            // return new Error("nie mam takiego usera")  // <<< nie zwraca nic chce usunąć usera podając błędne id
+            console.log('nie ma takiego usera');  // <<< zwraca do konsoli text
+            throw new Error("nie mam takiego usera")  // <<< nie zwraca nic chce usunąć usera podając błędne id
+        } 
         try {
             return await Users.findOneAndDelete({
                 _id: id
               })
         }
         catch(err) {
-            return err
+            throw err  //<<< nie zwraca nic chce usunąć usera podając błędne id
         };
     }
 }
