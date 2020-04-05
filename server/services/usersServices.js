@@ -67,20 +67,20 @@ class usersServices{
      * @returns list of users depends on the given parameter
      * @async
      */
-    static async getUsers(name = null, lastName = null, id=null){
-        if(!name && !lastName && !id) {
+    static async getUsers(id=null, name = null, lastName = null){
+        if(!id && !name && !lastName) {
             return await Users.find().then(doc=>{return doc}).catch(err=>{throw err})
         }
-        if(name && !lastName && !id) {
+        if(!id && name && !lastName) {
             return await this.getUsersByName(name)
         }
-        if(!name && lastName && !id) {
+        if(!id && !name && lastName) {
             return await this.getUsersByLastName(lastName)
         }
-        if(name && lastName && !id) {
+        if(!id && name && lastName) {
             return await Users.find({name: name, lastname : lastName}).then(doc => {return doc}).catch(err => {return(err)})
         }
-        if(!name && !lastName && id) {
+        if(id && !name && !lastName) {
             console.log(id);
             return await this.getUserByID(id)
         }
@@ -109,38 +109,32 @@ class usersServices{
         });
     }
 
+
     static async updateUser(user) {     
-        Users.findOneAndUpdate(
+        console.log(user);
+        try{
+        const doc = await Users.findOneAndUpdate(
             { _id: user._id },
-            user,
-            (err, doc) => {
-              if (err) {
-                throw err
-              }
-              return {
-                  user: doc,
-                  message: "Updated"
-              };
-            }
-          );
+            user, {new: true});
+            return {
+                user: doc,
+                message: "Updated"
+            };
+        } 
+        catch(err) {
+            throw err.message              
+        };
     }
 
 
     static async deleteUser(id) {
-        const userExist = Users.findById({_id : id})
-        console.log(userExist._id);
-        if (!userExist._id) {
-            // return new Error("nie mam takiego usera")  // <<< nie zwraca nic chce usunąć usera podając błędne id
-            console.log('nie ma takiego usera');  // <<< zwraca do konsoli text
-            throw new Error("nie mam takiego usera")  // <<< nie zwraca nic chce usunąć usera podając błędne id
-        } 
         try {
             return await Users.findOneAndDelete({
                 _id: id
               })
         }
         catch(err) {
-            throw err  //<<< nie zwraca nic chce usunąć usera podając błędne id
+            throw {"err": err.name, "message" : err.message}  //<<< nie zwraca nic chce usunąć usera podając błędne id
         };
     }
 }

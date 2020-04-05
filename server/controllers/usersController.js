@@ -14,8 +14,8 @@ class usersController {
   static async getAll(req, res, err) {
     if(req.query){
       try{
-        const {name, lastName, id} = req.query
-        const data = await usersService.getUsers(name, lastName, id)
+        const {id, name, lastName} = req.query
+        const data = await usersService.getUsers(id, name, lastName)
         return res.status(HTTP_STATUS.OK).json(data)
       }catch(err){
         return  res.status(400).json(err)          
