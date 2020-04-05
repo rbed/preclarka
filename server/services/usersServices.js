@@ -90,9 +90,12 @@ class usersServices{
     /** 
      * @param {object} user 
      * @returns created user data
-     * @throws Error if user data not recieved || mongoDB othervise
+     * @throws Error if user data not recieved || mongoDB othervise or if user object has no enough data
      */
     static async createUser(user) {
+        if (!user.name || !user.lastName || !user.email) {
+            throw new Error("podany uzytkownik nie zawiera kompletu informacji")
+        }
         const User = new Users(user);
         return await User.save()
         .then(doc => {
@@ -110,8 +113,17 @@ class usersServices{
     }
 
 
+    /**
+     * 
+     * @param {Object} user 
+     * @throws Error if id of the user you want to update not exist or if Provided user object has no id
+     * @returns updated user
+     * @async
+     */
     static async updateUser(user) {     
-        console.log(user);
+        if(!user._id) {
+            throw new Error("przekazany objekt user nie ma id")
+        }
         try{
         const doc = await Users.findOneAndUpdate(
             { _id: user._id },
@@ -122,12 +134,22 @@ class usersServices{
             };
         } 
         catch(err) {
-            throw err.message              
+            throw err        
         };
     }
 
 
+    /**
+     * 
+     * @param {String} id
+     * @throes Error if lack of id or there is no user with the provided id 
+     * @returns deleted user
+     * @async
+     */
     static async deleteUser(id) {
+        if (!id) {
+            throw Error("brak id")
+        }
         try {
             return await Users.findOneAndDelete({
                 _id: id

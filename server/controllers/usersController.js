@@ -9,7 +9,7 @@ class usersController {
    * @param {object} req 
    * @param {object} res 
    * @param {object} err
-   * @throws  blad 400 jesli złe zapytanie 
+   * @returns list of users
    */
   static async getAll(req, res, err) {
     if(req.query){
@@ -58,7 +58,7 @@ class usersController {
 
   /**
    * @async
-   * @throws blad jezeli w req nie ma uzytkownika || 400
+   * @returns created user
    */
   static async create(req, res, err) {
     //get req data
@@ -87,9 +87,8 @@ class usersController {
   }
 
   /**
-   *
    * @async
-   * @throws err jeżeli zły status http
+   * @returns updated user
    */
 
   static async update(req, res, err) {
@@ -127,8 +126,8 @@ class usersController {
    * @param {object} req 
    * @param {object} res 
    * @param {object} err
-   * @throws err jeżeli w query nie ma id || 400
-   *  
+   * @returns deleted user
+   * @async 
    */
   static async removeByID(req, res, err) {
     if (req.query) {
