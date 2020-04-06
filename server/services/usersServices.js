@@ -93,10 +93,12 @@ class usersServices{
      * @throws Error if user data not recieved || mongoDB othervise or if user object has no enough data
      */
     static async createUser(user) {
-        if (!user.name || !user.lastName || !user.email) {
+        
+        if (!user.name || !user.lastname || !user.email) {
             throw new Error("podany uzytkownik nie zawiera kompletu informacji")
         }
         const User = new Users(user);
+        
         return await User.save()
         .then(doc => {
             // serwis jest punktem styku pomiędzy kontrolerem i warstwa dostępu do danych

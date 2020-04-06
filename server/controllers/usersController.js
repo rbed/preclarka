@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Users = mongoose.model("Users");
+// const Users = mongoose.model("Users");
 const usersService = require('../services/usersServices')
 const HTTP_STATUS = require('http-status-codes')
 
@@ -63,11 +63,12 @@ class usersController {
   static async create(req, res, err) {
     //get req data
     const {body: { user }} = req;
-    
+  
     if(!user) {
       return res.status(400).send('nie podales uzytkowika ktorego chcesz stworzyc')
     }
     try{
+      
       const doc = await usersService.createUser(user)
       return res.status(200).json(doc)
     }catch(err){
