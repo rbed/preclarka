@@ -10,6 +10,7 @@ const Orders = new Schema({
    dlugoscArt: {type: Number},
    wartosc: {type: Number},
    komentarzOdrzucenia: {type: String},
+   created: {type: Date, default: Date.now},
 });
 
 

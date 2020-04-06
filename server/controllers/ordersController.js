@@ -1,31 +1,19 @@
 const mongoose = require("mongoose");
 const Orders = mongoose.model("Orders");
+const ordersService = require('../services/ordersServices')
+const HTTP_STATUS = require('http-status-codes')
 
 class ordersController {
-  static getAll(req, res, err) {
-    return Orders.find()
-      .then(doc => {
-          console.log();
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(404).json(err);
-      });
-  }
-
-  static getByID(req, res, err) {
-    const id = req.params.id;
-    if (!id) {
-      return res.status(400).send("złe id");
+  static async getAll(req, res, err) {
+    if(req.query){
+      try{
+        const {id} = req.query
+        const data = await ordersService.getOrders(id)
+        return res.status(HTTP_STATUS.OK).json(data)
+      }catch(err){
+        return  res.status(400).json(err)          
+      }
     }
-    return Orders.findOne({ _id: id })
-      .then(doc => {
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        res.status(404).json(err);
-      });
   }
 
   /**
@@ -33,22 +21,14 @@ class ordersController {
    */
   //
   static async create(req, res, err) {
-    //get req data
-    const {
-      body: { order }
-    } = req;
-
-    //save adres
-    var Order = new Orders(order);
-
-    //return status
-    return await Order.save()
-      .then(doc => {
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        res.status(422).json(err);
-      });
+    const {body: { order }} = req;
+    try {
+      const data = await ordersService.create(order)
+      return res.status(HTTP_STATUS.OK).jason(data)
+    }
+    catch(err) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+    }
   }
 
   /**
@@ -57,44 +37,35 @@ class ordersController {
    */
 
   static async update(req, res, err) {
-    const {
-      body: { order }
-    } = req;
+    const {body: { order }} = req;
     if (!order) {
         return res.status(400).send('nie podałeś co chcesz zmmienic')
     }
-    console.log(order);
-    Orders.findOneAndUpdate(
-      { _id: order._id },
-      order,
-      { upsert: true },
-      (err, doc) => {
-        if (err) {
-          return res.status(422).json(err);
-        }
-        return res.status(200).json({
-            order: doc,
-            message: "Updated"
-        });
-      }
-    );
+    try {
+      const data = await ordersService.update(order)
+      return res.status(HTTP_STATUS.OK).json(data)
+    }
+    catch (err) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+    }
   }
 
+
+
   static async removeByID(req, res, err) {
-    const id = req.params.id;
-    if (!id) {
-      return res.status(400).send("złe id");
+    const id = req.query.id;
+    if(!id) {
+      return status(HTTP_STATUS.BAD_REQUEST).send('nie podales id')
+    }   
+    try {
+      console.log(id);
+      const data = await ordersService.removeByID(id);
+      return res.status(HTTP_STATUS.OK).json(data)
+    } 
+    catch(err) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
     }
-    return await Orders.findOneAndDelete({
-      _id: id
-    })
-      .then(doc => {
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        res.status(422).json(err);
-      });
-  }
+}
 }
 
 module.exports = ordersController;
