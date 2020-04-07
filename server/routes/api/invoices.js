@@ -4,10 +4,10 @@ const invoicesController = require('../../controllers/invoicesController');
 
 //   Employees API info path
 router.get('/', invoicesController.getAll);
-router.get('/:id', invoicesController.getByID);
+// router.get('/:id', invoicesController.getByID);
 router.post('/', invoicesController.create);
 router.put('/', invoicesController.update);
-router.delete('/:id', invoicesController.removeByID);
+router.delete('/', invoicesController.removeByID);
 
 
 module.exports = router;

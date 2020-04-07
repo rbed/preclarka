@@ -25,11 +25,11 @@ class OrdersServices{
      * 
      * @param {String} id 
      * @throws lack of parameter || MongoDB Err
-     * @returns list of Orders depends on the given parameter
+     * @returns Order depends on the given parameter
      * @async
      * x
      */
-    static async getOrders(id=null){
+    static async getOrder(id=null){
         if(!id) {
             return await Orders.find().then(doc=>{return doc}).catch(err=>{throw err})
         }

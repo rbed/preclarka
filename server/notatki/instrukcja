@@ -201,3 +201,28 @@ przykladowy order
 {"seo" : {
   "user" : "5e80b6f9316dbe12359b7e24"
 }}
+
+
+
+
+
+Koncepcja jest taka
+let x = await Model.find().exec()
+Albo 
+let x = Model.find().then(doc =>{return doc})
+Praktycznie to samo
+O tyle ze obsluga się zmienia
+W przypadku nr 1 musisz zrobic blok try catch
+A w nr 2. Zrobic .catch(e=>{ return ę })
+I pamiętać ze błąd będzie przypisany do 
+
+
+
+ZABIJANIE PROCESU
+
+sprawdzenia numeru procesu (PID - process id)
+sudo lsof -i:<PORT_NO>
+albo
+lsof -i tcp:3000
+zabicie
+sudo kill <PID>
