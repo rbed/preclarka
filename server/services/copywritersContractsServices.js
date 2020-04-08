@@ -66,7 +66,7 @@ class CopywritersContractServices{
      * @throws Error if id of the copywriter you want to update not exist or if Provided user object has no id
      * @returns updated copywriter
      * @async
-     * x
+     * 
      */
     static async update(copywriterContract) {   
         if(!copywriterContract._id) {
@@ -93,7 +93,7 @@ class CopywritersContractServices{
      * @throes Error if lack of id or there is no copywriter with provided id 
      * @returns deleted copywriter
      * @async
-     * x
+     * 
      */
     static async delete(id) {
         console.log(id);
