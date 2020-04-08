@@ -4,10 +4,9 @@ const copywritersInvoiceController = require('../../controllers/copywritersInvoi
 
 //   Employees API info path
 router.get('/', copywritersInvoiceController.getAll);
-router.get('/:id', copywritersInvoiceController.getByID);
 router.post('/', copywritersInvoiceController.create);
 router.put('/', copywritersInvoiceController.update);
-router.delete('/:id', copywritersInvoiceController.removeByID);
+router.delete('/', copywritersInvoiceController.removeByID);
 
 
 module.exports = router;
