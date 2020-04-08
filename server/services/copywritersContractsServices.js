@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-const CopywritersInvoice = mongoose.model("CopywritersInvoice");
+const CopywritersContract = mongoose.model("CopywritersContract");
 
-class CopywritersInvoiceServices{
+class CopywritersContractServices{
     /**
-     * @param {ObjectID} ObjectID of Invoice
+     * @param {ObjectID} ObjectID of copywriter
      * @throws Error - Nie ma ID  || MongoDB Error!
-     * @returns CopywritersInvoice as per id
+     * @returns CopywritersContract as per id
      * @async
      * x
      */
@@ -13,7 +13,7 @@ class CopywritersInvoiceServices{
         if(!id){
             throw new Error('Nie ma ID')
         }
-        return CopywritersInvoice.findById({_id : id}).then(doc =>{
+        return CopywritersContract.findById({_id : id}).then(doc =>{
             return doc
         }).catch(err =>{
             throw err
@@ -24,13 +24,13 @@ class CopywritersInvoiceServices{
      * 
      * @param {String} id 
      * @throws lack of parameter || MongoDB Err
-     * @returns CopywritersInvoice depends on the given id
+     * @returns CopywritersContract depends on the given id
      * @async
      * x
      */
     static async getAll(id=null){
         if(!id) {
-            return await CopywritersInvoice.find().then(doc=>{return doc}).catch(err=>{throw err})
+            return await CopywritersContract.find().then(doc=>{return doc}).catch(err=>{throw err})
         }
         if(id) {
             return await this.getByID(id)
@@ -39,17 +39,17 @@ class CopywritersInvoiceServices{
     }
 
     /** 
-     * @param {object} copywriterInvoice
+     * @param {object} copywriterContracts
      * @returns created copywriter data
      * @throws Error if copywriter data not recieved || mongoDB othervise or if user object has no enough data
      * x
      */
-    static async create(copywriterInvoice) {
-        if (!copywriterInvoice.nazwaFirmy || !copywriterInvoice.regon || !copywriterInvoice.nip || !copywriterInvoice.kwota1000) {
+    static async create(copywriterContract) {
+        if (!copywriterContract.dataUrodzenia || !copywriterContract.imieMatki || !copywriterContract.imieOjca || !copywriterContract.nrDowodu || !copywriterContract.pesel || !copywriterContract.nip || !copywriterContract.stanKonta || !copywriterContract.kwota1000) {
             throw new Error("podana FV nie zawiera kompletu informacji")
         }
         console.log('dupa');
-        const Copywriter = new CopywritersInvoice(copywriterInvoice);
+        const Copywriter = new CopywritersContract(copywriterContract);
         return await Copywriter.save()
         .then(doc => {
             return doc
@@ -62,23 +62,22 @@ class CopywritersInvoiceServices{
 
     /**
      * 
-     * @param {Object} copywriterInvoice 
-     * @throws Error if id of the invoice you want to update not exist or if Provided user object has no id
+     * @param {Object} copywriterContract 
+     * @throws Error if id of the copywriter you want to update not exist or if Provided user object has no id
      * @returns updated copywriter
      * @async
      * x
      */
-    static async update(copywriterInvoice) {     
-        console.log(copywriterInvoice);
-        if(!copywriterInvoice._id) {
+    static async update(copywriterContract) {   
+        if(!copywriterContract._id) {
             throw new Error("przekazany objekt invoice nie ma id")
         }
         try{
-        const doc = await CopywritersInvoice.findOneAndUpdate(
-            { _id: copywriterInvoice._id },
-            copywriterInvoice, {new: true}); 
+        const doc = await CopywritersContract.findOneAndUpdate(
+            { _id: copywriterContract._id },
+            copywriterContract, {new: true}); 
             return {
-                copywriterInvoice: doc,
+                copywriterContract: doc,
                 message: "Updated"
             };
         } 
@@ -102,7 +101,7 @@ class CopywritersInvoiceServices{
             throw Error("brak id")
         }
         try {
-            return await CopywritersInvoice.findOneAndDelete({
+            return await CopywritersContract.findOneAndDelete({
                 _id: id
               })
         }
@@ -112,7 +111,7 @@ class CopywritersInvoiceServices{
     }
 }
 
-module.exports = CopywritersInvoiceServices
+module.exports = CopywritersContractServices
 
 
 

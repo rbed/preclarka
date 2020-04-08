@@ -1,31 +1,20 @@
 const mongoose = require("mongoose");
-const CopywritersContract = mongoose.model("CopywritersContract");
+const copywritersContractsServices = require('../services/copywritersContractsServices')
+const HTTP_STATUS = require('http-status-codes')
+
 
 class copywritersContractController {
-  static getAll(req, res, err) {
-    return CopywritersContract.find()
-      .then(doc => {
-          console.log();
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(404).json(err);
-      });
-  }
-
-  static getByID(req, res, err) {
-    const id = req.params.id;
-    if (!id) {
-      return res.status(400).send("złe id");
+  static async getAll(req, res, err) {
+    if (req.query) {
+      try {
+        const {id} = req.query
+        const data = await copywritersContractsServices.getAll(id)
+        return res.status(HTTP_STATUS.OK).json(data)
+      }
+      catch (err) {
+        return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+      }
     }
-    return CopywritersContract.findOne({ _id: id })
-      .then(doc => {
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        res.status(404).json(err);
-      });
   }
 
   /**
@@ -33,67 +22,49 @@ class copywritersContractController {
    */
   //
   static async create(req, res, err) {
-    //get req data
-    const {
-      body: { copywriter }
-    } = req;
-
-    //save adres
-    var Copywriter = new CopywritersContract(copywriter);
-
-    //return status
-    return await Copywriter.save()
-      .then(doc => {
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        res.status(422).json(err);
-      });
+    const {body: { copywriterContract }} = req;
+    try {
+      const data = await copywritersContractsServices.create(copywriterContract)
+      return res.status(HTTP_STATUS.OK).json(data)
+    } 
+    catch(err) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+    }
   }
 
+
   /**
-   *
    * @async
    */
 
   static async update(req, res, err) {
-    const {
-      body: { copywriter }
-    } = req;
-    if (!copywriter) {
+    const {body: { copywriterContract }} = req;
+    if (!copywriterContract) {
         return res.status(400).send('nie podałeś co chcesz zmmienic')
     }
-    console.log(copywriter);
-    CopywritersContract.findOneAndUpdate(
-      { _id: copywriter._id },
-      copywriter,
-      { upsert: true },
-      (err, doc) => {
-        if (err) {
-          return res.status(422).json(err);
-        }
-        return res.status(200).json({
-            copywriter: doc,
-            message: "Updated"
-        });
-      }
-    );
+    try {
+      const data = await copywritersContractsServices.update(copywriterContract)
+      return res.status(HTTP_STATUS.OK).json(data)
+    }
+    catch(err) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+    }
   }
 
+
+
   static async removeByID(req, res, err) {
-    const id = req.params.id;
+    const id = (req.query.id) 
     if (!id) {
       return res.status(400).send("złe id");
     }
-    return await CopywritersContract.findOneAndDelete({
-      _id: id
-    })
-      .then(doc => {
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        res.status(422).json(err);
-      });
+    try {
+      const data = await copywritersContractsServices.delete(id)
+      return res.status(HTTP_STATUS.OK).json({data, deleted: true})
+    }
+    catch(err) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)  
+    }
   }
 }
 
