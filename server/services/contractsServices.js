@@ -46,9 +46,9 @@ class ContractServices{
      */
     static async create(contract) {
         console.log(contract);
-        // if (!contract.numer || !contract.path || !contract.fileName) {
-        //     throw new Error("podana FV nie zawiera kompletu informacji")
-        // }
+        if (!contract.numer || !contract.path || !contract.fileName) {
+            throw new Error("podana FV nie zawiera kompletu informacji")
+        }
         const Contract = new Contracts(contract);
         return await Contract.save()
         .then(doc => {

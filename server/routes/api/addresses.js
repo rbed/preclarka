@@ -4,10 +4,9 @@ const addressesController = require('../../controllers/addressesController');
 
 //   Employees API info path
 router.get('/', addressesController.getAll);
-router.get('/:id', addressesController.getByID);
 router.post('/', addressesController.create);
 router.put('/', addressesController.update);
-router.delete('/:id', addressesController.removeByID);
+router.delete('/', addressesController.removeByID);
 
 
 module.exports = router;

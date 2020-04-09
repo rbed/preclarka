@@ -1,31 +1,20 @@
 const mongoose = require("mongoose");
-const Articles = mongoose.model("Articles");
+const articlesServices = require('../services/articlesServices')
+const HTTP_STATUS = require('http-status-codes')
+
 
 class articlesController {
-  static getAll(req, res, err) {
-    return Articles.find()
-      .then(doc => {
-          console.log();
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(404).json(err);
-      });
-  }
-
-  static getByID(req, res, err) {
-    const id = req.params.id;
-    if (!id) {
-      return res.status(400).send("złe id");
+  static async getAll(req, res, err) {
+    if (req.query) {
+      try {
+        const {id} = req.query
+        const data = await articlesServices.getAll(id)
+        return res.status(HTTP_STATUS.OK).json(data)
+      }
+      catch (err) {
+        return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+      }
     }
-    return Articles.findOne({ _id: id })
-      .then(doc => {
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        res.status(404).json(err);
-      });
   }
 
   /**
@@ -33,64 +22,49 @@ class articlesController {
    */
   //
   static async create(req, res, err) {
-    //get req data
-    const {
-      body: { article }
-    } = req;
-
-    //save adres
-    var Article = new Articles(article);
-
-    //return status
-    return await Address.save()
-      .then(doc => {
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        res.status(422).json(err);
-      });
+    const {body: { article }} = req;
+    try {
+      const data = await articlesServices.create(article)
+      return res.status(HTTP_STATUS.OK).json(data)
+    } 
+    catch(err) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+    }
   }
 
+
   /**
-   *
    * @async
    */
 
   static async update(req, res, err) {
-    const {
-      body: { article }
-    } = req;
-    console.log(article);
-    Articles.findOneAndUpdate(
-      { _id: article._id },
-      article,
-      { upsert: true },
-      (err, doc) => {
-        if (err) {
-          return res.status(422).json(err);
-        }
-        return res.status(200).json({
-            article: doc,
-            message: "Updated"
-        });
-      }
-    );
+    const {body: { article }} = req;
+    if (!article) {
+        return res.status(400).send('nie podałeś co chcesz zmmienic')
+    }
+    try {
+      const data = await articlesServices.update(article)
+      return res.status(HTTP_STATUS.OK).json(data)
+    }
+    catch(err) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+    }
   }
 
+
+
   static async removeByID(req, res, err) {
-    const id = req.params.id;
+    const id = (req.query.id) 
     if (!id) {
       return res.status(400).send("złe id");
     }
-    return await Articles.findOneAndDelete({
-      _id: id
-    })
-      .then(doc => {
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        res.status(422).json(err);
-      });
+    try {
+      const data = await articlesServices.delete(id)
+      return res.status(HTTP_STATUS.OK).json({data, deleted: true})
+    }
+    catch(err) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)  
+    }
   }
 }
 
