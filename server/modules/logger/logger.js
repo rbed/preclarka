@@ -6,38 +6,38 @@ module.exports = class logger {
 
    static info(info, description) {
       console.log(
-         logSymbols.info + "  " + chalk.blueBright(info) + this._descriptionBuilder(description)
+         logSymbols.info + "  " + chalk.blueBright(info) + " : ", description
       )
    }
 
    static success(info, description) {
       console.log(
-         logSymbols.success + "  " + chalk.green(info) + this._descriptionBuilder(description)
+         logSymbols.success + "  " + chalk.green(info) + " : ", description
       )
    }
 
    static warning(info, description) {
       console.log(
-         logSymbols.warning + "  " + chalk.rgb(255, 136, 0)(info) + this._descriptionBuilder(description)
+         logSymbols.warning + "  " + chalk.rgb(255, 136, 0)(info) + " : ", description
       )
    }
 
    static error(info, description) {
       console.log(
-         logSymbols.error + "  " + chalk.red(info) + this._descriptionBuilder(description)
+         logSymbols.error + "  " + chalk.red(info) + " : ", description
       )
    }
 
 
    static critical(info, description) {
       console.log(
-         '🔥' + "  " + chalk.red(info) + this._descriptionBuilder(description)
+         '🔥' + "  " + chalk.red(info) + " : ", description
       )
    }
 
    static important(info, description) {
       console.log(
-         chalk.white.underline("!  " + info + this._descriptionBuilder(description))
+         chalk.white.underline("!  " + info + " : ", description))
       )
    }
 
@@ -76,7 +76,9 @@ module.exports = class logger {
       return s + _status + e
 
    }
-
+   /*
+    * @depricated console.log object issue
+    */
    static _descriptionBuilder(description) {
       if (description) return " : " + description
       return ""
