@@ -1,30 +1,19 @@
-const mongoose = require("mongoose");
-const Addresses = mongoose.model("Addresses");
+const addressesServices = require('../services/addressesServices')
+const HTTP_STATUS = require('http-status-codes')
+
 
 class addressesController {
-  static getAll(req, res, err) {
-    return Addresses.find()
-      .then(doc => {
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(404).json(err);
-      });
-  }
-
-  static getByID(req, res, err) {
-    const id = req.params.id;
-    if (!id) {
-      return res.status(400).send("złe id");
+  static async getAll(req, res, err) {
+    if (req.query) {
+      try {
+        const {id} = req.query
+        const data = await addressesServices.getAll(id)
+        return res.status(HTTP_STATUS.OK).json(data)
+      }
+      catch (err) {
+        return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+      }
     }
-    return Addresses.findOne({ _id: id })
-      .then(doc => {
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        res.status(404).json(err);
-      });
   }
 
   /**
@@ -32,64 +21,49 @@ class addressesController {
    */
   //
   static async create(req, res, err) {
-    //get req data
-    const {
-      body: { address }
-    } = req;
-
-    //save adres
-    var Address = new Addresses(address);
-
-    //return status
-    return await Address.save()
-      .then(doc => {
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        res.status(422).json(err);
-      });
+    const {body: { address }} = req;
+    try {
+      const data = await addressesServices.create(address)
+      return res.status(HTTP_STATUS.OK).json(data)
+    } 
+    catch(err) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+    }
   }
 
+
   /**
-   *
    * @async
    */
 
   static async update(req, res, err) {
-    const {
-      body: { address }
-    } = req;
-    console.log(address);
-    Addresses.findOneAndUpdate(
-      { _id: address._id },
-      address,
-      { upsert: true },
-      (err, doc) => {
-        if (err) {
-          return res.status(422).json(err);
-        }
-        return res.status(200).json({
-          address: doc,
-          message: "Updated"
-        });
-      }
-    );
+    const {body: { address }} = req;
+    if (!address) {
+        return res.status(400).send('nie podałeś co chcesz zmmienic')
+    }
+    try {
+      const data = await addressesServices.update(address)
+      return res.status(HTTP_STATUS.OK).json(data)
+    }
+    catch(err) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+    }
   }
 
+
+
   static async removeByID(req, res, err) {
-    const id = req.params.id;
+    const id = (req.query.id) 
     if (!id) {
       return res.status(400).send("złe id");
     }
-    return await Addresses.findOneAndDelete({
-      _id: id
-    })
-      .then(doc => {
-        res.status(200).json(doc);
-      })
-      .catch(err => {
-        res.status(422).json(err);
-      });
+    try {
+      const data = await addressesServices.delete(id)
+      return res.status(HTTP_STATUS.OK).json({data, deleted: true})
+    }
+    catch(err) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)  
+    }
   }
 }
 
