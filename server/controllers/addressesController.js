@@ -1,6 +1,7 @@
 const addressesServices = require('../services/addressesServices')
 const HTTP_STATUS = require('http-status-codes')
-
+const logger = require('../modules/logger/logger')
+const ErrorHandeler = require('../modules/ErrorHandeler/ErrorHandeler')
 
 class addressesController {
   static async getAll(req, res, err) {
@@ -11,8 +12,13 @@ class addressesController {
         return res.status(HTTP_STATUS.OK).json(data)
       }
       catch (err) {
-        return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
-      }
+
+        // if (err.status != 0){
+        //   return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+        // } 
+        //   return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+        ErrorHandeler.hadle(res, err)
+            }
     }
   }
 
@@ -22,12 +28,22 @@ class addressesController {
   //
   static async create(req, res, err) {
     const {body: { address }} = req;
+    console.log(address);
     try {
       const data = await addressesServices.create(address)
+      //logger.success('Created new Address',JSON.parse(address))
       return res.status(HTTP_STATUS.OK).json(data)
+
     } 
     catch(err) {
-      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+      // logger.error('error while creating new address',err)
+      // return res.status(HTTP_STATUS.BAD_REQUEST).json({err: err})
+
+      if(err.status == -1){
+        // let err = await 
+        return ErrorHandeler.hadle(res,await ErrorHandeler.createError("detonate") )
+      }
+      ErrorHandeler.hadle(res, err)
     }
   }
 

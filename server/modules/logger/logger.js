@@ -78,6 +78,7 @@ module.exports = class logger {
    }
 
    static _descriptionBuilder(description) {
+      
       if (description) return " : " + description
       return ""
    }
@@ -91,7 +92,7 @@ module.exports = class logger {
          " \\ \\_____\\\\ \\_\\ \\_\\\\ \\_____\\\\/\\_____\\  \\ \\_\\ " + '\n' +
          "  \\/_____/ \\/_/\\/_/ \\/_____/ \\/_____/   \\/_/ " + '\n' +
          "" + '\n'
-      const author = 'Rafal Cymbalista'
+      const author =  'Radek Bednarz'
       const sign =
          `                        by ${author}` + '\n' +
          "                        all rights reserved" + '\n'

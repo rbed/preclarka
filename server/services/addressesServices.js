@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const Addresses = mongoose.model("Addresses");
+const AppError = require('../modules/ErrorHandeler/AppError')
+
 
 class AddressesServices{
     /**
@@ -47,15 +49,15 @@ class AddressesServices{
     static async create(address) {
         console.log(address);
         if (!address.ulica || !address.nrDomu) {
-            throw new Error("podana FV nie zawiera kompletu informacji")
+            throw new AppError("podana FV nie zawiera kompletu informacji",400 )
         }
         const Address = new Addresses(address);
-        return await Address.save()
+        return Address.save()
         .then(doc => {
             return doc
         })
         .catch(err => {
-        throw err
+            throw new AppError('blad mongodb', AppError.APP_ERRORS.MONGO_ERROR, err)
         });
     }
 
