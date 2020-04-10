@@ -9,6 +9,12 @@ const config = require('./config/config')
 
 var app = express();
 
+/**
+ *    Author: R.C.
+ *    Prints app logo and global parameters on startup 
+ */
+logger.pringAppLogo();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
