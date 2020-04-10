@@ -121,7 +121,7 @@ module.exports = class logger {
             newLine +
             chalk.gray(sign)
       );
-      this.status('APP_', version);
+      this.status('APP_VERSION', version);
       this.status('APP', 'started');
    }
 };
