@@ -15,7 +15,10 @@ class AppError extends Error{
 
     __inform(){
         if(this.status === APP_ERRORS.ARGUMENT_ERROR){
-            logger.warning('ZLY KURWA ARGUMENT','kurwa jego mac')
+            logger.warning('ZLY ARGUMENT','podaj poprawny')
+        }
+        if(this.status === APP_ERRORS.MONGO_ERROR){
+            logger.warning('DB Error','np brak danego id w bazie')
         }
         // if(this.errorMsg = 'detonate'){
         //     logger.status('SERVER','ERROR')
