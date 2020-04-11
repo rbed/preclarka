@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const Orders = mongoose.model("Orders");
+const AppError = require('../modules/ErrorHandeler/AppError')
+
+const {ARGUMENT_ERROR, MONGO_ERROR} = AppError.APP_ERRORS
 
 class OrdersServices{
     /**
@@ -11,13 +14,10 @@ class OrdersServices{
      * x
      */
     static getOrderByID(id){
-        if(!id){
-            throw new Error('Nie ma ID')
-        }
         return Orders.findById({_id : id}).then(doc =>{
             return doc
         }).catch(err =>{
-            throw err
+            throw Error('brak id - blad ze zwyklej klasy error')
         })
     }
 
@@ -29,12 +29,17 @@ class OrdersServices{
      * @async
      * x
      */
-    static async getOrder(id=null){
+    static async getOrders(id=null){
         if(!id) {
-            return await Orders.find().then(doc=>{return doc}).catch(err=>{throw err})
+            return await Orders.find().then(doc=>{return doc}).catch(err=>{throw new AppError('coś nie tak z baza danych', MONGO_ERROR, err)})
         }
         if(id) {
-            return await this.getOrderByID(id)
+            try {
+               return await this.getOrderByID(id)
+            }
+            catch(err) {
+                throw new AppError('ID niepoprawne', MONGO_ERROR)
+            }
         }
 
     }
@@ -45,9 +50,9 @@ class OrdersServices{
      * @throws Error if order data not recieved || mongoDB othervise or if user object has no enough data
      * x
      */
-    static async createOrder(order) {
-        if (!order.temat || !order.ileArt) {
-            throw new Error("podane zamówienie nie zawiera kompletu informacji")
+    static async create(order) {
+        if (!order) {
+            throw new AppError('brak zamowienia', ARGUMENT_ERROR)
         }
         const Order = new Orders(order);
         return await Order.save()
@@ -55,11 +60,11 @@ class OrdersServices{
             return doc
         })
         .catch(err => {
-        throw err
+            throw new AppError('blad mongodb', MONGO_ERROR, err)
         });
     }
 
-
+    // TODO: updatuje order ze złym id
     /**
      * 
      * @param {Object} order 
@@ -70,8 +75,8 @@ class OrdersServices{
      */
     static async update(order) {     
         console.log(order);
-        if(!order._id) {
-            throw new Error("przekazany objekt order nie ma id")
+        if(!order) {
+            throw new AppError('brak zamowienia do aktualizacji', ARGUMENT_ERROR)
         }
         try{
         const doc = await Orders.findOneAndUpdate(
@@ -83,7 +88,7 @@ class OrdersServices{
             };
         } 
         catch(err) {
-            throw err        
+            throw new AppError('blad mongodb', MONGO_ERROR, err)     
         };
     }
 
@@ -96,10 +101,10 @@ class OrdersServices{
      * @async
      * 
      */
-    static async removeByID(id) {
+    static async delete(id) {
         console.log(id);
         if (!id) {
-            throw Error("brak id")
+            throw new AppError('brak id - arg err', ARGUMENT_ERROR)
         }
         try {
             return await Orders.findOneAndDelete({
@@ -107,7 +112,7 @@ class OrdersServices{
               })
         }
         catch(err) {
-            throw {"err": err.name, "message" : err.message}  //<<< nie zwraca nic chce usunąć usera podając błędne id
+            throw new AppError('id nie znalezione - mongo err', MONGO_ERROR, err)
         };
     }
 }
