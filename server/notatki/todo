@@ -24,3 +24,58 @@ interfejs
 jwt token
 mongod atlas
 mongo compas (dysk)
+
+
+typy błędów
+- argument error
+- błąd bazy danych
+
+W Preclarce w services możemy natknąć się na błędy
+
+...Services.getAll
+ARGUMENT_ERROR - kiedy nie ma w bazie obiektu odanym id, albo kiedy
+brakuje id.
+
+...Services.create
+MONGO_ERROR - kiedy brakuje wymaganych przez model danych, albo z jakigoś innego powodu niemożliwe jest zapisanie do bazdy np User.save()
+
+
+...Services.update
+ARGUMENT_ERROR - kiedy ktoś nie podał id, albo całego updatowanego objektu
+lub kiedy nie ma w bazie obiektu o danym id
+
+
+...Services.delete
+ARGUMENT_ERROR - kiedy ktoś nie podał id usuwaneog obiektu, lub kiedy nie ma objektu o tym id
+
+Pytanie 1. Dobrze myśle? Jakieś inne błędy byś dodał?
+Pytanie 2. czy brak wymaganych przez model danych to na pewno błąd bazy danych? np podałem adres bez numeru domu który jest required. 
+Wyjebuje się baza, ale błąd raczej dotyczy przekazanego argumentu czy to w takim raznie nie powinien być ARGUMENT_ERROR?
+
+----------------------------------------------------------
+
+W conrollerach mamy try catch i potem w servisavh też go mamy.
+A to powoduje, że możemy najpierw w serwisach rzucić błędem np MONGO_ERROR
+a potem w kontrolerze jakimś zupełnie innym
+
+Pytanie czy controller łapie błąd rzucony przez services taki jaki one jest.
+W sensie czy ten przekazywany przez catch kontrollera err
+catch(err) {}
+to czy ten err jest równy temu co rzucił services
+np
+throw new AppError('blad mongodb', AppError.APP_ERRORS.MONGO_ERROR, err)
+
+jeżeli to jest tan sam błąd, to w kontrollerze już nie muszę niczym rzucać.
+Muszę tam obsłużyć błąd przy pomocy errorHandelera?
+
+------------------------------------------------------------
+
+Dorga takiego przykładowego błędu to
+
+- leci sobie get z nieprawidłowym id do services
+- tam okazuje się, że id jest niepoprawne i rzucany jest błąd
+throw new AppError('brak ID', AppError.APP_ERRORS.MONGO_ERROR, err)
+- ten błąd wraca do controllera i jest łapany przez catch
+- w catch uruchamia się ErrorHendeler.handle(req, res, err)
+- ErrorHandeler.handle() zwraca
+return res.status(HTTP_STATUS_CODES.BAD_REQUEST).json(error)

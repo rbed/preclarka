@@ -125,3 +125,4 @@ module.exports = class logger {
    //    this.status('APP', 'started');
    // }
 };
+
