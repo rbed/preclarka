@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const CopywritersContract = mongoose.model("CopywritersContract");
+const AppError = require('../modules/ErrorHandeler/AppError')
+
+const {ARGUMENT_ERROR, MONGO_ERROR} = AppError.APP_ERRORS
 
 class CopywritersContractServices{
     /**
@@ -10,13 +13,10 @@ class CopywritersContractServices{
      * x
      */
     static getByID(id){
-        if(!id){
-            throw new Error('Nie ma ID')
-        }
         return CopywritersContract.findById({_id : id}).then(doc =>{
             return doc
         }).catch(err =>{
-            throw err
+            throw Error('brak id')
         })
     }
 
@@ -30,10 +30,15 @@ class CopywritersContractServices{
      */
     static async getAll(id=null){
         if(!id) {
-            return await CopywritersContract.find().then(doc=>{return doc}).catch(err=>{throw err})
+            return await CopywritersContract.find().then(doc=>{return doc}).catch(err=>{throw new AppError('coś nie tak z baza danych', MONGO_ERROR, err)})
         }
         if(id) {
-            return await this.getByID(id)
+            try {
+                return await this.getByID(id)
+             }
+             catch(err) {
+                 throw new AppError('ID niepoprawne', MONGO_ERROR)
+             }
         }
 
     }
@@ -45,8 +50,8 @@ class CopywritersContractServices{
      * x
      */
     static async create(copywriterContract) {
-        if (!copywriterContract.dataUrodzenia || !copywriterContract.imieMatki || !copywriterContract.imieOjca || !copywriterContract.nrDowodu || !copywriterContract.pesel || !copywriterContract.nip || !copywriterContract.stanKonta || !copywriterContract.kwota1000) {
-            throw new Error("podana FV nie zawiera kompletu informacji")
+        if (!copywriterContract) {
+            throw new AppError('nie podałeś copywritera', MONGO_ERROR, err)
         }
         console.log('dupa');
         const Copywriter = new CopywritersContract(copywriterContract);
@@ -55,7 +60,7 @@ class CopywritersContractServices{
             return doc
         })
         .catch(err => {
-        throw err
+            throw new AppError('blad mongodb', MONGO_ERROR, err)
         });
     }
 
@@ -70,7 +75,7 @@ class CopywritersContractServices{
      */
     static async update(copywriterContract) {   
         if(!copywriterContract._id) {
-            throw new Error("przekazany objekt invoice nie ma id")
+            throw new AppError('brak copywritera do aktualizacji', ARGUMENT_ERROR)
         }
         try{
         const doc = await CopywritersContract.findOneAndUpdate(
@@ -82,7 +87,7 @@ class CopywritersContractServices{
             };
         } 
         catch(err) {
-            throw err        
+            throw new AppError('blad mongodb', MONGO_ERROR, err)       
         };
     }
 
@@ -98,7 +103,7 @@ class CopywritersContractServices{
     static async delete(id) {
         console.log(id);
         if (!id) {
-            throw Error("brak id")
+            throw new AppError('brak id - arg err', ARGUMENT_ERROR)
         }
         try {
             return await CopywritersContract.findOneAndDelete({
@@ -106,7 +111,7 @@ class CopywritersContractServices{
               })
         }
         catch(err) {
-            throw {"err": err.name, "message" : err.message}  //<<< nie zwraca nic chce usunąć usera podając błędne id
+            throw new AppError('id nie znalezione - mongo err', MONGO_ERROR, err)
         };
     }
 }

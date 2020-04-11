@@ -35,7 +35,8 @@ class AddressesServices{
             return await Addresses.find()
             .then(doc=>{return doc})
             .catch(err=>{
-                throw new AppError('coś nie tak z baza danych', MONGO_ERROR, err)})
+                throw new AppError('coś nie tak z baza danych', MONGO_ERROR, err)
+            })
         }
         if(id) {
             try {
