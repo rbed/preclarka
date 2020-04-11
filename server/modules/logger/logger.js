@@ -99,29 +99,29 @@ module.exports = class logger {
       return '';
    }
 
-   static pringAppLogo() {
-      const logo = require('fs').readFileSync('./logo.txt');
-      const author = 'Radosław Bednarz';
-      const coAuthor = 'Rafał Cymbalista';
-      const version = require('../../package.json').version;
-      const newLine = '\n';
-      const lineSeparator = new String('_').repeat(69);
-      const sign =
-         newLine +
-         `                                 by ${author}` +
-         newLine +
-         `                                and ${coAuthor}` +
-         newLine +
-         '                             (R) all rights reserved' +
-         newLine +
-         lineSeparator +
-         newLine;
-      console.log(
-         chalk.white(lineSeparator + logo + lineSeparator) +
-            newLine +
-            chalk.gray(sign)
-      );
-      this.status('APP_VERSION', version);
-      this.status('APP', 'started');
-   }
+   // static pringAppLogo() {
+   //    const logo = require('fs').readFileSync('./logo.txt');
+   //    const author = 'Radosław Bednarz';
+   //    const coAuthor = 'Rafał Cymbalista';
+   //    const version = require('../../package.json').version;
+   //    const newLine = '\n';
+   //    const lineSeparator = new String('_').repeat(69);
+   //    const sign =
+   //       newLine +
+   //       `                                 by ${author}` +
+   //       newLine +
+   //       `                                and ${coAuthor}` +
+   //       newLine +
+   //       '                             (R) all rights reserved' +
+   //       newLine +
+   //       lineSeparator +
+   //       newLine;
+   //    console.log(
+   //       chalk.white(lineSeparator + logo + lineSeparator) +
+   //          newLine +
+   //          chalk.gray(sign)
+   //    );
+   //    this.status('APP_VERSION', version);
+   //    this.status('APP', 'started');
+   // }
 };

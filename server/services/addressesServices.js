@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 const Addresses = mongoose.model("Addresses");
+const AppError = require('../modules/ErrorHandeler/AppError')
+
+const {ARGUMENT_ERROR, MONGO_ERROR} = AppError.APP_ERRORS
+
 
 class AddressesServices{
+    
     /**
      * @param {ObjectID} ObjectID of Addresses
      * @throws Error - Nie ma ID  || MongoDB Error!
@@ -10,13 +15,10 @@ class AddressesServices{
      * x
      */
     static getByID(id){
-        if(!id){
-            throw new Error('Nie ma ID')
-        }
-        return Addresses.findById({_id : id}).then(doc =>{
-            return doc
-        }).catch(err =>{
-            throw err
+        return Addresses.findById({_id : id})
+        .then(doc =>{return doc})
+        .catch(err =>{
+            throw Error('brak id - blad ze zwyklej klasy error')
         })
     }
 
@@ -30,10 +32,18 @@ class AddressesServices{
      */
     static async getAll(id=null){
         if(!id) {
-            return await Addresses.find().then(doc=>{return doc}).catch(err=>{throw err})
+            return await Addresses.find()
+            .then(doc=>{return doc})
+            .catch(err=>{
+                throw new AppError('coś nie tak z DB', MONGO_ERROR, err)})
         }
         if(id) {
-            return await this.getByID(id)
+            try {
+               return await this.getByID(id)
+            }
+            catch(err) {
+                throw new AppError('ID nie poprawne', MONGO_ERROR)
+            }
         }
 
     }
@@ -45,17 +55,16 @@ class AddressesServices{
      * x
      */
     static async create(address) {
-        console.log(address);
-        if (!address.ulica || !address.nrDomu) {
-            throw new Error("podana FV nie zawiera kompletu informacji")
+        if (!address) {
+            throw new AppError('brak adresu', ARGUMENT_ERROR)
         }
         const Address = new Addresses(address);
-        return await Address.save()
+        return Address.save()
         .then(doc => {
             return doc
         })
         .catch(err => {
-        throw err
+            throw new AppError('blad mongodb', MONGO_ERROR, err)
         });
     }
 
@@ -70,7 +79,7 @@ class AddressesServices{
      */
     static async update(address) {   
         if(!address._id) {
-            throw new Error("przekazany objekt invoice nie ma id")
+            throw new AppError('brak adresu do aktualizacji', ARGUMENT_ERROR)
         }
         try{
         const doc = await Addresses.findOneAndUpdate(
@@ -82,7 +91,7 @@ class AddressesServices{
             };
         } 
         catch(err) {
-            throw err        
+            throw new AppError('blad mongodb', MONGO_ERROR, err)       
         };
     }
 
@@ -96,17 +105,17 @@ class AddressesServices{
      * x
      */
     static async delete(id) {
-        console.log(id);
-        if (!id) {
-            throw Error("brak id")
-        }
+        // if (!id) {
+        //     throw new AppError('brak id - arg err', ARGUMENT_ERROR)
+            
+        // }
         try {
             return await Addresses.findOneAndDelete({
                 _id: id
               })
         }
         catch(err) {
-            throw {"err": err.name, "message" : err.message}
+            throw new AppError('id nie znalezione - mongo err', MONGO_ERROR, err)
         };
     }
 }

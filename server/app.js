@@ -13,7 +13,7 @@ var app = express();
  *    Author: R.C.
  *    Prints app logo and global parameters on startup 
  */
-logger.pringAppLogo();
+// logger.pringAppLogo();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
