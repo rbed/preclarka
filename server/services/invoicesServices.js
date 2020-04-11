@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 const Invoices = mongoose.model("Invoices");
+const AppError = require('../modules/ErrorHandeler/AppError')
+
+const {ARGUMENT_ERROR, MONGO_ERROR} = AppError.APP_ERRORS
+
 
 class InvoicesServices{
     /**
@@ -10,13 +14,10 @@ class InvoicesServices{
      * x
      */
     static getByID(id){
-        if(!id){
-            throw new Error('Nie ma ID')
-        }
         return Invoices.findById({_id : id}).then(doc =>{
             return doc
         }).catch(err =>{
-            throw err
+            throw Error('brak id - blad ze zwyklej klasy error')
         })
     }
 
@@ -30,10 +31,15 @@ class InvoicesServices{
      */
     static async getAll(id=null){
         if(!id) {
-            return await Invoices.find().then(doc=>{return doc}).catch(err=>{throw err})
+            return await Invoices.find().then(doc=>{return doc}).catch(err=>{throw new AppError('coś nie tak z baza danych', MONGO_ERROR, err)})
         }
         if(id) {
-            return await this.getByID(id)
+            try {
+               return await this.getByID(id)
+            }
+            catch(err) {
+                throw new AppError('ID niepoprawne', MONGO_ERROR)
+            }
         }
 
     }
@@ -45,8 +51,8 @@ class InvoicesServices{
      * x
      */
     static async create(invoice) {
-        if (!invoice.numer || !invoice.path || !invoice.fileName) {
-            throw new Error("podana FV nie zawiera kompletu informacji")
+        if (!invoice) {
+            throw new AppError('brak faktury', ARGUMENT_ERROR)
         }
         const Invoice = new Invoices(invoice);
         return await Invoice.save()
@@ -54,11 +60,12 @@ class InvoicesServices{
             return doc
         })
         .catch(err => {
-        throw err
+            throw new AppError('blad mongodb', MONGO_ERROR, err)
         });
     }
 
 
+    // TODO: w przypadku braku id i tak zachowuje sie jakby aktualizował
     /**
      * 
      * @param {Object} invoice 
@@ -69,8 +76,8 @@ class InvoicesServices{
      */
     static async update(invoice) {     
         console.log(invoice);
-        if(!invoice._id) {
-            throw new Error("przekazany objekt invoice nie ma id")
+        if(!invoice) {
+            throw new AppError('brak faktury do aktualizacji', ARGUMENT_ERROR)
         }
         try{
         const doc = await Invoices.findOneAndUpdate(
@@ -82,7 +89,7 @@ class InvoicesServices{
             };
         } 
         catch(err) {
-            throw err        
+            throw new AppError('blad mongodb', MONGO_ERROR, err)        
         };
     }
 
@@ -98,7 +105,7 @@ class InvoicesServices{
     static async delete(id) {
         console.log(id);
         if (!id) {
-            throw Error("brak id")
+            throw new AppError('brak id - arg err', ARGUMENT_ERROR)
         }
         try {
             return await Invoices.findOneAndDelete({
@@ -106,7 +113,7 @@ class InvoicesServices{
               })
         }
         catch(err) {
-            throw {"err": err.name, "message" : err.message}  //<<< nie zwraca nic chce usunąć usera podając błędne id
+            throw new AppError('id nie znalezione - mongo err', MONGO_ERROR, err)
         };
     }
 }
