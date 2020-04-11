@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 const contractsServices = require('../services/contractsServices')
 const HTTP_STATUS = require('http-status-codes')
+const ErrorHandeler = require('../modules/ErrorHandeler/ErrorHandeler')
+const AppError = require('../modules/ErrorHandeler/AppError')
 
+const {ARGUMENT_ERROR, MONGO_ERROR} = AppError.APP_ERRORS
 
 class contractsController {
   static async getAll(req, res, err) {
@@ -12,7 +15,7 @@ class contractsController {
         return res.status(HTTP_STATUS.OK).json(data)
       }
       catch (err) {
-        return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+        ErrorHandeler.handle(req, res, err)
       }
     }
   }
@@ -23,12 +26,15 @@ class contractsController {
   //
   static async create(req, res, err) {
     const {body: { contract }} = req;
+    if (!contract) {
+      return ErrorHandeler.handle(req, res, new AppError('nie podales umowy', ARGUMENT_ERROR)) 
+    }
     try {
       const data = await contractsServices.create(contract)
       return res.status(HTTP_STATUS.OK).json(data)
     } 
     catch(err) {
-      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+      ErrorHandeler.handle(req, res, err)
     }
   }
 
@@ -40,14 +46,14 @@ class contractsController {
   static async update(req, res, err) {
     const {body: { contract }} = req;
     if (!contract) {
-        return res.status(400).send('nie podałeś co chcesz zmmienic')
+      return ErrorHandeler.handle(req, res, new AppError('nie podales id', ARGUMENT_ERROR))
     }
     try {
       const data = await contractsServices.update(contract)
       return res.status(HTTP_STATUS.OK).json(data)
     }
     catch(err) {
-      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+      ErrorHandeler.handle(req, res, err)
     }
   }
 
@@ -56,14 +62,14 @@ class contractsController {
   static async removeByID(req, res, err) {
     const id = (req.query.id) 
     if (!id) {
-      return res.status(400).send("złe id");
+      return ErrorHandeler.handle(req, res, new AppError('nie podałes id', ARGUMENT_ERROR))  
     }
     try {
       const data = await contractsServices.delete(id)
       return res.status(HTTP_STATUS.OK).json({data, deleted: true})
     }
     catch(err) {
-      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)  
+      ErrorHandeler.handle(req, res, err)  
     }
   }
 }

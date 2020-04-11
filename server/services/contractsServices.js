@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const Contracts = mongoose.model("Contracts");
+const AppError = require('../modules/ErrorHandeler/AppError')
+
+const {ARGUMENT_ERROR, MONGO_ERROR} = AppError.APP_ERRORS
 
 class ContractServices{
     /**
@@ -10,13 +13,10 @@ class ContractServices{
      * x
      */
     static getByID(id){
-        if(!id){
-            throw new Error('Nie ma ID')
-        }
         return Contracts.findById({_id : id}).then(doc =>{
             return doc
         }).catch(err =>{
-            throw err
+            throw Error('brak id - blad ze zwyklej klasy error')
         })
     }
 
@@ -30,10 +30,15 @@ class ContractServices{
      */
     static async getAll(id=null){
         if(!id) {
-            return await Contracts.find().then(doc=>{return doc}).catch(err=>{throw err})
+            return await Contracts.find().then(doc=>{return doc}).catch(err=>{throw new AppError('coś nie tak z baza danych', MONGO_ERROR, err)})
         }
         if(id) {
-            return await this.getByID(id)
+            try {
+                return await this.getByID(id)
+             }
+             catch(err) {
+                 throw new AppError('ID niepoprawne', MONGO_ERROR)
+             }
         }
 
     }
@@ -46,8 +51,8 @@ class ContractServices{
      */
     static async create(contract) {
         console.log(contract);
-        if (!contract.numer || !contract.path || !contract.fileName) {
-            throw new Error("podana FV nie zawiera kompletu informacji")
+        if (!contract) {
+            throw new AppError('brak adresu', ARGUMENT_ERROR)
         }
         const Contract = new Contracts(contract);
         return await Contract.save()
@@ -55,7 +60,7 @@ class ContractServices{
             return doc
         })
         .catch(err => {
-        throw err
+            throw new AppError('blad mongodb', MONGO_ERROR, err)
         });
     }
 
@@ -70,7 +75,7 @@ class ContractServices{
      */
     static async update(contract) {   
         if(!contract._id) {
-            throw new Error("przekazany objekt invoice nie ma id")
+            throw new AppError('brak umowy do aktualizacji', ARGUMENT_ERROR)
         }
         try{
         const doc = await Contracts.findOneAndUpdate(
@@ -82,7 +87,7 @@ class ContractServices{
             };
         } 
         catch(err) {
-            throw err        
+            throw new AppError('blad mongodb', MONGO_ERROR, err)    
         };
     }
 
@@ -98,7 +103,7 @@ class ContractServices{
     static async delete(id) {
         console.log(id);
         if (!id) {
-            throw Error("brak id")
+            throw new AppError('brak id - arg err', ARGUMENT_ERROR)
         }
         try {
             return await Contracts.findOneAndDelete({
@@ -106,7 +111,7 @@ class ContractServices{
               })
         }
         catch(err) {
-            throw {"err": err.name, "message" : err.message}
+            throw new AppError('id nie znalezione - mongo err', MONGO_ERROR, err)
         };
     }
 }
