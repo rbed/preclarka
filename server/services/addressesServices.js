@@ -79,7 +79,7 @@ class AddressesServices{
      * x
      */
     static async update(address) {   
-        if(!address._id) {
+        if(!address || !address._id) {
             throw new AppError('brak adresu do aktualizacji', ARGUMENT_ERROR)
         }
         try{

@@ -51,9 +51,6 @@ class OrdersServices{
      * x
      */
     static async create(order) {
-        if (!order) {
-            throw new AppError('brak zamowienia', ARGUMENT_ERROR)
-        }
         const Order = new Orders(order);
         return await Order.save()
         .then(doc => {
@@ -64,7 +61,7 @@ class OrdersServices{
         });
     }
 
-    // TODO: updatuje order ze złym id
+
     /**
      * 
      * @param {Object} order 
@@ -75,13 +72,13 @@ class OrdersServices{
      */
     static async update(order) {     
         console.log(order);
-        if(!order) {
+        if(!order || !order._id) {
             throw new AppError('brak zamowienia do aktualizacji', ARGUMENT_ERROR)
         }
         try{
         const doc = await Orders.findOneAndUpdate(
             { _id: order._id },
-            order, {new: true}); 
+            order, {new: false}); 
             return {
                 order: doc,
                 message: "Updated"
@@ -102,14 +99,10 @@ class OrdersServices{
      * 
      */
     static async delete(id) {
-        console.log(id);
-        if (!id) {
-            throw new AppError('brak id - arg err', ARGUMENT_ERROR)
-        }
         try {
             return await Orders.findOneAndDelete({
                 _id: id
-              })
+                })
         }
         catch(err) {
             throw new AppError('id nie znalezione - mongo err', MONGO_ERROR, err)

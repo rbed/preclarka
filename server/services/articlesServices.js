@@ -71,7 +71,7 @@ class ArticleServices{
      * x
      */
     static async update(article) {   
-        if(!article._id) {
+        if(!article || !article._id) {
             throw new AppError('brak artykulu do aktualizacji', ARGUMENT_ERROR)
         }
         try{

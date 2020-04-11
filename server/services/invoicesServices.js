@@ -65,7 +65,6 @@ class InvoicesServices{
     }
 
 
-    // TODO: w przypadku braku id i tak zachowuje sie jakby aktualizował
     /**
      * 
      * @param {Object} invoice 
@@ -76,7 +75,7 @@ class InvoicesServices{
      */
     static async update(invoice) {     
         console.log(invoice);
-        if(!invoice) {
+        if(!invoice || !invoice._id) {
             throw new AppError('brak faktury do aktualizacji', ARGUMENT_ERROR)
         }
         try{

@@ -65,8 +65,6 @@ class CopywritersInvoiceServices{
         });
     }
 
-
-    // TODO: coś nie działa przy aktualizajci, zachowuje się jakby aktualizował id którego nie ma
     /**
      * 
      * @param {Object} copywriterInvoice 
@@ -77,7 +75,7 @@ class CopywritersInvoiceServices{
      */
     static async update(copywriterInvoice) {     
         console.log(copywriterInvoice);
-        if(!copywriterInvoice) {
+        if(!copywriterInvoice || !copywriterInvoice._id) {
             throw new AppError('brak copywritera do aktualizacji', ARGUMENT_ERROR)
         }
         try{

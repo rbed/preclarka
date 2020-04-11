@@ -74,7 +74,7 @@ class CopywritersContractServices{
      * 
      */
     static async update(copywriterContract) {   
-        if(!copywriterContract._id) {
+        if(!copywriterContract || !copywriterContract._id) {
             throw new AppError('brak copywritera do aktualizacji', ARGUMENT_ERROR)
         }
         try{

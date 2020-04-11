@@ -123,7 +123,7 @@ class usersServices{
      * @async
      */
     static async updateUser(user) {     
-        if(!user._id) {
+        if(!user  || !user._id) {
             throw new Error("przekazany objekt user nie ma id")
         }
         try{

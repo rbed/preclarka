@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  *    Database access initiation
  */
 const dbPath = config.LOCAL_DB_PATH //'mongodb://localhost:27017/preclarkadb'
+console.log(dbPath);
 
 mongoose
    .connect(dbPath, {

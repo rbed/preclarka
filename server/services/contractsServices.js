@@ -74,7 +74,7 @@ class ContractServices{
      * x
      */
     static async update(contract) {   
-        if(!contract._id) {
+        if(!contract  || !contract._id) {
             throw new AppError('brak umowy do aktualizacji', ARGUMENT_ERROR)
         }
         try{

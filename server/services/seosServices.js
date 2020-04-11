@@ -121,7 +121,7 @@ class SeosServices{
      * x
      */
     static async updateSeo(seo) {     
-        if(!seo._id) {
+        if(!seo || !seo._id) {
             throw new Error("przekazany objekt seo nie ma id")
         }
         try{
