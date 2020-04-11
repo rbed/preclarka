@@ -106,10 +106,10 @@ class AddressesServices{
      * x
      */
     static async delete(id) {
-        // if (!id) {
-        //     throw new AppError('brak id - arg err', ARGUMENT_ERROR)
+        if (!id) {
+            throw new AppError('brak id - arg err', ARGUMENT_ERROR)
             
-        // }
+        }
         try {
             return await Addresses.findOneAndDelete({
                 _id: id

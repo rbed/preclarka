@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 const copywritersInvoicesServices = require('../services/copywritersInvoicesServices')
 const HTTP_STATUS = require('http-status-codes')
+const ErrorHandeler = require('../modules/ErrorHandeler/ErrorHandeler')
+const AppError = require('../modules/ErrorHandeler/AppError')
+
+const {ARGUMENT_ERROR, MONGO_ERROR} = AppError.APP_ERRORS
 
 
 class copywriterInvoiceController {
   static async getAll(req, res, err) {
-    if (req.query) {
       try {
         const {id} = req.query
         console.log('copy invoice');
@@ -13,9 +16,8 @@ class copywriterInvoiceController {
         return res.status(HTTP_STATUS.OK).json(data)
       }
       catch (err) {
-        return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+        ErrorHandeler.handle(req, res, err)
       }
-    }
   }
 
   /**
@@ -24,12 +26,15 @@ class copywriterInvoiceController {
   //
   static async create(req, res, err) {
     const {body: { copywriterInvoice }} = req;
+    if (!copywriterInvoice) {
+      return ErrorHandeler.handle(req, res, new AppError('nie podales copywritera', ARGUMENT_ERROR)) 
+    }
     try {
       const data = await copywritersInvoicesServices.create(copywriterInvoice)
       return res.status(HTTP_STATUS.OK).json(data)
     } 
     catch(err) {
-      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+      ErrorHandeler.handle(req, res, err)
     }
   }
 
@@ -41,14 +46,14 @@ class copywriterInvoiceController {
   static async update(req, res, err) {
     const {body: { copywriterInvoice }} = req;
     if (!copywriterInvoice) {
-        return res.status(400).send('nie podałeś co chcesz zmmienic')
+        return ErrorHandeler.handle(req, res, new AppError('nie podales adresu jaki chcesz zmienić', ARGUMENT_ERROR))  
     }
     try {
       const data = await copywritersInvoicesServices.update(copywriterInvoice)
       return res.status(HTTP_STATUS.OK).json(data)
     }
     catch(err) {
-      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+      ErrorHandeler.handle(req, res, err)
     }
   }
 
@@ -57,14 +62,14 @@ class copywriterInvoiceController {
   static async removeByID(req, res, err) {
     const id = (req.query.id) 
     if (!id) {
-      return res.status(400).send("złe id");
+      return ErrorHandeler.handle(req, res, new AppError('nie podałes id', ARGUMENT_ERROR)) 
     }
     try {
       const data = await copywritersInvoicesServices.delete(id)
       return res.status(HTTP_STATUS.OK).json({data, deleted: true})
     }
     catch(err) {
-      return res.status(HTTP_STATUS.BAD_REQUEST).json(err)  
+      ErrorHandeler.handle(req, res, err)
     }
   }
 }

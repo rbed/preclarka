@@ -48,7 +48,7 @@ class addressesController {
     const {body: { address }} = req;
     if (!address) {
         // return res.status(400).send('nie podałeś co chcesz zmmienic')
-        return ErrorHandeler.handle(req, res, new AppError('nie podales id', ARGUMENT_ERROR))  
+        return ErrorHandeler.handle(req, res, new AppError('nie podales adresu jaki chcesz zmienic', ARGUMENT_ERROR))  
     }
     try {
       const data = await addressesServices.update(address)

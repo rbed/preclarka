@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 const CopywritersInvoice = mongoose.model("CopywritersInvoice");
+const AppError = require('../modules/ErrorHandeler/AppError')
+
+const {ARGUMENT_ERROR, MONGO_ERROR} = AppError.APP_ERRORS
+
 
 class CopywritersInvoiceServices{
     /**
@@ -10,13 +14,10 @@ class CopywritersInvoiceServices{
      * x
      */
     static getByID(id){
-        if(!id){
-            throw new Error('Nie ma ID')
-        }
         return CopywritersInvoice.findById({_id : id}).then(doc =>{
             return doc
         }).catch(err =>{
-            throw err
+            throw Error('brak id')
         })
     }
 
@@ -30,10 +31,15 @@ class CopywritersInvoiceServices{
      */
     static async getAll(id=null){
         if(!id) {
-            return await CopywritersInvoice.find().then(doc=>{return doc}).catch(err=>{throw err})
+            return await CopywritersInvoice.find().then(doc=>{return doc}).catch(err=>{throw new AppError('coś nie tak z baza danych', MONGO_ERROR, err)})
         }
         if(id) {
-            return await this.getByID(id)
+            try {
+               return await this.getByID(id)
+            }
+            catch(err) {
+                throw new AppError('ID niepoprawne', MONGO_ERROR)
+            }
         }
 
     }
@@ -45,8 +51,8 @@ class CopywritersInvoiceServices{
      * x
      */
     static async create(copywriterInvoice) {
-        if (!copywriterInvoice.nazwaFirmy || !copywriterInvoice.regon || !copywriterInvoice.nip || !copywriterInvoice.kwota1000) {
-            throw new Error("podana FV nie zawiera kompletu informacji")
+        if (!copywriterInvoice) {
+            throw new AppError('brak copywritera', ARGUMENT_ERROR)
         }
         console.log('dupa');
         const Copywriter = new CopywritersInvoice(copywriterInvoice);
@@ -55,11 +61,12 @@ class CopywritersInvoiceServices{
             return doc
         })
         .catch(err => {
-        throw err
+            throw new AppError('blad mongodb', MONGO_ERROR, err)
         });
     }
 
 
+    // TODO: coś nie działa przy aktualizajci, zachowuje się jakby aktualizował id którego nie ma
     /**
      * 
      * @param {Object} copywriterInvoice 
@@ -70,8 +77,8 @@ class CopywritersInvoiceServices{
      */
     static async update(copywriterInvoice) {     
         console.log(copywriterInvoice);
-        if(!copywriterInvoice._id) {
-            throw new Error("przekazany objekt invoice nie ma id")
+        if(!copywriterInvoice) {
+            throw new AppError('brak copywritera do aktualizacji', ARGUMENT_ERROR)
         }
         try{
         const doc = await CopywritersInvoice.findOneAndUpdate(
@@ -83,7 +90,7 @@ class CopywritersInvoiceServices{
             };
         } 
         catch(err) {
-            throw err        
+            throw new AppError('blad mongodb', MONGO_ERROR, err)    
         };
     }
 
@@ -99,7 +106,7 @@ class CopywritersInvoiceServices{
     static async delete(id) {
         console.log(id);
         if (!id) {
-            throw Error("brak id")
+            throw new AppError('brak id - arg err', ARGUMENT_ERROR)
         }
         try {
             return await CopywritersInvoice.findOneAndDelete({
@@ -107,7 +114,7 @@ class CopywritersInvoiceServices{
               })
         }
         catch(err) {
-            throw {"err": err.name, "message" : err.message}  //<<< nie zwraca nic chce usunąć usera podając błędne id
+            throw new AppError('id nie znalezione - mongo err', MONGO_ERROR, err)
         };
     }
 }
