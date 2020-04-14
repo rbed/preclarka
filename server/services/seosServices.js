@@ -18,6 +18,9 @@ class SeosServices{
             throw new Error('Nie ma ID')
         }
         return Seos.findById({_id : id}).then(doc =>{
+            if (doc.length === 0) {
+                throw Error('nie ma takiego name w bazie')
+            }
             return doc
         }).catch(err =>{
             throw new AppError('ID niepoprawne', MONGO_ERROR)
@@ -38,6 +41,9 @@ class SeosServices{
             throw new Error('Nie ma Name')
         }
         return await Seos.find({name:name}).then(doc =>{
+            if (doc.length === 0) {
+                throw new AppError('brak seo z takim name', MONGO_ERROR)
+            }
             return doc
         }).catch(err =>{
             throw new AppError('brak takiego name', MONGO_ERROR)
@@ -58,6 +64,9 @@ class SeosServices{
             throw new Error('Nie ma last name')
         }
         return await Seos.find({lastname : lastname}).then(doc =>{
+            if (doc.length === 0) {
+                throw Error('nie ma takiego lastname w bazie')
+            }
             return doc
         }).catch(err =>{
             throw new AppError('brak seo z takim lastname', MONGO_ERROR)

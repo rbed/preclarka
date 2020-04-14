@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const Users = mongoose.model("Users");
+const AppError = require('../modules/ErrorHandeler/AppError')
+
+const {ARGUMENT_ERROR, MONGO_ERROR} = AppError.APP_ERRORS
 
 class usersServices{
     /**
@@ -9,14 +12,14 @@ class usersServices{
      * @returns List of Users as per id
      * @async
      */
-    static getUserByID(id){
+    static getByID(id){
         if(!id){
-            throw new Error('Nie ma ID')
+            throw new AppError('nie podałes id', ARGUMENT_ERROR)
         }
         return Users.findById({_id : id}).then(doc =>{
             return doc
         }).catch(err =>{
-            throw err
+            throw new AppError('ID niepoprawne', MONGO_ERROR)
         })
     }
 
@@ -27,15 +30,20 @@ class usersServices{
      * @returns List of Users as per name 
      * @async
      */
-    static async getUsersByName(name){
-        
+    static async getByName(name){
+        console.log(name);
         if(!name){
-            throw new Error('Nie ma Name')
+            throw Error('brak name')
         }
-        return await Users.find({name:name}).then(doc =>{
-            return doc
-        }).catch(err =>{
-            throw err
+        return await Users.find({name:name})
+        .then(doc =>{
+            if (doc.length === 0) {
+                console.log(doc.length);
+                throw new AppError('brak seo z takim name', MONGO_ERROR)
+            }
+            return doc})
+        .catch(err =>{
+            throw new AppError('brak seo z takim name', MONGO_ERROR)
         })
     }
 
@@ -46,15 +54,19 @@ class usersServices{
      * @returns List of Users as per last name
      * @async
      */
-    static async getUsersByLastName(lastName){
+    static async getByLastName(lastName){
 
         if(!lastName){
-            throw new Error('Nie ma last name')
+            throw new AppError('nie podales lastname', ARGUMENT_ERROR)
         }
         return await Users.find({lastname : lastName}).then(doc =>{
+            if (doc.length === 0) {
+                console.log(doc.length);
+                throw new AppError('brak seo z takim lastname', MONGO_ERROR)
+            }
             return doc
         }).catch(err =>{
-            throw err
+            throw new AppError('brak seo z takim lastname', MONGO_ERROR)
         })
     }
 
@@ -69,20 +81,20 @@ class usersServices{
      */
     static async getUsers(id=null, name = null, lastName = null){
         if(!id && !name && !lastName) {
-            return await Users.find().then(doc=>{return doc}).catch(err=>{throw err})
+            return await Users.find().then(doc=>{return doc}).catch(err=>{throw new AppError('brak zamowienia do aktualizacji', ARGUMENT_ERROR)})
         }
         if(!id && name && !lastName) {
-            return await this.getUsersByName(name)
+            return await this.getByName(name)
         }
         if(!id && !name && lastName) {
-            return await this.getUsersByLastName(lastName)
+            return await this.getByLastName(lastName)
         }
         if(!id && name && lastName) {
             return await Users.find({name: name, lastname : lastName}).then(doc => {return doc}).catch(err => {return(err)})
         }
         if(id && !name && !lastName) {
             console.log(id);
-            return await this.getUserByID(id)
+            return await this.getByID(id)
         }
 
     }
@@ -92,10 +104,10 @@ class usersServices{
      * @returns created user data
      * @throws Error if user data not recieved || mongoDB othervise or if user object has no enough data
      */
-    static async createUser(user) {
+    static async create(user) {
         
-        if (!user.name || !user.lastname || !user.email) {
-            throw new Error("podany uzytkownik nie zawiera kompletu informacji")
+        if (!user) {
+            throw new AppError('nie podales uzytkownika do utworzenia', ARGUMENT_ERROR)
         }
         const User = new Users(user);
         
@@ -110,7 +122,7 @@ class usersServices{
         // jak coś pojdzie nie tak to ma wyrzucic błąd
         // wyrzucony z tad błąd musi byc obsłużony w bloku try catch kontrolera
         // ​res​.​status​(​422​).​json​(err);
-        throw err
+        throw new AppError('blad mongodb', MONGO_ERROR, err)
         });
     }
 
@@ -122,9 +134,9 @@ class usersServices{
      * @returns updated user
      * @async
      */
-    static async updateUser(user) {     
+    static async update(user) {     
         if(!user  || !user._id) {
-            throw new Error("przekazany objekt user nie ma id")
+            throw new AppError('brak usera do edycji', ARGUMENT_ERROR)
         }
         try{
         const doc = await Users.findOneAndUpdate(
@@ -136,7 +148,7 @@ class usersServices{
             };
         } 
         catch(err) {
-            throw err        
+            throw new AppError('blad mongodb', MONGO_ERROR, err)       
         };
     }
 
@@ -148,9 +160,9 @@ class usersServices{
      * @returns deleted user
      * @async
      */
-    static async deleteUser(id) {
+    static async delete(id) {
         if (!id) {
-            throw Error("brak id")
+            throw new AppError('brak id', ARGUMENT_ERROR)
         }
         try {
             return await Users.findOneAndDelete({
@@ -158,7 +170,7 @@ class usersServices{
               })
         }
         catch(err) {
-            throw {"err": err.name, "message" : err.message}  //<<< nie zwraca nic chce usunąć usera podając błędne id
+            throw new AppError('id nie znalezione - mongo err', MONGO_ERROR, err)
         };
     }
 }

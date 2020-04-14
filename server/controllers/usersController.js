@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 // const Users = mongoose.model("Users");
 const usersService = require('../services/usersServices')
 const HTTP_STATUS = require('http-status-codes')
+const ErrorHandeler = require('../modules/ErrorHandeler/ErrorHandeler')
+const AppError = require('../modules/ErrorHandeler/AppError')
+
+const {ARGUMENT_ERROR, MONGO_ERROR} = AppError.APP_ERRORS
+
 
 class usersController {
   /**
@@ -18,7 +23,7 @@ class usersController {
         const data = await usersService.getUsers(id, name, lastName)
         return res.status(HTTP_STATUS.OK).json(data)
       }catch(err){
-        return  res.status(400).json(err)          
+        ErrorHandeler.handle(req, res, err)          
       }
     }
     // try{
@@ -65,14 +70,14 @@ class usersController {
     const {body: { user }} = req;
   
     if(!user) {
-      return res.status(400).send('nie podales uzytkowika ktorego chcesz stworzyc')
+      return ErrorHandeler.handle(req, res, new AppError('nie podales pozycjonera', ARGUMENT_ERROR)) 
     }
     try{
       
-      const doc = await usersService.createUser(user)
+      const doc = await usersService.create(user)
       return res.status(200).json(doc)
     }catch(err){
-      return res.status(400).json(err)
+      ErrorHandeler.handle(req, res, err) 
     }
    
 
@@ -95,14 +100,14 @@ class usersController {
   static async update(req, res, err) {
     const {body: { user }} = req;
     if (!user) {
-        return res.status(400).send('nie podałeś co chcesz zmmienic')
+      return ErrorHandeler.handle(req, res, new AppError('nie podales pozycjonera którego chcesz edytować', ARGUMENT_ERROR)) 
     }
     try {
-      const doc = await usersService.updateUser(user)
+      const doc = await usersService.update(user)
       return res.status(HTTP_STATUS.OK).json(doc)
     }
     catch(err) {
-      return res.status(400).json(err)
+      ErrorHandeler.handle(req, res, err) 
     }
 
     // Users.findOneAndUpdate(
@@ -135,14 +140,14 @@ class usersController {
       try {
         const {id} = req.query;
         if (!id) {
-          res.status(HTTP_STATUS.BAD_REQUEST).send('nie podałeś id')
+          return ErrorHandeler.handle(req, res, new AppError('nie podałes id', ARGUMENT_ERROR)) 
         } else {
-          const doc = await usersService.deleteUser(id)
+          const doc = await usersService.delete(id)
           res.status(HTTP_STATUS.OK).json(doc)
       }
       }
       catch(err) {
-        res.status(HTTP_STATUS.BAD_REQUEST).json(err)
+        ErrorHandeler.handle(req, res, err) 
       }
     }
     // const id = req.params.id;
