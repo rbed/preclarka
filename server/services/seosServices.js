@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const Seos = mongoose.model("Seos");
+const AppError = require('../modules/ErrorHandeler/AppError')
+
+const {ARGUMENT_ERROR, MONGO_ERROR} = AppError.APP_ERRORS
 
 class SeosServices{
     /**
@@ -10,14 +13,14 @@ class SeosServices{
      * @async
      * x
      */
-    static getSeoByID(id){
+    static getByID(id){
         if(!id){
             throw new Error('Nie ma ID')
         }
         return Seos.findById({_id : id}).then(doc =>{
             return doc
         }).catch(err =>{
-            throw err
+            throw new AppError('ID niepoprawne', MONGO_ERROR)
         })
     }
 
@@ -29,7 +32,7 @@ class SeosServices{
      * @async
      * x
      */
-    static async getSeosByName(name){
+    static async getByName(name){
         
         if(!name){
             throw new Error('Nie ma Name')
@@ -37,7 +40,7 @@ class SeosServices{
         return await Seos.find({name:name}).then(doc =>{
             return doc
         }).catch(err =>{
-            throw err
+            throw new AppError('brak takiego name', MONGO_ERROR)
         })
     }
 
@@ -49,7 +52,7 @@ class SeosServices{
      * @async
      * x
      */
-    static async getSeosBylastname(lastname){
+    static async getByLastname(lastname){
 
         if(!lastname){
             throw new Error('Nie ma last name')
@@ -57,7 +60,7 @@ class SeosServices{
         return await Seos.find({lastname : lastname}).then(doc =>{
             return doc
         }).catch(err =>{
-            throw err
+            throw new AppError('brak seo z takim lastname', MONGO_ERROR)
         })
     }
 
@@ -71,21 +74,21 @@ class SeosServices{
      * @async
      * x
      */
-    static async getSeos(id=null, name = null, lastname = null){
+    static async getAll(id=null, name = null, lastname = null){
         if(!id && !name && !lastname) {
-            return await Seos.find().then(doc=>{return doc}).catch(err=>{throw err})
+            return await Seos.find().then(doc=>{return doc}).catch(err=>{throw new AppError('brak zamowienia do aktualizacji', ARGUMENT_ERROR)})
         }
         if(!id && name && !lastname) {
-            return await this.getSeosByName(name)
+            return await this.getByName(name)
         }
         if(!id && !name && lastname) {
-            return await this.getSeosBylastname(lastname)
+            return await this.getByLastname(lastname)
         }
         if(!id && name && lastname) {
             return await Seos.find({name: name, lastname : lastname}).then(doc => {return doc}).catch(err => {return(err)})
         }
         if(id && !name && !lastname) {
-            return await this.getSeoByID(id)
+            return await this.getByID(id)
         }
 
     }
@@ -96,10 +99,9 @@ class SeosServices{
      * @throws Error if user data not recieved || mongoDB othervise or if user object has no enough data
      * x
      */
-    static async createSeo(seo) {
-        console.log(seo.user);
-        if (!seo.user) {
-            throw new Error("podany seowiec nie zawiera kompletu informacji")
+    static async create(seo) {
+        if (!seo) {
+            throw new AppError('brak zamowienia do aktualizacji', ARGUMENT_ERROR)
         }
         const Seo = new Seos(seo);
         return await Seo.save()
@@ -107,7 +109,7 @@ class SeosServices{
             return doc
         })
         .catch(err => {
-        throw err
+            throw new AppError('blad mongodb', MONGO_ERROR, err)
         });
     }
 
@@ -120,9 +122,9 @@ class SeosServices{
      * @async
      * x
      */
-    static async updateSeo(seo) {     
+    static async update(seo) {     
         if(!seo || !seo._id) {
-            throw new Error("przekazany objekt seo nie ma id")
+            throw new AppError('brak seo do edycji', ARGUMENT_ERROR)
         }
         try{
         const doc = await Seos.findOneAndUpdate(
@@ -134,7 +136,7 @@ class SeosServices{
             };
         } 
         catch(err) {
-            throw err        
+            throw new AppError('blad mongodb', MONGO_ERROR, err)       
         };
     }
 
@@ -147,7 +149,7 @@ class SeosServices{
      * @async
      * x
      */
-    static async deleteSeo(id) {
+    static async delete(id) {
         if (!id) {
             throw Error("brak id")
         }
@@ -157,7 +159,7 @@ class SeosServices{
               })
         }
         catch(err) {
-            throw {"err": err.name, "message" : err.message}  //<<< nie zwraca nic chce usunąć usera podając błędne id
+            throw new AppError('id nie znalezione - mongo err', MONGO_ERROR, err)
         };
     }
 }

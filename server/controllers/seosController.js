@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const Seos = mongoose.model("Seos");
 const seosService = require('../services/seosServices')
 const HTTP_STATUS = require('http-status-codes')
+const ErrorHandeler = require('../modules/ErrorHandeler/ErrorHandeler')
+const AppError = require('../modules/ErrorHandeler/AppError')
+
+const {ARGUMENT_ERROR, MONGO_ERROR} = AppError.APP_ERRORS
+
 
 class seosController {
   
@@ -15,10 +20,10 @@ class seosController {
     if(req.query){
       try{
         const {id, name, lastname} = req.query
-        const data = await seosService.getSeos(id, name, lastname)
+        const data = await seosService.getAll(id, name, lastname)
         return res.status(HTTP_STATUS.OK).json(data)
       }catch(err){
-        return  res.status(400).json(err)          
+        ErrorHandeler.handle(req, res, err)         
       }
     }
   }
@@ -32,13 +37,13 @@ class seosController {
   static async create(req, res, err) {
     const {body: { seo }} = req;
     if(!seo) {
-      return res.status(400).send('nie podales seo ktorego chcesz stworzyc')
+      return ErrorHandeler.handle(req, res, new AppError('nie podales pozycjonera', ARGUMENT_ERROR)) 
     }
     try{
-      const doc = await seosService.createSeo(seo)
+      const doc = await seosService.create(seo)
       return res.status(200).json(doc)
     }catch(err){
-      return res.status(400).json(err)
+      ErrorHandeler.handle(req, res, err) 
     }
   }
 
@@ -50,14 +55,14 @@ class seosController {
   static async update(req, res, err) {
     const {body: { seo }} = req;
     if (!seo) {
-        return res.status(400).send('nie podałeś co chcesz zmmienic')
+      return ErrorHandeler.handle(req, res, new AppError('nie podales pozycjonera którego chcesz edytować', ARGUMENT_ERROR)) 
     }
     try {
-      const doc = await seosService.updateSeo(seo)
+      const doc = await seosService.update(seo)
       return res.status(HTTP_STATUS.OK).json(doc)
     }
     catch(err) {
-      return res.status(400).json(err)
+      ErrorHandeler.handle(req, res, err) 
     }
   }
 
@@ -71,19 +76,17 @@ class seosController {
    * x
    */
   static async removeByID(req, res, err) {
-    if (req.query) {
-      try {
-        const {id} = req.query;
-        if (!id) {
-          res.status(HTTP_STATUS.BAD_REQUEST).send('nie podałeś id')
-        } else {
-          const doc = await seosService.deleteSeo(id)
-          res.status(HTTP_STATUS.OK).json(doc)
-      }
-      }
-      catch(err) {
-        res.status(HTTP_STATUS.BAD_REQUEST).json(err)
-      }
+    const {id} = req.query;
+    try {
+      if(!id) {
+        return ErrorHandeler.handle(req, res, new AppError('nie podałes id', ARGUMENT_ERROR)) 
+      } else {
+        const doc = await seosService.delete(id)
+        res.status(HTTP_STATUS.OK).json(doc)
+    }
+    }
+    catch(err) {
+      ErrorHandeler.handle(req, res, err) 
     }
   }
 }
