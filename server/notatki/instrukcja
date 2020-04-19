@@ -82,125 +82,16 @@ TODO
 
 
 
-ROBOCZE
-{ "copywriter" : {
-	"dataUrodzenia": "22-12-2020",
-    "imieMatki": "Genowefa",
-    "imieOjca": "Zenon",
-    "nrDowodu": "AEZ345678",
-    "pesel": "8745526743",
-    "nip": "32rewfwf",
-    "kwota1000": "120",
-    "user": "5e7e2242deecd11d85c76b79"
-    }
-    }
-
-  
-  {"address" : 
-{
-   "ulica": "ulica5",
-   "nrDomu": "5",
-   "nrLokalu": "5", 
-   "miasto": "Kraków", 
-   "kodPocz": "55-555",
-   "kraj" : "Poland"
-}}
-
-
-{"user" : 
-{
-   "name": "user5",
-   "lastname": "lastname5",
-   "email": "5@5.pl"
-}}
-
-
-{ "copywriter" : {
-	"dataUrodzenia": "2020-03-27T17:53:50.552Z",
-    "imieMatki": "Genowefa",
-    "imieOjca": "Zenon",
-    "nrDowodu": "AEZ345678",
-    "pesel": "8745526743",
-    "nip": "32rewfwf",
-    "kwota1000": "120",
-    "user": "5e7f87172606c07c72434978",
-    "adres": "5e7f86c42606c07c72434977",
-    "adresKoresp": "5e7f86c42606c07c72434977"
-    }
-    }
-
-
-{ "order": {
-    "temat": "temat1",
-    "ileArt": 15,
-    "dlugoscArt": 5000,
-    "wartosc": 0,
-    "komentarzOdrzucenia": ""
-    }}
-
-przykladowy order
-{
-    "_id": "5e7e8898d257466d416b62e3",
-    "temat": "temat3",
-    "ileArt": 55,
-    "dlugoscArt": 10000,
-    "wartosc": 0,
-    "komentarzOdrzucenia": "",
-    "__v": 0
-}
-
-
-{
-  "article" : {
-    "tytul": "Tytuł artykułu 1",
-    "tresc": "testowy artykul",
-	"minDlugosc": 800,
-	"rzeczDlugosc": 1000,
-	"zamowienie": "5e7e8898d257466d416b62e3"
-  }}
-
-  przykładowy article
-  {
-    "_id": "5e7e8d696cd653718f61ca43",
-    "tytul": "tytuł artykułu 1",
-    "tresc": "testowy artykul",
-    "minDlugosc": 800,
-    "rzeczDlugosc": 1000,
-    "zamowienie": "5e7e8898d257466d416b62e3",
-    "__v": 0
-}
 
 
 
-{
-"contract":
-{
-"numer": "32ewf43",
-"path": "/sdfsdf/sagfsd/dsgsa",
-"fileName" : "umowa1.pdf",
-"user" :  "5e7e3daedce3d835643358a4"
-
-}}
 
 
-{
-"copywriter":
-{
-"nazwaFirmy": "Firma1",
-"regon": "36392738324",
-"nip" : "23249229",
-"kwota1000" :  11,
-"stanKonta": 0,
-"adres": "5e7f87172606c07c72434978",
-"adresKoresp": "5e7f86c42606c07c72434977",
-"user": "5e7f86c42606c07c72434977",
-
-}}
 
 
-{"seo" : {
-  "user" : "5e80b6f9316dbe12359b7e24"
-}}
+
+
+
 
 
 

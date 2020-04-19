@@ -73,7 +73,6 @@ class usersController {
       return ErrorHandeler.handle(req, res, new AppError('nie podales pozycjonera', ARGUMENT_ERROR)) 
     }
     try{
-      
       const doc = await usersService.create(user)
       return res.status(200).json(doc)
     }catch(err){
@@ -91,6 +90,30 @@ class usersController {
     //     res.status(422).json(err);
     // });
   }
+
+
+    /**
+   * @async
+   */
+  //
+  static async addMany(req, res, err) {
+    const {body: { users }} = req;
+    if (!users) {
+      return ErrorHandeler.handle(req, res, new AppError('nie podales userow', ARGUMENT_ERROR)) 
+    }
+    try {
+      console.log('try');
+      const data = await usersService.createMany(users)
+      console.log('try2');
+      return res.status(HTTP_STATUS.OK).json(data)
+
+    } 
+    catch(err) {
+      console.log('jebany blad');
+      ErrorHandeler.handle(req, res, err)
+    }
+  }
+
 
   /**
    * @async

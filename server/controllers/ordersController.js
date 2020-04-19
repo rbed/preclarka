@@ -31,7 +31,7 @@ class ordersController {
     }
     try {
       const data = await ordersService.create(order)
-      return res.status(HTTP_STATUS.OK).jason(data)
+      return res.status(HTTP_STATUS.OK).json(data)
     }
     catch(err) {
       ErrorHandeler.handle(req, res, err)

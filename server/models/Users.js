@@ -29,6 +29,7 @@ const UsersSchema = new Schema({
        default: Date.now 
    },
    isAdmin: {type: Boolean, default: false}
+   
 }) 
 
 UsersSchema.methods.setPassword = function(password) {

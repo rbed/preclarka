@@ -4,15 +4,15 @@ dodanie  kazdego typu modelu
 edycja każdego typu modelu
 usuwanie kazdego typu modelu
 
-Addresses x x
-Articles x x
-Contracts x x
-CopywritersConstract x x
-CopywritersInvoice x x
-Invoices - x x x
-Orders - x x x
-Seos - x x x
-Users - x x x
+Addresses - x
+Articles - x
+Contracts - x
+CopywritersConstract - x
+CopywritersInvoice  -x
+Invoices - x
+Orders - x
+Seos - x
+Users - x
 
 Pobieranie pojedynczego rozkminione na /routes/contracts
 

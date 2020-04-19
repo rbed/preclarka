@@ -7,6 +7,7 @@ const usersController = require('../../controllers/usersController');
 router.get('/', usersController.getAll);
 // router.get('/:id', usersController.getByID);
 router.post('/', usersController.create);
+router.post('/add-many', usersController.addMany);
 router.put('/', usersController.update);
 router.delete('/', usersController.removeByID);
 

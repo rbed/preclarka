@@ -35,7 +35,12 @@ class ArticleServices{
             .catch(err=>{throw new AppError('coś nie tak z baza danych', MONGO_ERROR, err)})
         }
         if(id) {
-            throw new AppError('ID niepoprawne', MONGO_ERROR)
+            try {
+                return await this.getByID(id)
+             }
+             catch(err) {
+                 throw new AppError('ID niepoprawne', MONGO_ERROR)
+             }
         }
 
     }

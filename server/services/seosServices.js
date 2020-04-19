@@ -16,6 +16,8 @@ class SeosServices{
     static getByID(id){
         if(!id){
             throw new Error('Nie ma ID')
+            // throw new AppError('coś nie tak z baza danych', MONGO_ERROR)
+            // ktore z powyższych powinienem dać/
         }
         return Seos.findById({_id : id}).then(doc =>{
             if (doc.length === 0) {
@@ -23,53 +25,7 @@ class SeosServices{
             }
             return doc
         }).catch(err =>{
-            throw new AppError('ID niepoprawne', MONGO_ERROR)
-        })
-    }
-
-    /**
-     * 
-     * @param {String} name - Name of seo
-     * @throws Error if Name not provided || MongoDB error
-     * @returns List of Seos as per name 
-     * @async
-     * x
-     */
-    static async getByName(name){
-        
-        if(!name){
-            throw new Error('Nie ma Name')
-        }
-        return await Seos.find({name:name}).then(doc =>{
-            if (doc.length === 0) {
-                throw new AppError('brak seo z takim name', MONGO_ERROR)
-            }
-            return doc
-        }).catch(err =>{
-            throw new AppError('brak takiego name', MONGO_ERROR)
-        })
-    }
-
-    /**
-     * 
-     * @param {String} lastname - lastname of Seo
-     * @throws Error if Name not provided || MongoDB error
-     * @returns List of Seos as per last name
-     * @async
-     * x
-     */
-    static async getByLastname(lastname){
-
-        if(!lastname){
-            throw new Error('Nie ma last name')
-        }
-        return await Seos.find({lastname : lastname}).then(doc =>{
-            if (doc.length === 0) {
-                throw Error('nie ma takiego lastname w bazie')
-            }
-            return doc
-        }).catch(err =>{
-            throw new AppError('brak seo z takim lastname', MONGO_ERROR)
+            throw new AppError('ID niepoprawne', MONGO_ERROR, err)
         })
     }
 
@@ -78,26 +34,24 @@ class SeosServices{
      * @param {String} name 
      * @param {String} lastname 
      * @param {String} id 
-     * @throws lack of parameter || MongoDB Err
+     * @throws AppError : lack of parameter || MongoDB Err
      * @returns list of Seos depends on the given parameter
      * @async
      * x
      */
-    static async getAll(id=null, name = null, lastname = null){
-        if(!id && !name && !lastname) {
-            return await Seos.find().then(doc=>{return doc}).catch(err=>{throw new AppError('brak zamowienia do aktualizacji', ARGUMENT_ERROR)})
+    static async getAll(id=null){
+        if(!id) {
+            return await Seos.find()
+            .then(doc=>{return doc})
+            .catch(err=>{throw new AppError('coś nie tak z baza danych', MONGO_ERROR, err)})
         }
-        if(!id && name && !lastname) {
-            return await this.getByName(name)
-        }
-        if(!id && !name && lastname) {
-            return await this.getByLastname(lastname)
-        }
-        if(!id && name && lastname) {
-            return await Seos.find({name: name, lastname : lastname}).then(doc => {return doc}).catch(err => {return(err)})
-        }
-        if(id && !name && !lastname) {
-            return await this.getByID(id)
+        if(id) {
+            try {
+                return await this.getByID(id)
+             }
+             catch(err) {
+                 throw  err//new AppError('ID niepoprawne', MONGO_ERROR)
+             }
         }
 
     }

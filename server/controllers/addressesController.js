@@ -15,8 +15,8 @@ class addressesController {
       return res.status(HTTP_STATUS.OK).json(data)
     }
     catch (err) {
-      ErrorHandeler.handle(req, res, err)
-          }
+      return  ErrorHandeler.handle(req, res, err)
+    }
     
   }
 
@@ -31,6 +31,25 @@ class addressesController {
     }
     try {
       const data = await addressesServices.create(address)
+      return res.status(HTTP_STATUS.OK).json(data)
+
+    } 
+    catch(err) {
+      ErrorHandeler.handle(req, res, err)
+    }
+  }
+
+  /**
+   * @async
+   */
+  //
+  static async addMany(req, res, err) {
+    const {body: { addresses }} = req;
+    if (!addresses) {
+      return ErrorHandeler.handle(req, res, new AppError('nie podales adresów', ARGUMENT_ERROR)) 
+    }
+    try {
+      const data = await addressesServices.createMany(addresses)
       return res.status(HTTP_STATUS.OK).json(data)
 
     } 
@@ -71,7 +90,7 @@ class addressesController {
       return res.status(HTTP_STATUS.OK).json({data, deleted: true})
     }
     catch(err) {
-      ErrorHandeler.handle(req, res, err)  
+      return ErrorHandeler.handle(req, res, err)  
     }
   }
 }

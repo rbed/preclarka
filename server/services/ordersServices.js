@@ -54,6 +54,7 @@ class OrdersServices{
         const Order = new Orders(order);
         return await Order.save()
         .then(doc => {
+            console.log(doc);
             return doc
         })
         .catch(err => {

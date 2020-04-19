@@ -12,7 +12,7 @@ const Addresses = new Schema({
 });
 
 
-
+Addresses.pre('save', () => console.log('Hello from pre save'));
 
 // Adres.index({ _id: 1, email: 1 }, { unique: true });
 // Adres.path('email').required(true, 'email is mandatory');

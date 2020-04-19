@@ -1,65 +1,64 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var chalk = require('chalk')
-var cookieParser = require('cookie-parser');
-const mongoose = require('mongoose');
-const logger = require('./modules/logger/logger');
-const config = require('./config/config')
+var createError = require("http-errors");
+var express = require("express");
+var path = require("path");
+var chalk = require("chalk");
+var cookieParser = require("cookie-parser");
+const mongoose = require("mongoose");
+const logger = require("./modules/logger/logger");
+const config = require("./config/config");
 
 var app = express();
 
 /**
  *    Author: R.C.
- *    Prints app logo and global parameters on startup 
+ *    Prints app logo and global parameters on startup
  */
-// logger.pringAppLogo();
+logger.pringAppLogo();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "jade");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
 /**
  *    Database access initiation
  */
-const dbPath = config.LOCAL_DB_PATH //'mongodb://localhost:27017/preclarkadb'
+const dbPath = config.LOCAL_DB_PATH; //'mongodb://localhost:27017/preclarkadb'
 console.log(dbPath);
 
 mongoose
-   .connect(dbPath, {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-   })
-   .then(() => {
-      logger.status('MongoDB connection', 'ok');
-      logger.success('Successfully connected to', chalk.underline(dbPath));
-   })
-   .catch((err) => {
-      logger.status('MongoDB connection', 'error');
-      logger.error('Connection error', dbPath);
-      console.log(err)
-   });
-   mongoose.set('debug', true);
-   var db = mongoose.connection;
+  .connect(dbPath, {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    logger.status("MongoDB connection", "ok");
+    logger.success("Successfully connected to", chalk.underline(dbPath));
+  })
+  .catch((err) => {
+    logger.status("MongoDB connection", "error");
+    logger.error("Connection error", dbPath);
+    console.log(err);
+  });
+mongoose.set("debug", true);
+var db = mongoose.connection;
 
 // import modeli
-require('./models/Users')
-require('./models/Seos')
-require('./models/CopywritersContract')
-require('./models/CopywritersInvoice')
-require('./models/Addresses')
-require('./models/Orders')
-require('./models/Articles')
-require('./models/Contracts')
-require('./models/Invoices')
+require("./models/Users");
+require("./models/Seos");
+require("./models/CopywritersContract");
+require("./models/CopywritersInvoice");
+require("./models/Addresses");
+require("./models/Orders");
+require("./models/Articles");
+require("./models/Contracts");
+require("./models/Invoices");
 
-
-var indexRouter = require('./routes/index');
+var indexRouter = require("./routes/index");
 /*
 * Wszystkie sciezki ponizej powinny pojsc do ./routes/api/... 
 * Dla zachowania porządku w kodzieka obsługująca API powinna być zaimplementowana jako nadrzędna, obsługująca reszte funkcjonalności
@@ -76,9 +75,9 @@ var seosRouter = require('./routes/seos');
 // wszystkie scieżki poza główną '/' powinny byc pod API
 */
 
-app.use('/', indexRouter);
+app.use("/", indexRouter);
 
-app.use('/api', require('./routes/api/api')) // tyle wystarczy, jeśli nic nie robimy ze zmiennymi Routingu to nie ma potrzeby ich pobierac do zmiennej ;)
+app.use("/api", require("./routes/api/api")); // tyle wystarczy, jeśli nic nie robimy ze zmiennymi Routingu to nie ma potrzeby ich pobierac do zmiennej ;)
 // wszystko ponizej powinno isc do API
 /**
 app.use('/users', usersRouter);
@@ -94,22 +93,19 @@ app.use('/seos', seosRouter);
  */
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render("error");
 });
-
-
-
 
 module.exports = app;

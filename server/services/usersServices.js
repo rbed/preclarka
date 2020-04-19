@@ -81,7 +81,7 @@ class usersServices{
      */
     static async getUsers(id=null, name = null, lastName = null){
         if(!id && !name && !lastName) {
-            return await Users.find().then(doc=>{return doc}).catch(err=>{throw new AppError('brak zamowienia do aktualizacji', ARGUMENT_ERROR)})
+            return await Users.find().then(doc=>{return doc}).catch(err=>{throw new AppError('brak zamowienia do aktualizacji', ARGUMENT_ERROR, err)})
         }
         if(!id && name && !lastName) {
             return await this.getByName(name)
@@ -105,7 +105,6 @@ class usersServices{
      * @throws Error if user data not recieved || mongoDB othervise or if user object has no enough data
      */
     static async create(user) {
-        
         if (!user) {
             throw new AppError('nie podales uzytkownika do utworzenia', ARGUMENT_ERROR)
         }
@@ -126,6 +125,14 @@ class usersServices{
         });
     }
 
+    static async createMany(users) {
+        console.log('jestem');  
+        if (!users) {
+          throw new AppError("brak adresów", ARGUMENT_ERROR);
+        }
+        for(var u in users)
+          await this.create(users [u]);
+      }
 
     /**
      * 
