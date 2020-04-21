@@ -51,7 +51,7 @@ module.exports = class logger {
    }
 
    static important(info, description) {
-      let sign = this.emoji ? '🌟' : figures.pointer.repeat(3);
+      let sign = this.emoji ? '⭐' : figures.pointer.repeat(3);
       console.log(
          chalk.white(sign + ' ' + info, this._descriptionBuilder(description))
       );
