@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Pane, Button, Table } from "evergreen-ui";
 import axios from "axios";
-import api from "../../services/UserServices";
-import AdressesService from "../../services/UserServices";
-import UserService from "../../services/UserServices";
+import AddressesService from "../../services/AddressesServices";
 
 class UsersCard extends Component {
   state = {
@@ -12,7 +10,7 @@ class UsersCard extends Component {
 
   async getData() {
     try {
-      const doc = await UserService.get("/api/addresses");
+      const doc = await AddressesService.get("/api/addresses");
       this.setState({ data: doc.data });
     } catch {}
   }
