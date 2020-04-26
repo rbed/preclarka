@@ -5,47 +5,55 @@ const fs = require('fs')
 const path = require('path')
 
 module.exports = class logger {
+   constructor(emoji = true) {
+      this.emoji = emoji;
+   }
+
+   static setEmoji(enable) {
+      this.emoji = enable;
+   }
+
    static info(info, description) {
+      let sign = this.emoji ? chalk.blueBright(' ℹ️ ') : logSymbols.info;
       console.log(
-         logSymbols.info + '   ' + chalk.blueBright(info),
+         sign + '   ' + chalk.bold.blueBright(info),
          this._descriptionBuilder(description)
       );
    }
 
    static success(info, description) {
+      let sign = this.emoji ? '✔️' : logSymbols.success;
       console.log(
-         logSymbols.success + '   ' + chalk.green(info),
+         sign + '   ' + chalk.bold.green(info),
          this._descriptionBuilder(description)
       );
    }
-
    static warning(info, description) {
+      let sign = this.emoji ? '⚠️' : logSymbols.warning;
       console.log(
-         logSymbols.warning + '   ' + chalk.rgb(255, 136, 0)(info),
+         sign + '   ' + chalk.bold.rgb(255, 136, 0)(info),
          this._descriptionBuilder(description)
       );
    }
-
    static error(info, description) {
+      let sign = this.emoji ? '❌' : logSymbols.error;
       console.log(
-         logSymbols.error + '   ' + chalk.red(info),
+         sign + '   ' + chalk.bold.red(info),
          this._descriptionBuilder(description)
       );
    }
 
    static critical(info, description) {
       console.log(
-         '🔥' + '  ' + chalk.red(info),
+         '🔥' + '  ' + chalk.bold.red(info),
          this._descriptionBuilder(description)
       );
    }
 
    static important(info, description) {
+      let sign = this.emoji ? '⭐' : figures.pointer.repeat(3);
       console.log(
-         chalk.white.underline(
-            figures.pointer.repeat(3) + ' ' + info,
-            this._descriptionBuilder(description)
-         )
+         chalk.white(sign + ' ' + info, this._descriptionBuilder(description))
       );
    }
 
@@ -55,7 +63,7 @@ module.exports = class logger {
       var dots = dot.repeat(INFO_LINE_LENGHT - String(info).length);
       console.log(chalk.white(info + dots) + this._statusBuilder(status));
    }
-
+   
    static _statusBuilder(status) {
       status = String(status);
       status = status.toUpperCase();
