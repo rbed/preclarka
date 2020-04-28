@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Pane, Button, Table, TextInput } from "evergreen-ui";
-import axios from "axios";
-import AddressesService from "../../services/AddressesServices";
+import Client from "../../modules/Client/Client";
+import AddressesService from "../../modules/Client/API/Services/AddressesService/AddressesService";
 
 class UsersCard extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class UsersCard extends Component {
 
   async getData() {
     try {
-      const doc = await AddressesService.get("/api/addresses");
+      const doc = await Client.Services.AddressesService.get("/api/addresses");
       this.setState({ data: doc.data });
     } catch {}
   }
@@ -86,7 +86,9 @@ class UsersCard extends Component {
     e.preventDefault();
     console.log(this.state.address);
     try {
-      const doc = await AddressesService.create(this.state.address);
+      const doc = await Client.Services.AddressesService.create(
+        this.state.address
+      );
       this.setState({
         address: {
           street: "",
