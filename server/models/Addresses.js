@@ -6,8 +6,8 @@ const Addresses = new Schema({
    ulica: {type: String, required: true, lowercase: true},
    nrDomu: {type: String, required: true, lowercase: true},
    nrLokalu: {type: String, lowercase: true}, 
-   miasto: {type: String, lowercase: true}, 
-   kodPocz: {type: String},
+   miasto: {type: String, required: true, lowercase: true}, 
+   kodPocz: {type: String, required: true},
    kraj: {type: String, required: true, default: "Poland", lowercase: true}
 });
 

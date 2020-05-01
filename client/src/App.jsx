@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "./App.css";
 import Routes from "./routes/Routes";
+import "antd/dist/antd.css";
+import "./App.css";
 
 class App extends Component {
   render() {

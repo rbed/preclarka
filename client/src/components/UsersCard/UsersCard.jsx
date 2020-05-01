@@ -84,7 +84,6 @@ class UsersCard extends Component {
 
   async createAddress(e) {
     e.preventDefault();
-    console.log(this.state.address);
     try {
       const doc = await Client.Services.AddressesService.create(
         this.state.address

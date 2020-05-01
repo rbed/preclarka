@@ -1,0 +1,13 @@
+.navbar {
+    top: 0;
+    left: 0;
+    float: left;
+    height: 50px;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: rgb(50, 52, 53);
+    padding: 10px;
+    color: rgb(220, 221, 222);
+    align-items: center;
+    overflow: hidden;
+}
