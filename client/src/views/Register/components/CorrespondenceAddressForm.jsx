@@ -22,7 +22,7 @@ class CorespondenceAddressForm extends Component {
       // >
       <>
         <Form.Item
-          name={["ulica", "ulica"]}
+          name={["ulicaKoresp", "ulicaKoresp"]}
           label="ulica"
           rules={[
             {
@@ -34,7 +34,7 @@ class CorespondenceAddressForm extends Component {
         </Form.Item>
 
         <Form.Item
-          name={["nrDomu", "nrDomu"]}
+          name={["nrDomuKoresp", "nrDomuKoresp"]}
           label="numer budynku"
           rules={[
             {
@@ -45,12 +45,15 @@ class CorespondenceAddressForm extends Component {
           <Input />
         </Form.Item>
 
-        <Form.Item name={["nrLokalu", "nrLokalu"]} label="numer lokalu">
+        <Form.Item
+          name={["nrLokaluKoresp", "nrLokaluKoresp"]}
+          label="numer lokalu"
+        >
           <Input />
         </Form.Item>
 
         <Form.Item
-          name={["miasto", "miasto"]}
+          name={["miastoKoresp", "miastoKoresp"]}
           label="miasto"
           rules={[
             {
@@ -62,7 +65,7 @@ class CorespondenceAddressForm extends Component {
         </Form.Item>
 
         <Form.Item
-          name={["kodPocz", "kodPocz"]}
+          name={["kodPoczKoresp", "kodPoczKoresp"]}
           label="kod pocztowy"
           rules={[
             {
@@ -74,7 +77,7 @@ class CorespondenceAddressForm extends Component {
         </Form.Item>
 
         <Form.Item
-          name={["kraj", "kraj"]}
+          name={["krajKoresp", "krajKoresp"]}
           label="kraj"
           rules={[
             {

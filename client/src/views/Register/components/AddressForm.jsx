@@ -75,6 +75,7 @@ class AddressForm extends Component {
               required: true,
             },
           ]}
+          gf
         >
           <Input />
         </Form.Item>

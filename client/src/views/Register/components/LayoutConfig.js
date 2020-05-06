@@ -1,7 +1,7 @@
 let label = null;
 
 const LeyoutConfig = {
-layout : {
+  layout: {
     labelCol: {
       span: 8,
     },
@@ -9,17 +9,18 @@ layout : {
       span: 16,
     },
   },
-  validateMessages : {
+
+  validateMessages: {
     required: "${label} jest wymagany!",
     types: {
-        email: '${getValueFromEvent} is not validate email!',
-        number: '${label} is not a validate number!',
-      },
-      number: {
-        range: '${label} must be between ${min} and ${max}',
-      }
+      email: "${getValueFromEvent} is not validate email!",
+      number: "${label} is not a validate number!",
+    },
+    number: {
+      range: "${label} must be between ${min} and ${max}",
+    },
   },
-  tailFormItemLayout : {
+  tailFormItemLayout: {
     wrapperCol: {
       xs: {
         span: 0,
@@ -30,8 +31,7 @@ layout : {
         offset: 0,
       },
     },
-  }
-}
+  },
+};
 
-
-export default LeyoutConfig
+export default LeyoutConfig;
