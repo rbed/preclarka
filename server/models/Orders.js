@@ -11,9 +11,16 @@ const Orders = new Schema({
    wartosc: {type: Number},
    komentarzOdrzucenia: {type: String},
    created: {type: Date, default: Date.now},
+   status: {type: String, required: true, default: 'zlozone'}
 });
 
-
+// Zamówienia mogę mieć statusy
+// zlozone - kiedy soewiec zglosil zapotrzebowanie
+// wtrakcie - kiedy admin przypisal copywritera ale ten jeszcze nie przyjal zlecenie (lub kiedy je odrzucil)
+//  przyjete - kiedy copywriter przyjal zlecenie
+// wykonane - kiedy copywriter zrobil i wyslal
+// odrzucone - kiedy admin lub seowiec odrzucili teksty
+//  
 
 
 // Zamowienie.index({ _id: 1, email: 1 }, { unique: true });
