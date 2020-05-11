@@ -5,7 +5,9 @@ import LayoutConfig from "./LayoutConfig";
 class ContractDataForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      currentStep: this.props.currentStep,
+    };
   }
 
   onFinish = (values) => {
@@ -13,6 +15,12 @@ class ContractDataForm extends Component {
   };
 
   render() {
+    if (
+      this.props.currentStep != 2 &&
+      this.props.contractorType == "contract"
+    ) {
+      return null;
+    }
     return (
       // <Form
       //   {...LayoutConfig.layout}

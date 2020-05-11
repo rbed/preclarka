@@ -5,10 +5,21 @@ import LayoutConfig from "./LayoutConfig";
 class AgreementForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { currentStep: this.props.currentStep };
   }
 
   render() {
+    if (
+      this.props.currentStep != 3 &&
+      this.props.contractorType == "contract"
+    ) {
+      return null;
+    }
+
+    if (this.props.currentStep != 3 && this.props.contractorType == "invoice") {
+      return null;
+    }
+
     return (
       // <Form
       //   {...LayoutConfig.layout}

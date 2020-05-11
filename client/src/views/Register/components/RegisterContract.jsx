@@ -9,12 +9,25 @@ import LayoutConfig from "./LayoutConfig";
 class RegisterContract extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      currentStep: 1,
+      contractorType: "",
+    };
+    this.handleClickFormNext = this.handleClickFormNext.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({ contractorType: "contract" });
   }
 
   onFinish = (values) => {
     console.log(values);
   };
+
+  handleClickFormNext() {
+    this.setState({ currentStep: this.state.currentStep + 1 });
+    console.log("chuj");
+  }
 
   render() {
     return (
@@ -24,20 +37,38 @@ class RegisterContract extends Component {
         onFinish={this.onFinish}
         validateMessages={LayoutConfig.validateMessages}
       >
-        <UserForm />
+        <UserForm
+          currentStep={this.state.currentStep}
+          contractorType={this.state.contractorType}
+        />
 
-        <ContractDataForm />
+        <ContractDataForm
+          currentStep={this.state.currentStep}
+          contractorType={this.state.contractorType}
+        />
 
-        <AddressForm />
+        <AddressForm
+          currentStep={this.state.currentStep}
+          contractorType={this.state.contractorType}
+        />
 
-        <AgreementForm />
+        <AgreementForm
+          currentStep={this.state.currentStep}
+          contractorType={this.state.contractorType}
+        />
 
         <Form.Item
           wrapperCol={{ ...LayoutConfig.layout.wrapperCol, offset: 8 }}
         >
-          <Button type="primary" htmlType="submit">
-            Rejestruj
-          </Button>
+          {this.state.currentStep === 3 ? (
+            <Button type="primary" htmlType="submit">
+              Rejestruj
+            </Button>
+          ) : (
+            <Button onClick={this.handleClickFormNext} type="primary">
+              Dalej
+            </Button>
+          )}
         </Form.Item>
       </Form>
     );

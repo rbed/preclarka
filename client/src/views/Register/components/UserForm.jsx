@@ -5,7 +5,10 @@ import { Form, Input } from "antd";
 class UserForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      currentStep: this.props.currentStep,
+      contractorType: "",
+    };
   }
 
   onFinish = (values) => {
@@ -18,6 +21,20 @@ class UserForm extends Component {
   };
 
   render() {
+    if (
+      this.props.currentStep != 1 &&
+      this.props.contractorType === "contract"
+    ) {
+      return null;
+    }
+
+    if (
+      this.props.currentStep != 1 &&
+      this.props.contractorType === "invoice"
+    ) {
+      return null;
+    }
+
     return (
       // <Form
       //   {...LayoutConfig.layout}
@@ -26,6 +43,8 @@ class UserForm extends Component {
       //   validateMessages={LayoutConfig.validateMessages}
       // >
       <>
+        <p>{this.props.currentStep}</p>
+
         <Form.Item
           name={["user", "email"]}
           label="Email"
@@ -38,7 +57,8 @@ class UserForm extends Component {
         >
           <Input />
         </Form.Item>
-
+        <p>{this.state.contractorType}</p>
+        <p>{console.log(this.state.contractorType)}</p>
         <Form.Item
           name="password"
           label="Password"

@@ -13,6 +13,13 @@ class CompanyDataForm extends Component {
   };
 
   render() {
+    if (
+      this.props.currentStep != 2 &&
+      this.props.contractorType === "invoice"
+    ) {
+      return null;
+    }
+
     return (
       // <Form
       //   {...LayoutConfig.layout}

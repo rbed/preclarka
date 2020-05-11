@@ -22,6 +22,7 @@ const registerWrapperCss = {
 class Register extends React.Component {
   state = {
     current: "mail",
+    contractorType: "",
   };
 
   render() {
@@ -37,7 +38,7 @@ class Register extends React.Component {
             }
             key="1"
           >
-            <RegisterContract />
+            <RegisterContract contractorTye={this.state.contractorType} />
           </TabPane>
           <TabPane
             tab={
@@ -48,7 +49,7 @@ class Register extends React.Component {
             }
             key="2"
           >
-            <RegisterInvoice />
+            <RegisterInvoice contractorTye={this.state.contractorType} />
           </TabPane>
         </Tabs>
       </div>
