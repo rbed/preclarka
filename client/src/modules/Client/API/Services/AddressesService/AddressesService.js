@@ -1,5 +1,6 @@
 import axios from "axios";
 import Request from '../../Requests/Request'
+import API from '../../API'
 import Address from './AddressDTO'
 // TODO: tu import classy DTO
 
@@ -7,22 +8,51 @@ import Address from './AddressDTO'
 class AddressesService {
   static async get() {
     try {
-      const doc = await Request.get("/api/addresses");
+      const doc = await Request.get(API.ROUTES.Addresses.GET_ADDRESSES);
+      // Request.get(API.ROUTES.EMPLOYEES.GET_EMPLOYEE_BY_ID + id) <<<<<<<<<<<< coś takiego tu powinno być
       // TODO: tu pownie trzeba zamienić to co przyszlo na DTO
       return doc;
     } catch {}
   }
 
-  static async create(item){
-    const {street, houseNumb, apartNumb, postcode, city, country} = item
+  static async getById(id){
+    try {
+      const doc = await Request.getById(API.ROUTES.Addresses.GET_ADDRESS_BY_ID, id)
+      return doc
+    } catch (err) {console.log("error")}   
+  }
+
+  static async create(adres){
+    const {street, houseNumb, apartNumb, postcode, city, country} = adres
     const address = new Address(street, houseNumb, apartNumb, postcode, city, country)
     try {
-      const doc = await Request.post("/api/addresses",{address});
+      const doc = await Request.post(API.ROUTES.Addresses.CREATE_ADDRESS,{address});
       return doc;
     } catch (err) {
       console.log('error inside');
     }
   }
+
+
+  static async update (item) {
+    try {
+      const doc = await Request.update(API.ROUTES.Addresses.UPDATE_ADDRESS, item)
+    return doc    }
+    catch (err) {
+      
+    }
+  }
+
+  static async delete (id) {
+    try {
+      const doc = Request.delete(API.ROUTES.Addresses.DELETE_ADDRESS_BY_ID, id)
+      return doc
+    }
+    catch {
+
+    }
+  }
+
 }
 
 export default AddressesService;

@@ -7,6 +7,6 @@ export default class Addresses {
     static GET_ADDRESSES = MAIN_PATH + '/';
     static GET_ADDRESS_BY_ID = MAIN_PATH + '/id/';
     static CREATE_ADDRESS = MAIN_PATH + '/';
-    static UPDATE_ADDRESS = MAIN_PATH + '/';
-    static DELETE_ADDRESS_BY_ID = MAIN_PATH + '/';
+    static UPDATE_ADDRESS = MAIN_PATH + '/id';
+    static DELETE_ADDRESS_BY_ID = MAIN_PATH + '/id';
  }
