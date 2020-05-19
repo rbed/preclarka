@@ -6,7 +6,7 @@ const CopywritersInvoice = new Schema({
     nazwaFirmy: {type: String, required: true},
     regon: {type: String, required: true, lowercase: true},
     nip: {type: String, required: true},
-    kwota1000: {type: Number, required: true},
+    kwota1000: {type: Number, required: true, default: 0},
     stanKonta:  {type: Number, required: true, default: 0, min: 0},
     adres: {
         type: mongoose.Schema.Types.ObjectId,

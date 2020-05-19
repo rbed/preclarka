@@ -5,7 +5,6 @@ import "./Sidebar.css";
 import logo from "../../images/logo.png";
 import {
   TeamOutlined,
-  CopyOutlined,
   HomeOutlined,
   PlusCircleOutlined,
   CheckCircleOutlined,
@@ -15,7 +14,6 @@ import {
   DollarCircleOutlined,
 } from "@ant-design/icons";
 const { Sider } = Layout;
-const { SubMenu } = Menu;
 
 class Sidebar extends Component {
   state = {

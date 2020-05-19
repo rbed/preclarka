@@ -4,10 +4,23 @@ import CorespondenceAddressForm from "./CorrespondenceAddressForm";
 import LayoutConfig from "./LayoutConfig";
 
 class AddressForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  state = {
+    ulica: "",
+    nrBudynku: "",
+    nrLokalu: "",
+    miasto: "",
+    kodPocz: "",
+    kraj: "",
+    CorespondenceAddressForm: {},
+    AddressForm: {
+      ulica: "",
+      nrBudynku: "",
+      nrLokalu: "",
+      miasto: "",
+      kodPocz: "",
+      kraj: "",
+    },
+  };
 
   onFinish = (values) => {
     console.log(values);
@@ -18,16 +31,44 @@ class AddressForm extends Component {
     console.log(this.state.showAddress);
   };
 
+  setCorespondenceAddressForm = (copespondenceAddressForm) => {
+    this.setState({ CorespondenceAddressForm: copespondenceAddressForm });
+    this.props.getCorespondenceAddressForm(copespondenceAddressForm);
+  };
+
+  // setCorespondenceAddressForm = (copespondenceAddressForm) => {
+  //   console.log("dupa");
+  //   console.log(copespondenceAddressForm);
+  //   this.setState({ CopespondenceAddressForm: copespondenceAddressForm });
+  // };
+
+  onChange = (e) => {
+    //sconsole.log(e.target.value);
+    const state = this.state;
+    state[e.target.name] = e.target.value;
+    this.setState(state);
+    //const state = this.state;
+    const addressForm = {
+      ulica: state.ulica,
+      nrBudynku: state.nrBudynku,
+      nrLokalu: state.nrLokalu,
+      miasto: state.miasto,
+      kodPocz: state.kodPocz,
+      kraj: state.kraj,
+    };
+    this.props.getAddressForm(addressForm);
+  };
+
   render() {
     if (
-      this.props.currentStep != 3 &&
-      this.props.contractorType == "contract"
+      this.props.currentStep !== 3 &&
+      this.props.contractorType === "contract"
     ) {
       return null;
     }
 
     if (
-      this.props.currentStep != 3 &&
+      this.props.currentStep !== 3 &&
       this.props.contractorType === "invoice"
     ) {
       return null;
@@ -41,8 +82,9 @@ class AddressForm extends Component {
       //   validateMessages={LayoutConfig.validateMessages}
       // >
       <>
+        <p>{this.props.currentStep} / 3</p>
         <Form.Item
-          name={["ulica", "ulica"]}
+          name="ulica"
           label="ulica"
           rules={[
             {
@@ -50,7 +92,7 @@ class AddressForm extends Component {
             },
           ]}
         >
-          <Input />
+          <Input name="ulica" onChange={this.onChange} />
         </Form.Item>
 
         <Form.Item
@@ -62,11 +104,11 @@ class AddressForm extends Component {
             },
           ]}
         >
-          <Input />
+          <Input name="nrBudynku" onChange={this.onChange} />
         </Form.Item>
 
         <Form.Item name={["nrLokalu", "nrLokalu"]} label="numer lokalu">
-          <Input />
+          <Input name="nrLokalu" onChange={this.onChange} />
         </Form.Item>
 
         <Form.Item
@@ -78,7 +120,7 @@ class AddressForm extends Component {
             },
           ]}
         >
-          <Input />
+          <Input name="miasto" onChange={this.onChange} />
         </Form.Item>
 
         <Form.Item
@@ -91,7 +133,7 @@ class AddressForm extends Component {
           ]}
           gf
         >
-          <Input />
+          <Input name="kodPocz" onChange={this.onChange} />
         </Form.Item>
 
         <Form.Item
@@ -104,7 +146,7 @@ class AddressForm extends Component {
             },
           ]}
         >
-          <Input />
+          <Input name="kraj" onChange={this.onChange} />
         </Form.Item>
 
         <Form.Item
@@ -116,7 +158,13 @@ class AddressForm extends Component {
           <Checkbox>inny adres korespondencyjny</Checkbox>
         </Form.Item>
 
-        {this.state.showAddress ? <CorespondenceAddressForm /> : ""}
+        {this.state.showAddress ? (
+          <CorespondenceAddressForm
+            getCorespondenceAddressForm={this.setCorespondenceAddressForm}
+          />
+        ) : (
+          ""
+        )}
       </>
       // </Form>
     );

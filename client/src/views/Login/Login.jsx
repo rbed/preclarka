@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 // const { Form, Input, Button, Checkbox } = antd;
 

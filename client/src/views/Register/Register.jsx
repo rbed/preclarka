@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
 import { Tabs } from "antd";
 import { UserOutlined, TeamOutlined } from "@ant-design/icons";
@@ -21,14 +20,24 @@ const registerWrapperCss = {
 
 class Register extends React.Component {
   state = {
-    current: "mail",
-    contractorType: "",
+    type: "contract",
+  };
+
+  setType = (e) => {
+    // console.log(this.state.type);
+    const state = this.state;
+    console.log(this.state.type);
+    if (state.type === "contract") {
+      this.setState({ type: "invoice" });
+    } else if (state.type === "invoice") {
+      this.setState({ type: "contract" });
+    }
   };
 
   render() {
     return (
       <div className="registerWrapper" style={registerWrapperCss}>
-        <Tabs defaultActiveKey="1">
+        <Tabs defaultActiveKey="1" onChange={this.setType}>
           <TabPane
             tab={
               <span>
@@ -38,7 +47,12 @@ class Register extends React.Component {
             }
             key="1"
           >
-            <RegisterContract contractorTye={this.state.contractorType} />
+            <RegisterContract
+              getType={this.state.type}
+              // contractorTye={this.state.contractorType}
+              // getUserForm={this.setUserForm}
+              // getStep={this.updateCurrentStep}
+            />
           </TabPane>
           <TabPane
             tab={
@@ -49,7 +63,7 @@ class Register extends React.Component {
             }
             key="2"
           >
-            <RegisterInvoice contractorTye={this.state.contractorType} />
+            <RegisterInvoice getType={this.state.type} />
           </TabPane>
         </Tabs>
       </div>

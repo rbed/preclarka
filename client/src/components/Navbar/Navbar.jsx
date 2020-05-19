@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { Layout, Menu } from "antd";
-import {
-  LogoutOutlined,
-  LoginOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
+import { LogoutOutlined, SettingOutlined } from "@ant-design/icons";
 
 const { Header } = Layout;
 

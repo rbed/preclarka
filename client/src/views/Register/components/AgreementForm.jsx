@@ -10,13 +10,16 @@ class AgreementForm extends Component {
 
   render() {
     if (
-      this.props.currentStep != 3 &&
-      this.props.contractorType == "contract"
+      this.props.currentStep !== 3 &&
+      this.props.contractorType === "contract"
     ) {
       return null;
     }
 
-    if (this.props.currentStep != 3 && this.props.contractorType == "invoice") {
+    if (
+      this.props.currentStep !== 3 &&
+      this.props.contractorType === "invoice"
+    ) {
       return null;
     }
 

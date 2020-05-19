@@ -1,4 +1,3 @@
-import axios from "axios";
 import Request from '../../Requests/Request'
 import Address from './OrdersDTO'
 // TODO: tu import classy DTO

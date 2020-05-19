@@ -11,13 +11,13 @@ const LeyoutConfig = {
   },
 
   validateMessages: {
-    required: "${label} jest wymagany!",
+    required: `${label} jest wymagany!`,
     types: {
-      email: "${getValueFromEvent} is not validate email!",
-      number: "${label} is not a validate number!",
+      // email: `${getValueFromEvent} is not validate email!`,
+      number: `${label} is not a validate number!`,
     },
     number: {
-      range: "${label} must be between ${min} and ${max}",
+      // range: `${label} must be between ${min} and ${max}`,
     },
   },
   tailFormItemLayout: {

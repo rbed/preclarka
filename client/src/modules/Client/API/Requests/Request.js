@@ -12,12 +12,12 @@ class Request {
       }
 
       static async post(url, item){
-          console.log(item);
+          console.log("request - przekazany item do posta " + JSON.stringify(item));
         try {
           const doc = await axios.post(url, item);
           return doc;
         } catch (err) {
-          console.log('error inside 1');
+          console.log('error w request');
         }
       }
 }

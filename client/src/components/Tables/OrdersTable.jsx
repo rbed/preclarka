@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Tag } from "antd";
+import { Table } from "antd";
 import Client from "../../../src/modules/Client/Client";
 
 const columns = [
@@ -7,7 +7,7 @@ const columns = [
     title: "Teamt",
     dataIndex: "temat",
     key: "temat",
-    render: (text) => <a>{text}</a>,
+    // render: (text) => <a>{text}</a>,
   },
   {
     title: "Ile Art",

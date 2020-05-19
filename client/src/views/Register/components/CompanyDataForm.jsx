@@ -1,12 +1,30 @@
 import React, { Component } from "react";
 import { Form, Input } from "antd";
-import LayoutConfig from "./LayoutConfig";
 
 class CompanyDataForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  state = {
+    currentStep: this.props.currentStep,
+    nazwaFirmy: "",
+    regon: "",
+    nip: "",
+    CompanyDataForm: {
+      nazwaFirmy: "",
+      regon: "",
+      nip: "",
+    },
+  };
+
+  onChange = (e) => {
+    const state = this.state;
+    state[e.target.name] = e.target.value;
+    this.setState(state);
+    const CompanyDataForm = {
+      nazwaFirmy: state.nazwaFirmy,
+      regon: state.regon,
+      nip: state.nip,
+    };
+    this.props.getCompanyDataForm(CompanyDataForm);
+  };
 
   onFinish = (values) => {
     console.log(values);
@@ -14,20 +32,15 @@ class CompanyDataForm extends Component {
 
   render() {
     if (
-      this.props.currentStep != 2 &&
+      this.props.currentStep !== 2 &&
       this.props.contractorType === "invoice"
     ) {
       return null;
     }
 
     return (
-      // <Form
-      //   {...LayoutConfig.layout}
-      //   name="nest-messages"
-      //   onFinish={this.onFinish}
-      //   validateMessages={LayoutConfig.validateMessages}
-      // >
       <>
+        <p>{this.props.currentStep} / 3</p>
         <Form.Item
           name={["nazwaFirmy", "nazwaFirmy"]}
           label="nazwa firmy"
@@ -37,7 +50,7 @@ class CompanyDataForm extends Component {
             },
           ]}
         >
-          <Input />
+          <Input name="nazwaFirmy" onChange={this.onChange} />
         </Form.Item>
         <Form.Item
           name={["regon", "regon"]}
@@ -48,7 +61,7 @@ class CompanyDataForm extends Component {
             },
           ]}
         >
-          <Input />
+          <Input name="regon" onChange={this.onChange} />
         </Form.Item>
 
         <Form.Item
@@ -60,10 +73,9 @@ class CompanyDataForm extends Component {
             },
           ]}
         >
-          <Input />
+          <Input name="nip" onChange={this.onChange} />
         </Form.Item>
       </>
-      // </Form>
     );
   }
 }

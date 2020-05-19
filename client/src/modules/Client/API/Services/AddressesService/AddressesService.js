@@ -1,4 +1,3 @@
-import axios from "axios";
 import Request from '../../Requests/Request'
 import API from '../../API'
 import Address from './AddressDTO'
@@ -23,13 +22,13 @@ class AddressesService {
   }
 
   static async create(adres){
-    const {street, houseNumb, apartNumb, postcode, city, country} = adres
-    const address = new Address(street, houseNumb, apartNumb, postcode, city, country)
+    const {ulica, nrBudynku, nrLokalu, kodPocz, miasto, kraj} = adres
+    const address = new Address(ulica, nrBudynku, nrLokalu, kodPocz, miasto, kraj)
     try {
       const doc = await Request.post(API.ROUTES.Addresses.CREATE_ADDRESS,{address});
       return doc;
     } catch (err) {
-      console.log('error inside');
+      console.log('error AddressService inside');
     }
   }
 

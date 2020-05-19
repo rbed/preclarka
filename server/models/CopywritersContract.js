@@ -9,7 +9,7 @@ const CopywritersContract = new Schema({
     nrDowodu: {type: String, required: true, lowercase: true},
     pesel: {type: String, required: true},
     nip: {type: String, required: true},
-    kwota1000: {type: Number, required: true},
+    kwota1000: {type: Number, required: true, default:0},
     stanKonta:  {type: Number, required: true, default: 0, min: 0},
     adres: {
         type: mongoose.Schema.Types.ObjectId,

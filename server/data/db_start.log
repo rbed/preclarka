@@ -1,70 +1,105 @@
-2020-05-12T16:02:29.157+0200 I  CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'
-2020-05-12T16:02:29.162+0200 W  ASIO     [main] No TransportLayer configured during NetworkInterface startup
-2020-05-12T16:02:29.164+0200 I  CONTROL  [initandlisten] MongoDB starting : pid=6299 port=27017 dbpath=/home/radnar/PROGRAMOWANIE/Preclarka/preclarka/server/data/db/ 64-bit host=radnarG
-2020-05-12T16:02:29.164+0200 I  CONTROL  [initandlisten] db version v4.2.6
-2020-05-12T16:02:29.164+0200 I  CONTROL  [initandlisten] git version: 20364840b8f1af16917e4c23c1b5f5efd8b352f8
-2020-05-12T16:02:29.164+0200 I  CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
-2020-05-12T16:02:29.164+0200 I  CONTROL  [initandlisten] allocator: tcmalloc
-2020-05-12T16:02:29.164+0200 I  CONTROL  [initandlisten] modules: none
-2020-05-12T16:02:29.164+0200 I  CONTROL  [initandlisten] build environment:
-2020-05-12T16:02:29.164+0200 I  CONTROL  [initandlisten]     distmod: ubuntu1604
-2020-05-12T16:02:29.164+0200 I  CONTROL  [initandlisten]     distarch: x86_64
-2020-05-12T16:02:29.164+0200 I  CONTROL  [initandlisten]     target_arch: x86_64
-2020-05-12T16:02:29.164+0200 I  CONTROL  [initandlisten] options: { processManagement: { fork: true }, storage: { dbPath: "data/db/" }, systemLog: { destination: "file", path: "./data/db_start.log" } }
-2020-05-12T16:02:29.166+0200 I  STORAGE  [initandlisten] Detected data files in /home/radnar/PROGRAMOWANIE/Preclarka/preclarka/server/data/db/ created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
-2020-05-12T16:02:29.166+0200 I  STORAGE  [initandlisten] 
-2020-05-12T16:02:29.166+0200 I  STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
-2020-05-12T16:02:29.166+0200 I  STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
-2020-05-12T16:02:29.167+0200 I  STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3388M,cache_overflow=(file_max=0M),session_max=33000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000,close_scan_interval=10,close_handle_minimum=250),statistics_log=(wait=0),verbose=[recovery_progress,checkpoint_progress],
-2020-05-12T16:02:29.806+0200 I  STORAGE  [initandlisten] WiredTiger message [1589292149:806187][6299:0x7ff934273b40], txn-recover: Recovering log 26 through 27
-2020-05-12T16:02:29.921+0200 I  STORAGE  [initandlisten] WiredTiger message [1589292149:921785][6299:0x7ff934273b40], txn-recover: Recovering log 27 through 27
-2020-05-12T16:02:30.118+0200 I  STORAGE  [initandlisten] WiredTiger message [1589292150:118739][6299:0x7ff934273b40], txn-recover: Main recovery loop: starting at 26/23040 to 27/256
-2020-05-12T16:02:30.281+0200 I  STORAGE  [initandlisten] WiredTiger message [1589292150:281563][6299:0x7ff934273b40], txn-recover: Recovering log 26 through 27
-2020-05-12T16:02:30.372+0200 I  STORAGE  [initandlisten] WiredTiger message [1589292150:372300][6299:0x7ff934273b40], txn-recover: Recovering log 27 through 27
-2020-05-12T16:02:30.462+0200 I  STORAGE  [initandlisten] WiredTiger message [1589292150:462621][6299:0x7ff934273b40], txn-recover: Set global recovery timestamp: (0, 0)
-2020-05-12T16:02:30.516+0200 I  RECOVERY [initandlisten] WiredTiger recoveryTimestamp. Ts: Timestamp(0, 0)
-2020-05-12T16:02:30.526+0200 I  STORAGE  [initandlisten] Timestamp monitor starting
-2020-05-12T16:02:30.529+0200 I  CONTROL  [initandlisten] 
-2020-05-12T16:02:30.529+0200 I  CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
-2020-05-12T16:02:30.529+0200 I  CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
-2020-05-12T16:02:30.529+0200 I  CONTROL  [initandlisten] 
-2020-05-12T16:02:30.529+0200 I  CONTROL  [initandlisten] ** WARNING: This server is bound to localhost.
-2020-05-12T16:02:30.529+0200 I  CONTROL  [initandlisten] **          Remote systems will be unable to connect to this server. 
-2020-05-12T16:02:30.529+0200 I  CONTROL  [initandlisten] **          Start the server with --bind_ip <address> to specify which IP 
-2020-05-12T16:02:30.529+0200 I  CONTROL  [initandlisten] **          addresses it should serve responses from, or with --bind_ip_all to
-2020-05-12T16:02:30.529+0200 I  CONTROL  [initandlisten] **          bind to all interfaces. If this behavior is desired, start the
-2020-05-12T16:02:30.529+0200 I  CONTROL  [initandlisten] **          server with --bind_ip 127.0.0.1 to disable this warning.
-2020-05-12T16:02:30.529+0200 I  CONTROL  [initandlisten] 
-2020-05-12T16:02:30.529+0200 I  CONTROL  [initandlisten] 
-2020-05-12T16:02:30.529+0200 I  CONTROL  [initandlisten] ** WARNING: soft rlimits too low. rlimits set to 30777 processes, 1048576 files. Number of processes should be at least 524288 : 0.5 times number of files.
-2020-05-12T16:02:30.552+0200 I  SHARDING [initandlisten] Marking collection local.system.replset as collection version: <unsharded>
-2020-05-12T16:02:30.556+0200 I  STORAGE  [initandlisten] Flow Control is enabled on this deployment.
-2020-05-12T16:02:30.559+0200 I  SHARDING [initandlisten] Marking collection admin.system.roles as collection version: <unsharded>
-2020-05-12T16:02:30.559+0200 I  SHARDING [initandlisten] Marking collection admin.system.version as collection version: <unsharded>
-2020-05-12T16:02:30.565+0200 I  SHARDING [initandlisten] Marking collection local.startup_log as collection version: <unsharded>
-2020-05-12T16:02:30.566+0200 I  FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/home/radnar/PROGRAMOWANIE/Preclarka/preclarka/server/data/db/diagnostic.data'
-2020-05-12T16:02:30.574+0200 I  NETWORK  [listener] Listening on /tmp/mongodb-27017.sock
-2020-05-12T16:02:30.574+0200 I  NETWORK  [listener] Listening on 127.0.0.1
-2020-05-12T16:02:30.574+0200 I  NETWORK  [listener] waiting for connections on port 27017
-2020-05-12T16:02:30.574+0200 I  SHARDING [LogicalSessionCacheRefresh] Marking collection config.system.sessions as collection version: <unsharded>
-2020-05-12T16:02:30.582+0200 I  SHARDING [LogicalSessionCacheReap] Marking collection config.transactions as collection version: <unsharded>
-2020-05-12T16:02:31.001+0200 I  SHARDING [ftdc] Marking collection local.oplog.rs as collection version: <unsharded>
-2020-05-12T16:02:33.400+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:51200 #1 (1 connection now open)
-2020-05-12T16:02:33.430+0200 I  NETWORK  [conn1] received client metadata from 127.0.0.1:51200 conn1: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
-2020-05-12T16:19:57.554+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:51598 #2 (2 connections now open)
-2020-05-12T16:19:57.557+0200 I  NETWORK  [conn2] received client metadata from 127.0.0.1:51598 conn2: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
-2020-05-12T16:19:57.563+0200 I  SHARDING [conn2] Marking collection preclarkadb.orders as collection version: <unsharded>
-2020-05-12T16:25:43.827+0200 I  SHARDING [conn2] Marking collection preclarkadb.addresses as collection version: <unsharded>
-2020-05-12T16:31:51.334+0200 I  NETWORK  [conn2] end connection 127.0.0.1:51598 (1 connection now open)
-2020-05-12T18:54:10.445+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:52430 #3 (2 connections now open)
-2020-05-12T18:54:10.473+0200 I  NETWORK  [conn3] received client metadata from 127.0.0.1:52430 conn3: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
-2020-05-12T19:06:53.983+0200 I  NETWORK  [conn3] end connection 127.0.0.1:52430 (1 connection now open)
-2020-05-12T19:10:50.800+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:52750 #4 (2 connections now open)
-2020-05-12T19:10:50.804+0200 I  NETWORK  [conn4] received client metadata from 127.0.0.1:52750 conn4: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
-2020-05-12T19:17:56.409+0200 I  NETWORK  [conn4] end connection 127.0.0.1:52750 (1 connection now open)
-2020-05-12T19:23:18.276+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:52872 #5 (2 connections now open)
-2020-05-12T19:23:18.277+0200 I  NETWORK  [conn5] received client metadata from 127.0.0.1:52872 conn5: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
-2020-05-12T19:29:23.842+0200 I  NETWORK  [conn5] end connection 127.0.0.1:52872 (1 connection now open)
-2020-05-12T19:29:36.718+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:53032 #6 (2 connections now open)
-2020-05-12T19:29:36.719+0200 I  NETWORK  [conn6] received client metadata from 127.0.0.1:53032 conn6: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
-2020-05-12T19:35:36.726+0200 I  NETWORK  [conn6] end connection 127.0.0.1:53032 (1 connection now open)
+2020-05-19T18:23:17.160+0200 I  CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'
+2020-05-19T18:23:17.189+0200 W  ASIO     [main] No TransportLayer configured during NetworkInterface startup
+2020-05-19T18:23:17.197+0200 I  CONTROL  [initandlisten] MongoDB starting : pid=1143 port=27017 dbpath=/home/radnar/PROGRAMOWANIE/Preclarka/preclarka/server/data/db/ 64-bit host=radnarG
+2020-05-19T18:23:17.197+0200 I  CONTROL  [initandlisten] db version v4.2.6
+2020-05-19T18:23:17.197+0200 I  CONTROL  [initandlisten] git version: 20364840b8f1af16917e4c23c1b5f5efd8b352f8
+2020-05-19T18:23:17.197+0200 I  CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+2020-05-19T18:23:17.197+0200 I  CONTROL  [initandlisten] allocator: tcmalloc
+2020-05-19T18:23:17.197+0200 I  CONTROL  [initandlisten] modules: none
+2020-05-19T18:23:17.197+0200 I  CONTROL  [initandlisten] build environment:
+2020-05-19T18:23:17.197+0200 I  CONTROL  [initandlisten]     distmod: ubuntu1604
+2020-05-19T18:23:17.197+0200 I  CONTROL  [initandlisten]     distarch: x86_64
+2020-05-19T18:23:17.197+0200 I  CONTROL  [initandlisten]     target_arch: x86_64
+2020-05-19T18:23:17.197+0200 I  CONTROL  [initandlisten] options: { processManagement: { fork: true }, storage: { dbPath: "data/db/" }, systemLog: { destination: "file", path: "./data/db_start.log" } }
+2020-05-19T18:23:17.207+0200 I  STORAGE  [initandlisten] Detected data files in /home/radnar/PROGRAMOWANIE/Preclarka/preclarka/server/data/db/ created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2020-05-19T18:23:17.208+0200 I  STORAGE  [initandlisten] 
+2020-05-19T18:23:17.208+0200 I  STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2020-05-19T18:23:17.208+0200 I  STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2020-05-19T18:23:17.208+0200 I  STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3388M,cache_overflow=(file_max=0M),session_max=33000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000,close_scan_interval=10,close_handle_minimum=250),statistics_log=(wait=0),verbose=[recovery_progress,checkpoint_progress],
+2020-05-19T18:23:19.627+0200 I  STORAGE  [initandlisten] WiredTiger message [1589905399:627303][1143:0x7fd30be09b40], txn-recover: Recovering log 34 through 35
+2020-05-19T18:23:20.253+0200 I  STORAGE  [initandlisten] WiredTiger message [1589905400:253924][1143:0x7fd30be09b40], txn-recover: Recovering log 35 through 35
+2020-05-19T18:23:20.672+0200 I  STORAGE  [initandlisten] WiredTiger message [1589905400:672179][1143:0x7fd30be09b40], txn-recover: Main recovery loop: starting at 34/70144 to 35/256
+2020-05-19T18:23:21.409+0200 I  STORAGE  [initandlisten] WiredTiger message [1589905401:409947][1143:0x7fd30be09b40], txn-recover: Recovering log 34 through 35
+2020-05-19T18:23:21.892+0200 I  STORAGE  [initandlisten] WiredTiger message [1589905401:892905][1143:0x7fd30be09b40], txn-recover: Recovering log 35 through 35
+2020-05-19T18:23:22.459+0200 I  STORAGE  [initandlisten] WiredTiger message [1589905402:459188][1143:0x7fd30be09b40], txn-recover: Set global recovery timestamp: (0, 0)
+2020-05-19T18:23:22.545+0200 I  RECOVERY [initandlisten] WiredTiger recoveryTimestamp. Ts: Timestamp(0, 0)
+2020-05-19T18:23:22.579+0200 I  STORAGE  [initandlisten] Timestamp monitor starting
+2020-05-19T18:23:22.605+0200 I  CONTROL  [initandlisten] 
+2020-05-19T18:23:22.605+0200 I  CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2020-05-19T18:23:22.605+0200 I  CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2020-05-19T18:23:22.605+0200 I  CONTROL  [initandlisten] 
+2020-05-19T18:23:22.605+0200 I  CONTROL  [initandlisten] ** WARNING: This server is bound to localhost.
+2020-05-19T18:23:22.605+0200 I  CONTROL  [initandlisten] **          Remote systems will be unable to connect to this server. 
+2020-05-19T18:23:22.605+0200 I  CONTROL  [initandlisten] **          Start the server with --bind_ip <address> to specify which IP 
+2020-05-19T18:23:22.605+0200 I  CONTROL  [initandlisten] **          addresses it should serve responses from, or with --bind_ip_all to
+2020-05-19T18:23:22.605+0200 I  CONTROL  [initandlisten] **          bind to all interfaces. If this behavior is desired, start the
+2020-05-19T18:23:22.605+0200 I  CONTROL  [initandlisten] **          server with --bind_ip 127.0.0.1 to disable this warning.
+2020-05-19T18:23:22.606+0200 I  CONTROL  [initandlisten] 
+2020-05-19T18:23:22.607+0200 I  CONTROL  [initandlisten] 
+2020-05-19T18:23:22.608+0200 I  CONTROL  [initandlisten] ** WARNING: soft rlimits too low. rlimits set to 30777 processes, 1048576 files. Number of processes should be at least 524288 : 0.5 times number of files.
+2020-05-19T18:23:22.672+0200 I  SHARDING [initandlisten] Marking collection local.system.replset as collection version: <unsharded>
+2020-05-19T18:23:22.685+0200 I  STORAGE  [initandlisten] Flow Control is enabled on this deployment.
+2020-05-19T18:23:22.688+0200 I  SHARDING [initandlisten] Marking collection admin.system.roles as collection version: <unsharded>
+2020-05-19T18:23:22.688+0200 I  SHARDING [initandlisten] Marking collection admin.system.version as collection version: <unsharded>
+2020-05-19T18:23:22.701+0200 I  SHARDING [initandlisten] Marking collection local.startup_log as collection version: <unsharded>
+2020-05-19T18:23:22.704+0200 I  FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/home/radnar/PROGRAMOWANIE/Preclarka/preclarka/server/data/db/diagnostic.data'
+2020-05-19T18:23:22.739+0200 I  SHARDING [LogicalSessionCacheRefresh] Marking collection config.system.sessions as collection version: <unsharded>
+2020-05-19T18:23:22.756+0200 I  NETWORK  [listener] Listening on /tmp/mongodb-27017.sock
+2020-05-19T18:23:22.756+0200 I  NETWORK  [listener] Listening on 127.0.0.1
+2020-05-19T18:23:22.756+0200 I  NETWORK  [listener] waiting for connections on port 27017
+2020-05-19T18:23:22.756+0200 I  SHARDING [LogicalSessionCacheReap] Marking collection config.transactions as collection version: <unsharded>
+2020-05-19T18:23:23.002+0200 I  SHARDING [ftdc] Marking collection local.oplog.rs as collection version: <unsharded>
+2020-05-19T18:23:38.059+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:55198 #1 (1 connection now open)
+2020-05-19T18:23:38.139+0200 I  NETWORK  [conn1] received client metadata from 127.0.0.1:55198 conn1: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T18:23:38.234+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:55200 #2 (2 connections now open)
+2020-05-19T18:23:38.261+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:55202 #3 (3 connections now open)
+2020-05-19T18:23:38.268+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:55204 #4 (4 connections now open)
+2020-05-19T18:23:38.268+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:55206 #5 (5 connections now open)
+2020-05-19T18:23:38.279+0200 I  NETWORK  [conn2] received client metadata from 127.0.0.1:55200 conn2: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T18:23:38.290+0200 I  NETWORK  [conn5] received client metadata from 127.0.0.1:55206 conn5: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T18:23:38.298+0200 I  NETWORK  [conn3] received client metadata from 127.0.0.1:55202 conn3: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T18:23:38.298+0200 I  NETWORK  [conn4] received client metadata from 127.0.0.1:55204 conn4: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T18:24:44.353+0200 I  SHARDING [conn2] Marking collection preclarkadb.users as collection version: <unsharded>
+2020-05-19T18:26:01.142+0200 I  SHARDING [conn2] Marking collection preclarkadb.addresses as collection version: <unsharded>
+2020-05-19T18:39:09.215+0200 I  COMMAND  [conn1] command admin.$cmd command: isMaster { ismaster: true, $db: "admin" } numYields:0 reslen:242 locks:{} protocol:op_msg 119ms
+2020-05-19T18:45:40.971+0200 I  SHARDING [conn2] Marking collection preclarkadb.copywriterscontracts as collection version: <unsharded>
+2020-05-19T18:56:29.441+0200 I  NETWORK  [conn3] end connection 127.0.0.1:55202 (2 connections now open)
+2020-05-19T18:56:29.441+0200 I  NETWORK  [conn1] end connection 127.0.0.1:55198 (4 connections now open)
+2020-05-19T18:56:29.441+0200 I  NETWORK  [conn5] end connection 127.0.0.1:55206 (3 connections now open)
+2020-05-19T18:56:29.441+0200 I  NETWORK  [conn2] end connection 127.0.0.1:55200 (1 connection now open)
+2020-05-19T18:56:29.441+0200 I  NETWORK  [conn4] end connection 127.0.0.1:55204 (0 connections now open)
+2020-05-19T18:56:30.359+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:43056 #6 (1 connection now open)
+2020-05-19T18:56:30.366+0200 I  NETWORK  [conn6] received client metadata from 127.0.0.1:43056 conn6: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T18:56:30.388+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:43058 #7 (2 connections now open)
+2020-05-19T18:56:30.388+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:43060 #8 (3 connections now open)
+2020-05-19T18:56:30.388+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:43062 #9 (4 connections now open)
+2020-05-19T18:56:30.391+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:43064 #10 (5 connections now open)
+2020-05-19T18:56:30.392+0200 I  NETWORK  [conn8] received client metadata from 127.0.0.1:43060 conn8: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T18:56:30.393+0200 I  NETWORK  [conn7] received client metadata from 127.0.0.1:43058 conn7: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T18:56:30.394+0200 I  NETWORK  [conn10] received client metadata from 127.0.0.1:43064 conn10: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T18:56:30.396+0200 I  NETWORK  [conn9] received client metadata from 127.0.0.1:43062 conn9: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T19:06:32.144+0200 I  NETWORK  [conn7] end connection 127.0.0.1:43058 (4 connections now open)
+2020-05-19T19:06:32.168+0200 I  NETWORK  [conn8] end connection 127.0.0.1:43060 (3 connections now open)
+2020-05-19T19:06:32.173+0200 I  NETWORK  [conn9] end connection 127.0.0.1:43062 (2 connections now open)
+2020-05-19T19:06:32.179+0200 I  NETWORK  [conn10] end connection 127.0.0.1:43064 (1 connection now open)
+2020-05-19T19:15:14.553+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:52408 #11 (2 connections now open)
+2020-05-19T19:15:14.573+0200 I  NETWORK  [conn11] received client metadata from 127.0.0.1:52408 conn11: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T19:35:13.323+0200 I  NETWORK  [conn11] end connection 127.0.0.1:52408 (1 connection now open)
+2020-05-19T20:42:37.855+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:39740 #12 (2 connections now open)
+2020-05-19T20:42:37.865+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:39742 #13 (3 connections now open)
+2020-05-19T20:42:37.882+0200 I  NETWORK  [conn13] received client metadata from 127.0.0.1:39742 conn13: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T20:42:37.883+0200 I  NETWORK  [conn12] received client metadata from 127.0.0.1:39740 conn12: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T20:45:45.597+0200 I  SHARDING [conn13] Marking collection preclarkadb.copywritersinvoices as collection version: <unsharded>
+2020-05-19T20:56:27.834+0200 I  NETWORK  [conn12] end connection 127.0.0.1:39740 (2 connections now open)
+2020-05-19T20:56:27.834+0200 I  NETWORK  [conn13] end connection 127.0.0.1:39742 (0 connections now open)
+2020-05-19T20:56:27.834+0200 I  NETWORK  [conn6] end connection 127.0.0.1:43056 (1 connection now open)
+2020-05-19T20:56:28.819+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:46778 #14 (1 connection now open)
+2020-05-19T20:56:28.828+0200 I  NETWORK  [conn14] received client metadata from 127.0.0.1:46778 conn14: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T20:56:28.850+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:46780 #15 (2 connections now open)
+2020-05-19T20:56:28.851+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:46782 #16 (3 connections now open)
+2020-05-19T20:56:28.851+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:46784 #17 (4 connections now open)
+2020-05-19T20:56:28.851+0200 I  NETWORK  [listener] connection accepted from 127.0.0.1:46786 #18 (5 connections now open)
+2020-05-19T20:56:28.852+0200 I  NETWORK  [conn15] received client metadata from 127.0.0.1:46780 conn15: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T20:56:28.853+0200 I  NETWORK  [conn16] received client metadata from 127.0.0.1:46782 conn16: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T20:56:28.854+0200 I  NETWORK  [conn17] received client metadata from 127.0.0.1:46784 conn17: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }
+2020-05-19T20:56:28.855+0200 I  NETWORK  [conn18] received client metadata from 127.0.0.1:46786 conn18: { driver: { name: "nodejs|Mongoose", version: "3.5.5" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-178-generic" }, platform: "'Node.js v12.13.0, LE (unified)", version: "3.5.5|5.9.9" }

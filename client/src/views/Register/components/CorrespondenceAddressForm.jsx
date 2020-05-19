@@ -1,25 +1,46 @@
 import React, { Component } from "react";
 import { Form, Input } from "antd";
-import LayoutConfig from "./LayoutConfig";
 
 class CorespondenceAddressForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  state = {
+    ulicaKoresp: "",
+    nrBudynkuKoresp: "",
+    nrLokaluKoresp: "",
+    miastoKoresp: "",
+    kodPoczKoresp: "",
+    krajKoresp: "",
+    // corespondenceAddressFrorm: {},
+    CorespondenceAddressForm: {
+      ulicaKoresp: "",
+      nrBudynkuKoresp: "",
+      nrLokaluKoresp: "",
+      miastoKoresp: "",
+      kodPoczKoresp: "",
+      krajKoresp: "",
+    },
+  };
 
   onFinish = (values) => {
     console.log(values);
   };
 
+  onChange = (e) => {
+    const state = this.state;
+    state[e.target.name] = e.target.value;
+    this.setState({ state });
+    const CorespondenceAddressForm = {
+      ulica: state.ulicaKoresp,
+      nrBudynku: state.nrBudynkuKoresp,
+      nrLokalu: state.nrLokaluKoresp,
+      miasto: state.miastoKoresp,
+      kodPocz: state.kodPoczKoresp,
+      kraj: state.krajKoresp,
+    };
+    this.props.getCorespondenceAddressForm(CorespondenceAddressForm);
+  };
+
   render() {
     return (
-      // <Form
-      //   {...LayoutConfig.layout}
-      //   name="nest-messages"
-      //   onFinish={this.onFinish}
-      //   validateMessages={LayoutConfig.validateMessages}
-      // >
       <>
         <Form.Item
           name={["ulicaKoresp", "ulicaKoresp"]}
@@ -30,7 +51,7 @@ class CorespondenceAddressForm extends Component {
             },
           ]}
         >
-          <Input />
+          <Input name="ulicaKoresp" onChange={this.onChange} />
         </Form.Item>
 
         <Form.Item
@@ -42,7 +63,7 @@ class CorespondenceAddressForm extends Component {
             },
           ]}
         >
-          <Input />
+          <Input name="nrDomuKoresp" onChange={this.onChange} />
         </Form.Item>
 
         <Form.Item
@@ -61,7 +82,7 @@ class CorespondenceAddressForm extends Component {
             },
           ]}
         >
-          <Input />
+          <Input name="miastoKoresp" onChange={this.onChange} />
         </Form.Item>
 
         <Form.Item
@@ -73,7 +94,7 @@ class CorespondenceAddressForm extends Component {
             },
           ]}
         >
-          <Input />
+          <Input name="kodPoczKoresp" onChange={this.onChange} />
         </Form.Item>
 
         <Form.Item
@@ -86,10 +107,9 @@ class CorespondenceAddressForm extends Component {
             },
           ]}
         >
-          <Input />
+          <Input name="krajKoresp" onChange={this.onChange} />
         </Form.Item>
       </>
-      // </Form>
     );
   }
 }

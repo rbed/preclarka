@@ -87,6 +87,16 @@ class UsersCard extends Component {
       const doc = await Client.Services.AddressesService.create(
         this.state.address
       );
+      this.setState({
+        address: {
+          street: "",
+          houseNumb: "",
+          apartNumb: "",
+          city: "",
+          postcode: "",
+          country: "Polska",
+        },
+      });
     } catch {
       console.log("error");
     }
