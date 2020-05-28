@@ -1,4 +1,4 @@
-let label = null;
+let label = '';
 
 const LeyoutConfig = {
   layout: {
@@ -14,6 +14,7 @@ const LeyoutConfig = {
     required: `${label} jest wymagany!`,
     types: {
       // email: `${getValueFromEvent} is not validate email!`,
+      email: `${label} is not validate email!`,
       number: `${label} is not a validate number!`,
     },
     number: {

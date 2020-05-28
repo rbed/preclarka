@@ -14,6 +14,7 @@ class Request {
       static async post(url, item){
           console.log("request - przekazany item do posta " + JSON.stringify(item));
         try {
+          console.log("url " + url, "item " + item)
           const doc = await axios.post(url, item);
           return doc;
         } catch (err) {

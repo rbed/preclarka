@@ -47,14 +47,13 @@ class ContractDataForm extends Component {
 
   render() {
     if (
-      this.props.currentStep !== 2 &&
+      this.props.currentStep !== 1 &&
       this.props.contractorType === "contract"
     ) {
       return null;
     }
     return (
       <>
-        <p>{this.props.currentStep} / 3</p>
         <Form.Item
           name="dataUrodzenia"
           label="data urodzenia"

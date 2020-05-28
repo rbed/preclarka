@@ -105,24 +105,36 @@ class usersServices{
      * @throws Error if user data not recieved || mongoDB othervise or if user object has no enough data
      */
     static async create(user) {
+        // console.log('goły user user ' + JSON.stringify(user))
         if (!user) {
             throw new AppError('nie podales uzytkownika do utworzenia', ARGUMENT_ERROR)
         }
         const User = new Users(user);
         
-        return await User.save()
-        .then(doc => {
-            // serwis jest punktem styku pomiędzy kontrolerem i warstwa dostępu do danych
-            // serwis powinien zwracać dane lub sypać błędem a nie wysyłać odpowiedzi http, to zadanie kontrolera
-            // res​.​status​(​200​).​json​(doc);
+        // return await User.save()
+        // .then(doc => {
+
+        //     console.log("DOC " + doc)
+        //     // serwis jest punktem styku pomiędzy kontrolerem i warstwa dostępu do danych
+        //     // serwis powinien zwracać dane lub sypać błędem a nie wysyłać odpowiedzi http, to zadanie kontrolera
+        //     // res​.​status​(​200​).​json​(doc);
+        //     return doc
+        // })
+        // .catch(err => {
+        // // jak coś pojdzie nie tak to ma wyrzucic błąd
+        // // wyrzucony z tad błąd musi byc obsłużony w bloku try catch kontrolera
+        // // ​res​.​status​(​422​).​json​(err);
+        // throw new AppError('blad mongodb', MONGO_ERROR, err)
+        // });
+
+        try {
+            // console.log("stworz usera + " + User)
+            const doc = await User.save()
             return doc
-        })
-        .catch(err => {
-        // jak coś pojdzie nie tak to ma wyrzucic błąd
-        // wyrzucony z tad błąd musi byc obsłużony w bloku try catch kontrolera
-        // ​res​.​status​(​422​).​json​(err);
-        throw new AppError('blad mongodb', MONGO_ERROR, err)
-        });
+        }
+        catch {
+            console.log("error przy Tworzeniu usera")
+        }
     }
 
     static async createMany(users) {

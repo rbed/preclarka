@@ -53,7 +53,6 @@ class CopywritersContractServices{
         if (!copywriterContract) {
             throw new AppError('nie podałeś copywritera', MONGO_ERROR, err)
         }
-        console.log('dupa');
         const Copywriter = new CopywritersContract(copywriterContract);
         return await Copywriter.save()
         .then(doc => {

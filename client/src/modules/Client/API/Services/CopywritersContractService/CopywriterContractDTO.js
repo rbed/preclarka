@@ -11,7 +11,7 @@ export default class CopywriterContractDTO {
        this.adresKoresp = adresKoresp;
     }
  
-    getAddressDTO() {
+    getcopywriterContractDTO() {
        return {
          copywriterContract: {
              dataUrodzenia: this.dataUrodzenia,

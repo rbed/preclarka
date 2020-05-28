@@ -1,20 +1,22 @@
 import React, { Component } from "react";
-import { Form, Input, Checkbox } from "antd";
+import { Form, Input, Checkbox, Select, InputNumber } from "antd";
 import CorespondenceAddressForm from "./CorrespondenceAddressForm";
 import LayoutConfig from "./LayoutConfig";
+
+const { Option } = Select;
 
 class AddressForm extends Component {
   state = {
     ulica: "",
-    nrBudynku: "",
+    nrDomu: "",
     nrLokalu: "",
     miasto: "",
     kodPocz: "",
-    kraj: "",
+    kraj: "Polska",
     CorespondenceAddressForm: {},
     AddressForm: {
       ulica: "",
-      nrBudynku: "",
+      nrDomu: "",
       nrLokalu: "",
       miasto: "",
       kodPocz: "",
@@ -50,7 +52,7 @@ class AddressForm extends Component {
     //const state = this.state;
     const addressForm = {
       ulica: state.ulica,
-      nrBudynku: state.nrBudynku,
+      nrDomu: state.nrDomu,
       nrLokalu: state.nrLokalu,
       miasto: state.miasto,
       kodPocz: state.kodPocz,
@@ -61,14 +63,14 @@ class AddressForm extends Component {
 
   render() {
     if (
-      this.props.currentStep !== 3 &&
+      this.props.currentStep !== 2 &&
       this.props.contractorType === "contract"
     ) {
       return null;
     }
 
     if (
-      this.props.currentStep !== 3 &&
+      this.props.currentStep !== 2 &&
       this.props.contractorType === "invoice"
     ) {
       return null;
@@ -82,7 +84,6 @@ class AddressForm extends Component {
       //   validateMessages={LayoutConfig.validateMessages}
       // >
       <>
-        <p>{this.props.currentStep} / 3</p>
         <Form.Item
           name="ulica"
           label="ulica"
@@ -96,7 +97,7 @@ class AddressForm extends Component {
         </Form.Item>
 
         <Form.Item
-          name={["nrDomu", "nrDomu"]}
+          name="nrDomu"
           label="numer budynku"
           rules={[
             {
@@ -104,15 +105,15 @@ class AddressForm extends Component {
             },
           ]}
         >
-          <Input name="nrBudynku" onChange={this.onChange} />
+          <Input name="nrDomu" onChange={this.onChange} />
         </Form.Item>
 
-        <Form.Item name={["nrLokalu", "nrLokalu"]} label="numer lokalu">
+        <Form.Item name="nrLokalu" label="numer lokalu">
           <Input name="nrLokalu" onChange={this.onChange} />
         </Form.Item>
 
         <Form.Item
-          name={["miasto", "miasto"]}
+          name="miasto"
           label="miasto"
           rules={[
             {
@@ -124,32 +125,46 @@ class AddressForm extends Component {
         </Form.Item>
 
         <Form.Item
-          name={["kodPocz", "kodPocz"]}
+          name="kodPocz"
           label="kod pocztowy"
           rules={[
             {
               required: true,
             },
           ]}
-          gf
         >
           <Input name="kodPocz" onChange={this.onChange} />
         </Form.Item>
 
         <Form.Item
-          name={["kraj", "kraj"]}
+          name="kraj"
           label="kraj"
           rules={[
             {
               required: true,
-              defaultField: "Polska",
             },
           ]}
         >
-          <Input name="kraj" onChange={this.onChange} />
+          <Input name="kraj" defaultValue="Polska" onChange={this.onChange} />
         </Form.Item>
 
-        <Form.Item
+        {/* <Form.Item
+          name="kraj"
+          label="kraj"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Select defaultValue="Polska">
+            <Option value="Polska">Polska</Option>
+            <Option value="Inny">Inny</Option>
+          </Select>
+        </Form.Item> */}
+
+        {/* Włącznik i wyłśacznik do adresu korespondencyjnego */}
+        {/* <Form.Item
           onChange={this.handleChange}
           name="different conrespondece address"
           valuePropName="checked"
@@ -164,7 +179,7 @@ class AddressForm extends Component {
           />
         ) : (
           ""
-        )}
+        )} */}
       </>
       // </Form>
     );

@@ -65,17 +65,29 @@ class AddressesServices {
    * x
    */
   static async create(address) {
+    // console.log("server addres service " + address)
     if (!address) {
       throw new AppError("brak adresu", ARGUMENT_ERROR);
     }
     const Address = new Addresses(address);
-    return Address.save()
-      .then((doc) => {
-        return doc;
-      })
-      .catch((err) => {
-        throw new AppError("blad mongodb", MONGO_ERROR, err);
-      });
+    // return Address.save()
+    //   .then((doc) => {
+    //     console.log('serwer sdres service DOC ' + doc)
+    //     return doc;
+    //   })
+    //   .catch((err) => {
+    //     throw new AppError("blad mongodb", MONGO_ERROR, err);
+    //   });
+
+      try {
+        // console.log("stworz address + " + Address)
+        const doc = await Address.save()
+        return doc
+    }
+    catch {
+        console.log("error przy Tworzeniu adresu")
+    }
+
   }
 
     /**

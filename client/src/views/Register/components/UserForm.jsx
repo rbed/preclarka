@@ -4,8 +4,8 @@ import { Form, Input } from "antd";
 
 class UserForm extends Component {
   state = {
-    currentStep: this.props.currentStep,
-    contractorType: "",
+    // currentStep: this.props.currentStep,
+    // contractorType: "",
     email: "",
     name: "",
     lastname: "",
@@ -42,14 +42,14 @@ class UserForm extends Component {
 
   render() {
     if (
-      this.props.currentStep !== 1 &&
+      this.props.currentStep !== 0 &&
       this.props.contractorType === "contract"
     ) {
       return null;
     }
 
     if (
-      this.props.currentStep !== 1 &&
+      this.props.currentStep !== 0 &&
       this.props.contractorType === "invoice"
     ) {
       return null;
@@ -63,19 +63,13 @@ class UserForm extends Component {
       //   validateMessages={LayoutConfig.validateMessages}
       // >
       <>
-        <p>{this.props.currentStep} / 3</p>
-
         <Form.Item
           name="email"
           label="Email"
-          getValueFromEvent={(e) => {
-            this.setState({
-              email: e.target.value,
-            });
-          }}
           rules={[
             {
               type: "email",
+              required: true,
             },
           ]}
         >
@@ -84,22 +78,22 @@ class UserForm extends Component {
         <Form.Item
           name="name"
           label="Imię"
-          getValueFromEvent={(e) => {
-            this.setState({
-              name: e.target.value,
-            });
-          }}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
         >
           <Input name="name" onChange={this.onChange} />
         </Form.Item>
         <Form.Item
           name="lastname"
           label="Nazwisko"
-          getValueFromEvent={(e) => {
-            this.setState({
-              lastname: e.target.value,
-            });
-          }}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
         >
           <Input name="lastname" onChange={this.onChange} />
         </Form.Item>
@@ -107,14 +101,9 @@ class UserForm extends Component {
         <Form.Item
           name="password"
           label="Password"
-          getValueFromEvent={(e) => {
-            this.setState({
-              password: e.target.value,
-            });
-          }}
           rules={[
             {
-              required: false,
+              required: true,
               message: "Please input your password!",
             },
           ]}
@@ -128,14 +117,9 @@ class UserForm extends Component {
           label="Confirm Password"
           dependencies={["password"]}
           hasFeedback
-          getValueFromEvent={(e) => {
-            this.setState({
-              confirm: e.target.value,
-            });
-          }}
           rules={[
             {
-              required: false,
+              required: true,
               message: "Please confirm your password!",
             },
             ({ getFieldValue }) => ({

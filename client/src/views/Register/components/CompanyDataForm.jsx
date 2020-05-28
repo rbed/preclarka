@@ -32,7 +32,7 @@ class CompanyDataForm extends Component {
 
   render() {
     if (
-      this.props.currentStep !== 2 &&
+      this.props.currentStep !== 1 &&
       this.props.contractorType === "invoice"
     ) {
       return null;
@@ -40,7 +40,6 @@ class CompanyDataForm extends Component {
 
     return (
       <>
-        <p>{this.props.currentStep} / 3</p>
         <Form.Item
           name={["nazwaFirmy", "nazwaFirmy"]}
           label="nazwa firmy"

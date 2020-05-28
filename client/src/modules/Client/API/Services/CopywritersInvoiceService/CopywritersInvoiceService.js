@@ -26,22 +26,22 @@ class CopywritersInvoiceService {
     }
   }
 
-  static async create(adresData, userData, companyData) {
+  static async create(adresId, userId, companyData) {
     const {
       nazwaFirmy,
       regon,
       nip
     } = companyData;
-    const user = userData._id;
-    const adres = adresData._id;
+    // const user = userData._id;
+    // const adres = adresData._id;
     // TODO: adres koresponsdencyjny może być inne
-    const adresKoresp = adresData._id;
+    const adresKoresp = adresId;
     const copywriterInvoice = new CopywriterInvoicetDTO(
       nazwaFirmy,
       regon,
       nip,
-      adres,
-      user,
+      adresId,
+      userId,
       adresKoresp
     );
     console.log("copywriter przekazywany do stworzneia adresu " + copywriterInvoice);

@@ -3,6 +3,7 @@ import OrdersService from './OrdersService/OrdersService';
 import UsersService from './UsersSersice/UsersService'
 import CopywriterContractService from './CopywritersContractService/CopywritersContractService'
 import CopywriterInvoiceService from './CopywritersInvoiceService/CopywritersInvoiceService'
+import RegisterService from './RegistrationService/RegistrationService'
 
 export default class Services {
    static AddressesService = AddressesService;
@@ -10,5 +11,6 @@ export default class Services {
    static UsersService = UsersService;
    static CopywriterContractService = CopywriterContractService;
    static CopywriterInvoiceService = CopywriterInvoiceService;
+   static RegisterService = RegisterService;
    
 }

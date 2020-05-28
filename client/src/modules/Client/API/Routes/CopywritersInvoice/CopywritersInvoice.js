@@ -4,6 +4,7 @@
 const MAIN_PATH = '/api/copywriters-invoice';
 
 export default class Addresses {
+    static REGISTER = MAIN_PATH + '/register'
     static GET_COPYWRITERS = MAIN_PATH + '/';
     static GET_COPYWRITERS_BY_ID = MAIN_PATH + '/id/';
     static CREATE_COPYWRITERS = MAIN_PATH + '/';
