@@ -54,14 +54,15 @@ class CopywritersInvoiceServices{
         if (!copywriterInvoice) {
             throw new AppError('brak copywritera', ARGUMENT_ERROR)
         }
-        console.log('dupa');
+        console.log('copywritersInvoiceService');
         const Copywriter = new CopywritersInvoice(copywriterInvoice);
         return await Copywriter.save()
         .then(doc => {
             return doc
         })
         .catch(err => {
-            throw new AppError('blad mongodb', MONGO_ERROR, err)
+            console.log("error przy Tworzeniu copywriteraInvoice")
+            // throw new AppError('blad mongodb', MONGO_ERROR, err)
         });
     }
 

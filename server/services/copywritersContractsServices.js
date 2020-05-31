@@ -59,7 +59,8 @@ class CopywritersContractServices{
             return doc
         })
         .catch(err => {
-            throw new AppError('blad mongodb', MONGO_ERROR, err)
+            console.log("error przy Tworzeniu copywriteraContract")
+            // throw new AppError('blad mongodb', MONGO_ERROR, err)
         });
     }
 
