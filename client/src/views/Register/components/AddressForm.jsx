@@ -5,7 +5,7 @@ import LayoutConfig from "./LayoutConfig";
 
 const { Option } = Select;
 
-class AddressForm extends Component {
+class AddressDataForm extends Component {
   state = {
     ulica: "",
     nrDomu: "",
@@ -46,6 +46,7 @@ class AddressForm extends Component {
 
   onChange = (e) => {
     //sconsole.log(e.target.value);
+    console.log(this.props);
     const state = this.state;
     state[e.target.name] = e.target.value;
     this.setState(state);
@@ -186,4 +187,4 @@ class AddressForm extends Component {
   }
 }
 
-export default AddressForm;
+export default AddressDataForm;

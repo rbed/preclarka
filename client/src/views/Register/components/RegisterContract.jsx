@@ -7,6 +7,7 @@ import AgreementForm from "./AgreementForm";
 import LayoutConfig from "./LayoutConfig";
 import Client from "../../../modules/Client/Client";
 import FormSteps from "./Steps";
+import StepsControll from "./StepsControll";
 
 class RegisterContract extends Component {
   constructor(props) {
@@ -15,9 +16,10 @@ class RegisterContract extends Component {
     this.state = {
       currentStep: 0,
       contractorType: "",
+      AgreementForm: false,
       UserForm: {},
       ContractDataForm: {},
-      CompanyDateForm: {},
+      CompanyDataForm: {},
       AddressForm: {},
       CorespondenceAddressForm: {},
       userData: {},
@@ -28,13 +30,13 @@ class RegisterContract extends Component {
     // this.handleClickFormNext = this.handleClickFormNext.bind(this);
   }
   setUserForm = (userForm) => {
-    console.log(userForm);
+    // console.log(userForm);
     this.setState({ UserForm: userForm });
     console.log(this.state.UserForm);
   };
 
   setContractDataForm = (contractDataForm) => {
-    console.log(contractDataForm);
+    // console.log(contractDataForm);
     this.setState({ ContractDataForm: contractDataForm });
   };
 
@@ -46,6 +48,10 @@ class RegisterContract extends Component {
   setCorespondenceAddressForm = (copespondenceAddressForm) => {
     this.setState({ CorespondenceAddressForm: copespondenceAddressForm });
     // console.log(this.state);
+  };
+
+  setAgreementDataForm = (agreement) => {
+    this.setState({ AgreementForm: agreement });
   };
 
   componentDidMount() {
@@ -76,21 +82,20 @@ class RegisterContract extends Component {
       address: AddressForm,
       copywriter: ContractDataForm,
     };
-
-    let data = await Client.Services.RegisterService.registerCopywriterContract(
-      form
-    );
-    // TODO: to jest do odkomentowania
-    // console.log("stworzony copywriter to " + JSON.stringify(data.data));
-    // this.setState({ copywriterInvoiceData: data.data });
-    // if (data.data) {
-    //   this.setState({ UserForm: {} });
-    //   this.setState({ AddressForm: {} });
-    //   this.setState({ ContractDataForm: {} });
-    // }
-  }
-  catch(e) {
-    console.log("error usera w registerInvoice - ");
+    try {
+      let data = await Client.Services.RegisterService.registerCopywriterContract(
+        form
+      );
+      console.log("stworzony copywriter to " + JSON.stringify(data.data));
+      this.setState({ copywriterInvoiceData: data.data });
+      if (data.data) {
+        this.setState({ UserForm: {} });
+        this.setState({ AddressForm: {} });
+        this.setState({ ContractDataForm: {} });
+      }
+    } catch (e) {
+      console.log("error usera w registerInvoice - ");
+    }
   }
 
   //   try {
@@ -132,6 +137,28 @@ class RegisterContract extends Component {
   //   }
   // }
 
+  buttonDisabled() {
+    const {
+      UserForm,
+      CompanyDataForm,
+      ContractDataForm,
+      AddressForm,
+      currentStep,
+      contractorType,
+      AgreementForm,
+    } = this.state;
+
+    return StepsControll.buttonDisabled(
+      UserForm,
+      CompanyDataForm,
+      ContractDataForm,
+      AddressForm,
+      currentStep,
+      contractorType,
+      AgreementForm
+    );
+  }
+
   render() {
     // console.log(this.state.currentStep);
 
@@ -141,6 +168,12 @@ class RegisterContract extends Component {
           currentStep={this.state.currentStep}
           getCurrentStep={this.setCurrentStep}
           ref={this.StepsElement}
+          userForm={this.state.UserForm}
+          companyDataForm={this.state.CompanyDataForm}
+          contractorDataForm={this.state.ContractDataForm}
+          addressForm={this.state.AddressForm}
+          contractorType={this.state.contractorType}
+          agreement={this.state.AgreementForm}
         ></FormSteps>
         <p></p>
         <Form
@@ -171,6 +204,7 @@ class RegisterContract extends Component {
           <AgreementForm
             currentStep={this.state.currentStep}
             contractorType={this.state.contractorType}
+            getAgreementForm={this.setAgreementDataForm}
           />
 
           <Form.Item
@@ -181,11 +215,16 @@ class RegisterContract extends Component {
                 onClick={(e) => this.handleSubmit(e)}
                 type="primary"
                 htmlType="submit"
+                disabled={this.buttonDisabled()}
               >
                 Rejestruj
               </Button>
             ) : (
-              <Button onClick={() => this.handleClickFormNext()} type="primary">
+              <Button
+                onClick={() => this.handleClickFormNext()}
+                type="primary"
+                disabled={this.buttonDisabled()}
+              >
                 Dalej
               </Button>
             )}

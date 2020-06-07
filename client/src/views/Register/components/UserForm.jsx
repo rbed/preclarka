@@ -9,13 +9,13 @@ class UserForm extends Component {
     email: "",
     name: "",
     lastname: "",
-    passowrd: "",
+    password: "",
     confirm: "",
     userForm: {
       email: "",
       name: "",
       lastname: "",
-      passowrd: "",
+      password: "",
       confirm: "",
     },
   };
@@ -34,7 +34,7 @@ class UserForm extends Component {
       email: state.email,
       name: state.name,
       lastname: state.lastname,
-      passowrd: state.password,
+      password: state.password,
       confirm: state.confirm,
     };
     this.props.getUserForm(userForm);

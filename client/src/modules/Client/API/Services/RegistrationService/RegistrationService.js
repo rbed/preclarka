@@ -9,7 +9,7 @@ export default class RegisterService {
     }
     
     static async registerCopywriterContract(form){
-        console.log('jestem w client registerservice contract')
+        console.log('jestem w client client/api/registrationservice contract')
         return await Request.post(API.ROUTES.CopywritersContract.REGISTER,form)
     }
 

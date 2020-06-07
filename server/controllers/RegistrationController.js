@@ -84,7 +84,7 @@ class RegistrationController {
         //     throw e
         // }
         console.log('step3')
-        if(forms.copywriter.pesel) {console.log('user umow ao dzielo')
+        if(forms.copywriter.pesel) {console.log('user umowa o dzielo')
             yield await copywritersContractsServices.create(forms.copywriter)
         } else {
             console.log('user firma')
@@ -130,7 +130,7 @@ class RegistrationController {
             }    
 
             let copywriterRegistration = await registration.next()
-            console.log(copywriterRegistration.value)
+            console.log("copywriterRegistration " + copywriterRegistration.value)
             if(!copywriterRegistration.value){
                 usersService.delete(userRegistration.value._id)
                 addressesServices.delete(addressRegistration.value._id)
@@ -140,8 +140,8 @@ class RegistrationController {
             }
 
             let done = await registration.next()
-            console.log(done)
-            if(registration.done){
+            if(done){
+                console.log('info, ze rejestracja poszla pomyslenie - zaraz nastapi re.status')
                 return res.status(200).json({user:userRegistration.value,
                     address:addressRegistration.value,
                     copywriter:copywriterRegistration.value})
@@ -225,7 +225,7 @@ class RegistrationController {
     
                 let done = await registration.next()
                 console.log(done)
-                if(registration.done){
+                if(done){
                     return res.status(200).json({user:userRegistration.value,
                         address:addressRegistration.value,
                         copywriter:copywriterRegistration.value})

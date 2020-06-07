@@ -7,6 +7,7 @@ import AgreementForm from "./AgreementForm";
 import LayoutConfig from "./LayoutConfig";
 import Client from "../../../modules/Client/Client";
 import FormSteps from "./Steps";
+import StepsControll from "./StepsControll";
 
 class RegisterInvoice extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class RegisterInvoice extends Component {
     this.state = {
       currentStep: 0,
       contractorType: "",
+      AgreementForm: false,
       UserForm: {},
       CompanyDataForm: {},
       AddressForm: {},
@@ -22,7 +24,7 @@ class RegisterInvoice extends Component {
       userData: {},
       addressData: {},
       companyData: {},
-      copywriterInvoiceData: { dupa: "dupa" },
+      copywriterInvoiceData: {},
     };
   }
 
@@ -45,8 +47,12 @@ class RegisterInvoice extends Component {
   };
 
   setCompanyDataForm = (companyDataForm) => {
-    console.log(companyDataForm);
+    // console.log(companyDataForm);
     this.setState({ CompanyDataForm: companyDataForm });
+  };
+
+  setAgreementDataForm = (agreement) => {
+    this.setState({ AgreementForm: agreement });
   };
 
   setAddressForm = (addressForm) => {
@@ -98,52 +104,77 @@ class RegisterInvoice extends Component {
       );
       console.log("stworzony copywriter to " + JSON.stringify(data.data));
       this.setState({ copywriterInvoiceData: data.data });
+      console.log("to jest data" + JSON.stringify(data));
       if (data.data) {
         this.setState({ UserForm: {} });
         this.setState({ AddressForm: {} });
         this.setState({ ContractDataForm: {} });
       }
     } catch (e) {
-      console.log("error usera w registerInvoice - ");
+      console.log(
+        "error usera w client/views/Register/components/registerInvoice - "
+      );
     }
+  }
 
-    // try {
-    //   const doc = await Client.Services.UsersService.create(
-    //     this.state.UserForm
-    //   );
-    //   console.log("data usera w handlesubmit" + JSON.stringify(doc.data));
-    //   const data = doc.data;
-    //   this.setState({ userData: data });
-    // } catch {
-    //   console.log("error usera w registerContract");
-    // }
-    // // tworzy adres
-    // try {
-    //   const doc = await Client.Services.AddressesService.create(
-    //     this.state.AddressForm
-    //   );
-    //   const data = doc.data;
-    //   this.setState({ addressData: data });
-    // } catch {
-    //   console.log("error adresu w registerContract");
-    // }
-    // // tworzy copywritera z umową
-    // try {
-    //   const doc = await Client.Services.CopywriterInvoiceService.create(
-    //     this.state.addressData._id,
-    //     this.state.userData._id,
-    //     this.state.CompanyDataForm
-    //   );
-    //   const data = JSON.stringify(doc.data);
-    //   this.setState({ copywriterInvoiceData: data });
-    //   if (this.state.copywriterContractData) {
-    //     this.setState({ userForm: {} });
-    //     this.setState({ addressForm: {} });
-    //     this.setState({ contractDataForm: {} });
-    //   }
-    // } catch {
-    //   console.log("error copywritera umowy w registerContract");
-    // }
+  // try {
+  //   const doc = await Client.Services.UsersService.create(
+  //     this.state.UserForm
+  //   );
+  //   console.log("data usera w handlesubmit" + JSON.stringify(doc.data));
+  //   const data = doc.data;
+  //   this.setState({ userData: data });
+  // } catch {
+  //   console.log("error usera w registerContract");
+  // }
+  // // tworzy adres
+  // try {
+  //   const doc = await Client.Services.AddressesService.create(
+  //     this.state.AddressForm
+  //   );
+  //   const data = doc.data;
+  //   this.setState({ addressData: data });
+  // } catch {
+  //   console.log("error adresu w registerContract");
+  // }
+  // // tworzy copywritera z umową
+  // try {
+  //   const doc = await Client.Services.CopywriterInvoiceService.create(
+  //     this.state.addressData._id,
+  //     this.state.userData._id,
+  //     this.state.CompanyDataForm
+  //   );
+  //   const data = JSON.stringify(doc.data);
+  //   this.setState({ copywriterInvoiceData: data });
+  //   if (this.state.copywriterContractData) {
+  //     this.setState({ userForm: {} });
+  //     this.setState({ addressForm: {} });
+  //     this.setState({ contractDataForm: {} });
+  //   }
+  // } catch {
+  //   console.log("error copywritera umowy w registerContract");
+  // }
+
+  buttonDisabled() {
+    const {
+      UserForm,
+      CompanyDataForm,
+      ContractDataForm,
+      AddressForm,
+      currentStep,
+      contractorType,
+      AgreementForm,
+    } = this.state;
+
+    return StepsControll.buttonDisabled(
+      UserForm,
+      CompanyDataForm,
+      ContractDataForm,
+      AddressForm,
+      currentStep,
+      contractorType,
+      AgreementForm
+    );
   }
 
   render() {
@@ -155,6 +186,12 @@ class RegisterInvoice extends Component {
           currentStep={this.state.currentStep}
           getCurrentStep={this.setCurrentStep}
           ref={this.StepsElement}
+          userForm={this.state.UserForm}
+          companyDataForm={this.state.CompanyDataForm}
+          contractorDataForm={this.state.contractorDataForm}
+          addressForm={this.state.AddressForm}
+          contractorType={this.state.contractorType}
+          agreement={this.state.AgreementForm}
         ></FormSteps>
 
         <p>{this.state.currentStep + 1} / 3</p>
@@ -186,6 +223,9 @@ class RegisterInvoice extends Component {
           <AgreementForm
             currentStep={this.state.currentStep}
             contractorType={this.state.contractorType}
+            getAddressForm={this.setAddressForm}
+            getAgreementForm={this.setAgreementDataForm}
+            getCorespondenceAddressForm={this.setCorespondenceAddressForm}
           />
 
           <Form.Item>
@@ -204,11 +244,16 @@ class RegisterInvoice extends Component {
                 onClick={(e) => this.handleSubmit(e)}
                 type="primary"
                 htmlType="submit"
+                disabled={this.buttonDisabled()}
               >
                 Rejestruj
               </Button>
             ) : (
-              <Button onClick={() => this.handleClickFormNext()} type="primary">
+              <Button
+                onClick={() => this.handleClickFormNext()}
+                type="primary"
+                disabled={this.buttonDisabled()}
+              >
                 Dalej
               </Button>
             )}

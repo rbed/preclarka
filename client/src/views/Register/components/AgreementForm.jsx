@@ -3,10 +3,13 @@ import { Form, Checkbox } from "antd";
 import LayoutConfig from "./LayoutConfig";
 
 class AgreementForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { currentStep: this.props.currentStep };
-  }
+  state = {
+    currentStep: this.props.currentStep,
+  };
+
+  handleChange = (e) => {
+    this.props.getAgreementForm(e.target.checked);
+  };
 
   render() {
     if (
@@ -39,11 +42,12 @@ class AgreementForm extends Component {
                 value
                   ? Promise.resolve()
                   : Promise.reject("Should accept agreement"),
+              required: true,
             },
           ]}
           {...LayoutConfig.tailFormItemLayout}
         >
-          <Checkbox>
+          <Checkbox onChange={this.handleChange}>
             Zapoznałem się z <a href="#">regulaminem</a>
           </Checkbox>
         </Form.Item>
