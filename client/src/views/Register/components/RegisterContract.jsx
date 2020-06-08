@@ -13,6 +13,7 @@ class RegisterContract extends Component {
   constructor(props) {
     super(props);
     this.StepsElement = React.createRef();
+    this.formRef = React.createRef();
     this.state = {
       currentStep: 0,
       contractorType: "",
@@ -92,6 +93,7 @@ class RegisterContract extends Component {
         this.setState({ UserForm: {} });
         this.setState({ AddressForm: {} });
         this.setState({ ContractDataForm: {} });
+        this.formRef.current.resetFields();
       }
     } catch (e) {
       console.log("error usera w registerInvoice - ");
@@ -181,6 +183,7 @@ class RegisterContract extends Component {
           name="nest-messages"
           onFinish={this.onFinish}
           validateMessages={LayoutConfig.validateMessages}
+          ref={this.formRef}
         >
           <UserForm
             currentStep={this.state.currentStep}

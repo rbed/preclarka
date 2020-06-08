@@ -13,6 +13,7 @@ class RegisterInvoice extends Component {
   constructor(props) {
     super(props);
     this.StepsElement = React.createRef();
+    this.formRef = React.createRef();
     this.state = {
       currentStep: 0,
       contractorType: "",
@@ -87,6 +88,11 @@ class RegisterInvoice extends Component {
   //   this.setState({ currentStep: current });
   // };
 
+  clearForm = () => {
+    console.log("czyszczenie formularza");
+    // this.form.resetFields();
+  };
+
   async handleSubmit(e) {
     // tworzy usera
     e.preventDefault();
@@ -109,6 +115,7 @@ class RegisterInvoice extends Component {
         this.setState({ UserForm: {} });
         this.setState({ AddressForm: {} });
         this.setState({ ContractDataForm: {} });
+        this.formRef.current.resetFields();
       }
     } catch (e) {
       console.log(
@@ -200,6 +207,8 @@ class RegisterInvoice extends Component {
           name="nest-messages"
           onFinish={this.onFinish}
           validateMessages={LayoutConfig.validateMessages}
+          id="copywriter-invoice-form"
+          ref={this.formRef}
         >
           <UserForm
             currentStep={this.state.currentStep}
